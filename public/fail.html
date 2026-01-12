@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>결제 실패</title></head>
+<body style="font-family:system-ui;padding:16px;">
+  <h2>결제 실패</h2>
+  <p id="msg"></p>
+  <a href="/" style="font-weight:900;">홈으로</a>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.getElementById("msg").textContent =
+    `code=${q.get("code") || "-"} / message=${q.get("message") || "-"}`;
+</script>
+</body>
+</html>
