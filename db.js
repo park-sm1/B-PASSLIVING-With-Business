@@ -1,6 +1,13 @@
-import Database from "better-sqlite3";
+// db.js (현재 프로젝트에서는 사용 안 함: 필요 시 서버에 연결해서 사용)
+let Database;
+try {
+  Database = require("better-sqlite3");
+} catch {
+  Database = null;
+}
 
-export function initDb() {
+function initDb() {
+  if (!Database) throw new Error("better-sqlite3 is not installed.");
   const db = new Database("bpass.sqlite");
 
   db.exec(`
@@ -45,3 +52,5 @@ export function initDb() {
 
   return db;
 }
+
+module.exports = { initDb };

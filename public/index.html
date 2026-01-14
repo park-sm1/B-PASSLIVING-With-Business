@@ -1,6 +1,11 @@
 <!-- =========================
-  PART 1 / 2
-  (여기부터 복사)
+  (수정본) index.html 전체
+  - 3일권 패스 추가(7일권 위)
+  - MICE → Business 중심 문구로 변경
+  - 반복 문구 완화
+  - 지도/패스 상세에서 택시 관련 문구/아이콘 제거
+  - 언어 전환 실제로 화면 문구까지 반영(i18n)
+  - “로그인해주세요/로그인하세요” 흐름 → 카카오 로그인으로 즉시 이동
 ========================= -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -201,21 +206,6 @@
     .benefit .b-t{font-size:12px;font-weight:950;letter-spacing:-.2px;}
     .benefit .b-d{font-size:11px;color:var(--sub);font-weight:800;line-height:1.2;}
 
-    /* partner carousel */
-    .carousel{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;}
-    .carousel::-webkit-scrollbar{display:none}
-    .partner{
-      min-width:220px;scroll-snap-align:start;
-      background:rgba(255,255,255,.9);
-      border:1px solid rgba(255,255,255,.75);
-      border-radius:22px;padding:16px;
-      box-shadow:0 14px 28px rgba(0,0,0,.06);
-    }
-    .partner-cat{font-size:11px;font-weight:950;color:var(--primary);margin-bottom:6px;}
-    .partner-name{font-size:16px;font-weight:950;letter-spacing:-.3px;margin-bottom:6px;}
-    .partner-benefit{font-size:12px;color:var(--sub);font-weight:900;line-height:1.2;margin-bottom:10px;}
-    .partner-actions{display:flex;gap:10px;flex-wrap:wrap}
-
     /* pass card */
     .tag{
       display:inline-block;background:var(--text);color:var(--accent);
@@ -239,9 +229,7 @@
     #view-map{padding:0;position:relative;height:100%;}
     #map{width:100%;height:100%;z-index:1;}
 
-    /* ============================
-       ✅ 내 주변 버튼 잘림 해결 + 검색바 겹침 방지
-    ============================ */
+    /* ✅ 내 주변 버튼 잘림 해결 + 검색바 겹침 방지 */
     .map-top{
       position:absolute;
       left:12px;
@@ -315,6 +303,22 @@
       flex:0 0 auto;
       margin-left:auto;
     }
+
+      .price-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    font-weight:950;
+    padding:5px 10px;
+    border-radius:999px;
+    margin-right:8px;
+    background:rgba(37,99,235,.12);
+    color:var(--primary);
+    border:1px solid rgba(37,99,235,.18);
+    vertical-align:middle;
+  }
+
 
     .near-btn{
       background:rgba(255,255,255,.92);
@@ -445,7 +449,7 @@
       backdrop-filter: blur(18px);
       padding:12px 28px;border-radius:999px;
       box-shadow:0 16px 40px rgba(0,0,0,.14);
-      display:flex;gap:28px;align-items:center; /* [수정] 아이콘 1개 추가로 gap만 살짝 조정 */
+      display:flex;gap:28px;align-items:center;
     }
     .nav-item{color:#C0C0C0;cursor:pointer;transition:.2s;position:relative;}
     .nav-item.active{color:var(--primary);transform:translateY(-2px);}
@@ -476,6 +480,11 @@
       background:#fff;border-radius:32px 32px 0 0;
       padding:22px 18px calc(22px + var(--safeB));
       animation:up .28s cubic-bezier(.16,1,.3,1);
+
+      /* ✅ 모달 스크롤 */
+      max-height: calc(100dvh - 40px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .modal h2{font-size:22px;font-weight:950;letter-spacing:-.4px;margin-bottom:10px;}
     .modal p{color:var(--sub);font-weight:800;line-height:1.35;}
@@ -528,9 +537,7 @@
     .leaflet-control{pointer-events:auto;}
     .leaflet-top.leaflet-left .leaflet-control-zoom{display:none!important;}
 
-    /* ==========================================================
-       ✅ QR 탭: '발급서(회원증)' UI
-    ========================================================== */
+    /* ✅ QR 탭: '발급서(회원증)' UI */
     .cert-wrap{
       position:relative;
       margin-top:8px;
@@ -641,44 +648,7 @@
       color:var(--text);
     }
 
-        /* ==========================================================
-      [추가] ✅ 모달 크기/스크롤/닫기 개선
-      - 구매하기(passDetail/payment) / 추천(recommend) 모달이 화면에 맞게 스크롤
-      - 닫기 버튼이 화면 밖으로 나가도 스크롤로 접근 가능
-    ========================================================== */
-
-    /* 모든 overlay 모달 공통: 화면 높이 안에서 스크롤 되게 */
-    .modal{
-      max-height: calc(100dvh - 40px);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* (선택) 모달 내부 상단이 너무 붙으면 약간 여유 */
-    .modal .grab{ position: sticky; top: 0; background: transparent; }
-
-    /* (선택) 추천 리스트가 길어질 때 자연스럽게 스크롤 */
-    #recommendModal .modal{
-      max-height: calc(100dvh - 40px);
-      overflow-y: auto;
-    }
-
-    /* (선택) 결제 모달도 동일 */
-    #paymentSheet .modal{
-      max-height: calc(100dvh - 40px);
-      overflow-y: auto;
-    }
-
-    /* (선택) 패스 상세 모달도 동일 */
-    #passDetailModal .modal{
-      max-height: calc(100dvh - 40px);
-      overflow-y: auto;
-    }
-
-
-    /* ==========================================================
-       ✅ 추천 모달 리스트 UI
-    ========================================================== */
+    /* ✅ 추천 모달 리스트 UI */
     .rec-list{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
     .rec-item{
       background:rgba(255,255,255,.92);
@@ -718,50 +688,50 @@
       <div class="card">
         <div class="row" style="align-items:flex-start;">
           <div>
-            <div class="card-title">MICE 체류를 “패스 하나로”</div>
-            <div class="muted" style="line-height:1.35;">
+            <div class="card-title" data-i18n="hero_title">Business 체류를 “패스 하나로”</div>
+            <div class="muted" style="line-height:1.35;" data-i18n="hero_desc">
               교통 · 워크스페이스 · 헬스 · 카페 할인 · 긴급지원까지<br>
-              <b style="color:var(--text);">업무·이동·휴식을 하나로 묶은 체류 패스</b>
+              <b style="color:var(--text);">업무·이동·휴식을 한 번에 연결하는 체류 패스</b>
             </div>
           </div>
-          <div class="pill ghost" onclick="openPassDetail(); event.stopPropagation();">
-            <i data-feather="info" style="width:16px;"></i> 상세
+          <div class="pill ghost" onclick="openPassDetail('week7'); event.stopPropagation();">
+            <i data-feather="info" style="width:16px;"></i> <span data-i18n="btn_detail">상세</span>
           </div>
         </div>
 
         <div class="steps">
           <div class="step">
             <div class="step-num">STEP 1</div>
-            <div class="step-t">로그인</div>
-            <div class="step-d">카카오로 3초 시작</div>
+            <div class="step-t" data-i18n="step1_t">로그인</div>
+            <div class="step-d" data-i18n="step1_d">카카오로 3초 시작</div>
           </div>
           <div class="step">
             <div class="step-num">STEP 2</div>
-            <div class="step-t">구매</div>
-            <div class="step-d">패스 결제 후 활성화</div>
+            <div class="step-t" data-i18n="step2_t">구매</div>
+            <div class="step-d" data-i18n="step2_d">패스 결제 후 활성화</div>
           </div>
           <div class="step">
             <div class="step-num">STEP 3</div>
-            <div class="step-t">이용</div>
-            <div class="step-d">QR 제시 후 혜택 적용</div>
+            <div class="step-t" data-i18n="step3_t">이용</div>
+            <div class="step-d" data-i18n="step3_d">QR 제시 후 혜택 적용</div>
           </div>
         </div>
       </div>
 
-      <div class="card wallet" onclick="openQR()">
+      <div class="card wallet" onclick="handleWalletClick()">
         <div class="wallet-inner">
-          <div class="balance-label">내 패스 상태</div>
-          <div id="balance" class="balance">로그인해주세요</div>
+          <div class="balance-label" data-i18n="wallet_label">내 패스 상태</div>
+          <div id="balance" class="balance">카카오 로그인으로 이동</div>
 
           <div class="wallet-actions" id="walletActions" style="display:none;">
             <div class="pill ghost" onclick="openMyPass(); event.stopPropagation();">
-              <i data-feather="credit-card" style="width:14px;"></i> 내 패스
+              <i data-feather="credit-card" style="width:14px;"></i> <span data-i18n="wallet_my">내 패스</span>
             </div>
             <div class="pill ghost" onclick="switchTab('map'); event.stopPropagation();">
-              <i data-feather="map" style="width:14px;"></i> 제휴처 찾기
+              <i data-feather="map" style="width:14px;"></i> <span data-i18n="wallet_map">제휴처 찾기</span>
             </div>
             <div class="pill ghost" onclick="openSupport(); event.stopPropagation();">
-              <i data-feather="help-circle" style="width:14px;"></i> 고객센터
+              <i data-feather="help-circle" style="width:14px;"></i> <span data-i18n="wallet_help">고객센터</span>
             </div>
           </div>
         </div>
@@ -770,104 +740,122 @@
       <div class="menu-grid">
         <div class="menu-item" onclick="filterMapAndGo('transport')">
           <div class="icon-box"><i data-feather="navigation"></i></div>
-          <span class="menu-label">교통</span>
+          <span class="menu-label" data-i18n="menu_transport">교통</span>
         </div>
         <div class="menu-item" onclick="filterMapAndGo('office')">
           <div class="icon-box"><i data-feather="briefcase"></i></div>
-          <span class="menu-label">워크스페이스</span>
+          <span class="menu-label" data-i18n="menu_office">워크스페이스</span>
         </div>
         <div class="menu-item" onclick="filterMapAndGo('gym')">
           <div class="icon-box"><i data-feather="activity"></i></div>
-          <span class="menu-label">헬스</span>
+          <span class="menu-label" data-i18n="menu_gym">헬스</span>
         </div>
         <div class="menu-item" onclick="filterMapAndGo('food')">
           <div class="icon-box"><i data-feather="coffee"></i></div>
-          <span class="menu-label">카페</span>
+          <span class="menu-label" data-i18n="menu_cafe">카페</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">포함 서비스</div>
-        <div class="muted">체류 중 필요한 핵심 서비스를 한 번에</div>
+        <div class="card-title" data-i18n="included_title">포함 서비스</div>
+        <div class="muted" data-i18n="included_desc">체류 중 필요한 핵심 서비스를 한 번에</div>
 
         <div class="benefits">
           <div class="benefit">
             <div class="b-ic"><i data-feather="coffee" style="width:18px;"></i></div>
-            <div class="b-t">카페</div>
-            <div class="b-d">패스 할인</div>
+            <div class="b-t" data-i18n="b_cafe_t">카페</div>
+            <div class="b-d" data-i18n="b_cafe_d">패스 할인</div>
           </div>
           <div class="benefit">
             <div class="b-ic"><i data-feather="activity" style="width:18px;"></i></div>
-            <div class="b-t">헬스</div>
-            <div class="b-d">제휴 시설</div>
+            <div class="b-t" data-i18n="b_gym_t">헬스</div>
+            <div class="b-d" data-i18n="b_gym_d">제휴 시설</div>
           </div>
           <div class="benefit">
             <div class="b-ic"><i data-feather="briefcase" style="width:18px;"></i></div>
-            <div class="b-t">워크스페이스</div>
-            <div class="b-d">라운지/오피스</div>
+            <div class="b-t" data-i18n="b_office_t">워크스페이스</div>
+            <div class="b-d" data-i18n="b_office_d">라운지/오피스</div>
           </div>
           <div class="benefit">
             <div class="b-ic"><i data-feather="phone-call" style="width:18px;"></i></div>
-            <div class="b-t">긴급지원</div>
-            <div class="b-d">번역/분실/콜택시</div>
+            <div class="b-t" data-i18n="b_support_t">긴급지원</div>
+            <div class="b-d" data-i18n="b_support_d">번역/분실/안내</div>
           </div>
           <div class="benefit">
             <div class="b-ic"><i data-feather="file-text" style="width:18px;"></i></div>
-            <div class="b-t">이용내역</div>
-            <div class="b-d">회사 제출용</div>
+            <div class="b-t" data-i18n="b_receipt_t">이용내역</div>
+            <div class="b-d" data-i18n="b_receipt_d">회사 제출용</div>
           </div>
           <div class="benefit">
             <div class="b-ic"><i data-feather="gift" style="width:18px;"></i></div>
-            <div class="b-t">쿠폰/바우처</div>
-            <div class="b-d">번호/사용여부</div>
+            <div class="b-t" data-i18n="b_voucher_t">쿠폰/바우처</div>
+            <div class="b-d" data-i18n="b_voucher_d">번호/사용여부</div>
           </div>
         </div>
       </div>
 
-
-
-      <!-- ==========================================================
-           [요청 반영] ✅ HOME에 있던 추천 카드 영역은 "주석처리"로 보관
-           - 이제 추천은 하단 네비(⭐) 버튼을 눌러서 모달에서 선택하는 방식
-      ========================================================== -->
-      <!--
-      <div class="card" id="recommendCard">
-        (기존 추천 카드 내용)
-      </div>
-      -->
-
-      <div class="card pass-card" onclick="openPassDetail()">
+      <!-- =========================
+         ✅ 3일권 패스 (7일권 위에 추가)
+         - 혜택/가격: 기존 스펙 유지(7일 99,000 / 정가 129,000)
+         - 3일권은 동일한 "포함 서비스" 기반으로 짧은 체류용
+    ========================== -->
+      <div class="card pass-card" onclick="openPassDetail('day3')">
         <div>
-          <span class="tag">EARLY BIRD</span>
-          <div style="font-size:17px;font-weight:980;letter-spacing:-.3px;margin-bottom:4px;">Living Week (7일)</div>
-          <div class="muted">MICE 참가자 전용 올인원 체류형 패스</div>
+          <span class="tag">SHORT STAY</span>
+          <div style="font-size:17px;font-weight:980;letter-spacing:-.3px;margin-bottom:4px;" data-i18n="p3_title">Living Day (3일)</div>
+          <div class="muted" data-i18n="p3_sub">짧은 출장/미팅 일정에 최적화된 체류 패스</div>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
             <div class="pill ghost" onclick="openSupport(); event.stopPropagation();">
-              <i data-feather="shield" style="width:14px;"></i> 결제안심
+              <i data-feather="shield" style="width:14px;"></i> <span data-i18n="btn_pay_safe">결제안심</span>
             </div>
             <div class="pill ghost" onclick="openLegal('refund'); event.stopPropagation();">
-              <i data-feather="rotate-ccw" style="width:14px;"></i> 환불규정
+              <i data-feather="rotate-ccw" style="width:14px;"></i> <span data-i18n="btn_refund">환불규정</span>
             </div>
           </div>
         </div>
 
         <div class="pass-right">
           <div style="text-align:right;line-height:1.1;">
-            <div class="price-old">129,000원</div>
-            <div class="price-new">99,000원</div>
+            <div class="price-old" id="p3_old">정가 79,000원</div>
+            <div class="price-new" id="p3_new">59,000원</div>
           </div>
-          <button class="buy-btn" onclick="openPassDetail(); event.stopPropagation();">구매하기</button>
+          <button class="buy-btn" onclick="openPassDetail('day3'); event.stopPropagation();" data-i18n="btn_buy">구매하기</button>
+        </div>
+      </div>
+
+      <!-- 7일권 (기존) -->
+      <div class="card pass-card" onclick="openPassDetail('week7')">
+        <div>
+          <span class="tag">EARLY BIRD</span>
+          <div style="font-size:17px;font-weight:980;letter-spacing:-.3px;margin-bottom:4px;" data-i18n="p7_title">Living Week (7일)</div>
+          <div class="muted" data-i18n="p7_sub">비즈니스 체류에 필요한 혜택을 한 번에 묶은 올인원 패스</div>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+            <div class="pill ghost" onclick="openSupport(); event.stopPropagation();">
+              <i data-feather="shield" style="width:14px;"></i> <span data-i18n="btn_pay_safe">결제안심</span>
+            </div>
+            <div class="pill ghost" onclick="openLegal('refund'); event.stopPropagation();">
+              <i data-feather="rotate-ccw" style="width:14px;"></i> <span data-i18n="btn_refund">환불규정</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pass-right">
+          <div style="text-align:right;line-height:1.1;">
+            <div class="price-old" id="p7_old">129,000원</div>
+            <div class="price-new" id="p7_new">99,000원</div>
+          </div>
+          <button class="buy-btn" onclick="openPassDetail('week7'); event.stopPropagation();" data-i18n="btn_buy">구매하기</button>
         </div>
       </div>
 
       <div class="card" style="padding:18px;">
         <div class="row" style="flex-wrap:wrap;">
-          <div class="pill ghost" onclick="openLegal('terms')"><i data-feather="file" style="width:14px;"></i> 이용약관</div>
-          <div class="pill ghost" onclick="openLegal('privacy')"><i data-feather="lock" style="width:14px;"></i> 개인정보</div>
-          <div class="pill ghost" onclick="openLegal('refund')"><i data-feather="refresh-ccw" style="width:14px;"></i> 환불/취소</div>
-          <div class="pill ghost" onclick="openSupport()"><i data-feather="message-circle" style="width:14px;"></i> 문의</div>
+          <div class="pill ghost" onclick="openLegal('terms')"><i data-feather="file" style="width:14px;"></i> <span data-i18n="legal_terms">이용약관</span></div>
+          <div class="pill ghost" onclick="openLegal('privacy')"><i data-feather="lock" style="width:14px;"></i> <span data-i18n="legal_privacy">개인정보</span></div>
+          <div class="pill ghost" onclick="openLegal('refund')"><i data-feather="refresh-ccw" style="width:14px;"></i> <span data-i18n="legal_refund">환불/취소</span></div>
+          <div class="pill ghost" onclick="openSupport()"><i data-feather="message-circle" style="width:14px;"></i> <span data-i18n="legal_contact">문의</span></div>
         </div>
-        <div class="muted" style="margin-top:12px;font-size:12px;">
+        <div class="muted" style="margin-top:12px;font-size:12px;" data-i18n="proto_note">
           * 본 화면은 시연/프로토타입 목적의 UI이며, 실제 제휴/운영 정보는 추후 적용될 수 있습니다.
         </div>
       </div>
@@ -881,18 +869,18 @@
 
       <div class="map-top">
         <div class="map-search-btn" onclick="toggleMapSearch(true)">
-          <i data-feather="search" style="width:16px;"></i> 검색
+          <i data-feather="search" style="width:16px;"></i> <span data-i18n="map_search">검색</span>
         </div>
 
         <div id="mapSearchBar" class="map-search-bar">
-          <input id="mapSearchInput" class="map-search-input" placeholder="제휴처/장소 검색" />
-          <button class="map-search-go" onclick="runMapSearch()">검색</button>
-          <button class="map-search-close" onclick="toggleMapSearch(false)">닫기</button>
+          <input id="mapSearchInput" class="map-search-input" placeholder="제휴처/장소 검색" data-i18n-placeholder="map_placeholder"/>
+          <button class="map-search-go" onclick="runMapSearch()" data-i18n="map_search">검색</button>
+          <button class="map-search-close" onclick="toggleMapSearch(false)" data-i18n="map_close">닫기</button>
         </div>
 
         <div class="map-tools">
           <div class="near-btn" onclick="goNearMe()">
-            <i data-feather="crosshair" style="width:16px;"></i> 내 주변
+            <i data-feather="crosshair" style="width:16px;"></i> <span data-i18n="map_near">내 주변</span>
           </div>
         </div>
       </div>
@@ -908,17 +896,19 @@
         <img id="profileImg" src=""
              style="width:84px;height:84px;border-radius:50%;background:#e0e0e0;box-shadow:0 4px 15px rgba(0,0,0,.1);margin-bottom:10px;">
         <div id="profileName" style="font-size:20px;font-weight:980;letter-spacing:-.4px;">Guest</div>
-        <div id="myPassText" class="muted" style="margin-top:8px;">로그인하면 내 패스/QR을 확인할 수 있어요.</div>
+        <div id="myPassText" class="muted" style="margin-top:8px;" data-i18n="my_guest">
+          로그인하면 내 패스/QR을 확인할 수 있어요.
+        </div>
 
         <button class="btn-main" style="background:#FEE500;color:#191919;margin-top:14px;" onclick="startKakaoLogin()">
-          카카오로 시작하기
+          <span data-i18n="kakao_start">카카오로 시작하기</span>
         </button>
       </div>
 
       <div class="tabs">
-        <div class="tab active" id="tab-pass" onclick="switchMyTab('pass')">내 패스</div>
-        <div class="tab" id="tab-voucher" onclick="switchMyTab('voucher')">바우처</div>
-        <div class="tab" id="tab-history" onclick="switchMyTab('history')">이용내역</div>
+        <div class="tab active" id="tab-pass" onclick="switchMyTab('pass')" data-i18n="my_tab_pass">내 패스</div>
+        <div class="tab" id="tab-voucher" onclick="switchMyTab('voucher')" data-i18n="my_tab_voucher">바우처</div>
+        <div class="tab" id="tab-history" onclick="switchMyTab('history')" data-i18n="my_tab_history">이용내역</div>
       </div>
 
       <div id="my-pass" class="pass-big">
@@ -926,45 +916,45 @@
           <span class="dot inactive"></span>
           <span>INACTIVE</span>
         </div>
-        <div style="font-size:18px;font-weight:980;letter-spacing:-.3px;">Living Week (7일)</div>
-        <div class="muted" style="margin-top:6px;">QR 제시 후 제휴처에서 혜택이 적용돼요.</div>
+        <div style="font-size:18px;font-weight:980;letter-spacing:-.3px;" id="myPlanTitle">Living Week (7일)</div>
+        <div class="muted" style="margin-top:6px;" data-i18n="my_pass_desc">QR 제시 후 제휴처에서 혜택이 적용돼요.</div>
 
         <div class="pass-metrics">
           <div class="metric">
-            <div class="k">남은 시간</div>
+            <div class="k" data-i18n="my_remain_k">남은 시간</div>
             <div class="v" id="remainText">-</div>
           </div>
           <div class="metric">
-            <div class="k">사용 가능 제휴처</div>
+            <div class="k" data-i18n="my_partner_k">사용 가능 제휴처</div>
             <div class="v" id="partnerCount">-</div>
           </div>
         </div>
 
         <div style="display:flex;gap:10px;margin-top:14px;">
           <div class="pill primary" style="flex:1;justify-content:center;" onclick="openQR()">
-            <i data-feather="maximize" style="width:16px;"></i> QR 보기
+            <i data-feather="maximize" style="width:16px;"></i> <span data-i18n="my_qr">QR 보기</span>
           </div>
           <div class="pill ghost" style="flex:1;justify-content:center;" onclick="switchTab('map')">
-            <i data-feather="map" style="width:16px;"></i> 제휴처 찾기
+            <i data-feather="map" style="width:16px;"></i> <span data-i18n="my_find">제휴처 찾기</span>
           </div>
         </div>
       </div>
 
       <div id="my-voucher" style="display:none;">
         <div class="card">
-          <div class="card-title">내 쿠폰/바우처</div>
-          <div class="muted">바우처 번호 · 사용 여부 · 혜택을 확인할 수 있어요.</div>
+          <div class="card-title" data-i18n="voucher_title">내 쿠폰/바우처</div>
+          <div class="muted" data-i18n="voucher_desc">바우처 번호 · 사용 여부 · 혜택을 확인할 수 있어요.</div>
         </div>
         <div class="list-group" id="voucherList"></div>
       </div>
 
       <div id="my-history" style="display:none;">
         <div class="card">
-          <div class="card-title">이용 내역 / 영수증</div>
-          <div class="muted">회사 제출용 정산을 고려한 “서비스급” 구성</div>
+          <div class="card-title" data-i18n="history_title">이용 내역 / 영수증</div>
+          <div class="muted" data-i18n="history_desc">회사 제출용 정산을 고려한 “서비스급” 구성</div>
           <div style="margin-top:12px;">
             <div class="pill ghost" onclick="alert('PDF 다운로드는 프로토타입 단계에서 버튼만 제공');">
-              <i data-feather="download" style="width:14px;"></i> PDF 다운로드
+              <i data-feather="download" style="width:14px;"></i> <span data-i18n="history_pdf">PDF 다운로드</span>
             </div>
           </div>
         </div>
@@ -972,11 +962,11 @@
       </div>
 
       <div class="list-group" style="margin-top:16px;">
-        <div class="list-row" onclick="openSupport()"><span>고객센터/문의</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
-        <div class="list-row" onclick="openLegal('terms')"><span>이용약관</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
-        <div class="list-row" onclick="openLegal('privacy')"><span>개인정보처리방침</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
-        <div class="list-row" onclick="openLegal('refund')"><span>환불/취소 정책</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
-        <div class="list-row" style="color:#FF3B30;" onclick="handleLogout()"><span>로그아웃</span><i data-feather="log-out"></i></div>
+        <div class="list-row" onclick="openSupport()"><span data-i18n="support_title">고객센터/문의</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
+        <div class="list-row" onclick="openLegal('terms')"><span data-i18n="legal_terms">이용약관</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
+        <div class="list-row" onclick="openLegal('privacy')"><span data-i18n="legal_privacy">개인정보처리방침</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
+        <div class="list-row" onclick="openLegal('refund')"><span data-i18n="legal_refund">환불/취소 정책</span><i data-feather="chevron-right" style="color:#c7c7c7;"></i></div>
+        <div class="list-row" style="color:#FF3B30;" onclick="handleLogout()"><span data-i18n="logout">로그아웃</span><i data-feather="log-out"></i></div>
       </div>
     </div>
 
@@ -985,83 +975,78 @@
     ========================== -->
     <div id="view-support" class="view">
       <div class="card">
-        <div class="card-title">고객센터 / 문의</div>
-        <div class="muted">
-          운영 전 시연용 화면입니다. 사업계획서 수준의 “신뢰 요소”를 위해 구성해두었습니다.
+        <div class="card-title" data-i18n="support_title">고객센터 / 문의</div>
+        <div class="muted" data-i18n="support_desc">
+          운영 전 시연용 화면입니다. 실제 서비스 운영 시 문의 채널과 정책을 함께 제공합니다.
         </div>
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
           <div class="pill ghost" onclick="alert('이메일: support@bpass.example (시연용)')">
-            <i data-feather="mail" style="width:14px;"></i> 이메일
+            <i data-feather="mail" style="width:14px;"></i> <span data-i18n="support_email">이메일</span>
           </div>
           <div class="pill ghost" onclick="alert('카카오채널: @bpassliving (시연용)')">
-            <i data-feather="message-circle" style="width:14px;"></i> 카카오채널
+            <i data-feather="message-circle" style="width:14px;"></i> <span data-i18n="support_kakao">카카오채널</span>
           </div>
           <div class="pill ghost" onclick="openLegal('refund')">
-            <i data-feather="rotate-ccw" style="width:14px;"></i> 환불규정
+            <i data-feather="rotate-ccw" style="width:14px;"></i> <span data-i18n="legal_refund">환불규정</span>
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">FAQ</div>
-        <div class="muted">자주 묻는 질문</div>
+        <div class="card-title" data-i18n="faq_title">FAQ</div>
+        <div class="muted" data-i18n="faq_sub">자주 묻는 질문</div>
 
         <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
           <div class="card" style="margin:0;padding:16px;" onclick="toggleFaq(this)">
             <div class="row">
-              <div style="font-weight:950;">패스 구매 후 바로 사용할 수 있나요?</div>
+              <div style="font-weight:950;" data-i18n="faq_q1">패스 구매 후 바로 사용할 수 있나요?</div>
               <i data-feather="chevron-down"></i>
             </div>
-            <div class="muted" style="margin-top:10px;display:none;">
-              결제 완료 후 패스가 ACTIVE로 전환되면 즉시 패스가 활성화됩니다.
+            <div class="muted" style="margin-top:10px;display:none;" data-i18n="faq_a1">
+              결제 완료 후 패스가 ACTIVE로 전환되면 즉시 활성화됩니다.
             </div>
           </div>
 
           <div class="card" style="margin:0;padding:16px;" onclick="toggleFaq(this)">
             <div class="row">
-              <div style="font-weight:950;">제휴처에서 어떤 혜택을 받나요?</div>
+              <div style="font-weight:950;" data-i18n="faq_q2">제휴처에서 어떤 혜택을 받나요?</div>
               <i data-feather="chevron-down"></i>
             </div>
-            <div class="muted" style="margin-top:10px;display:none;">
-              장소 상세 화면에 “혜택 문구(예: 패스 소지자 10% 할인)”로 명확히 표시됩니다.
+            <div class="muted" style="margin-top:10px;display:none;" data-i18n="faq_a2">
+              장소 상세 화면에 “혜택 문구”로 명확히 표시됩니다.
             </div>
           </div>
 
           <div class="card" style="margin:0;padding:16px;" onclick="toggleFaq(this)">
             <div class="row">
-              <div style="font-weight:950;">영수증/정산 자료가 필요해요.</div>
+              <div style="font-weight:950;" data-i18n="faq_q3">영수증/정산 자료가 필요해요.</div>
               <i data-feather="chevron-down"></i>
             </div>
-            <div class="muted" style="margin-top:10px;display:none;">
-              MY &gt; 이용내역에서 사용처/시간/혜택 적용 내역을 확인할 수 있고, PDF 다운로드 버튼을 제공합니다(시연용).
+            <div class="muted" style="margin-top:10px;display:none;" data-i18n="faq_a3">
+              MY > 이용내역에서 사용처/시간/혜택 적용 내역을 확인할 수 있습니다. (시연용)
             </div>
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">결제안심 안내</div>
-        <div class="muted" style="line-height:1.5;">
-          토스 결제 위젯 기반(프로토타입)으로 “결제 신뢰 요소”를 표현했습니다.<br>
-          실제 서비스 운영 시에는 약관/환불/문의 채널을 함께 제공해 신뢰도를 강화합니다.
+        <div class="card-title" data-i18n="pay_safe_title">결제안심 안내</div>
+        <div class="muted" style="line-height:1.5;" data-i18n="pay_safe_desc">
+          결제 위젯 기반(프로토타입)으로 “결제 신뢰 요소”를 표현했습니다.<br>
+          실제 운영 시에는 약관/환불/문의 채널을 함께 제공해 신뢰도를 강화합니다.
         </div>
       </div>
     </div>
 
     <!-- =========================
          NAV
-         [요청 반영] ✅ 하단 네비에 "추천(⭐)" 항목 1개 추가
-         - 이 버튼을 누르면 추천 모달이 열리고, 그 안에서 카테고리 선택/리스트 출력
     ========================== -->
     <div class="nav-container">
       <div class="nav-dock">
         <div class="nav-item active" onclick="switchTab('home')"><i data-feather="home"></i></div>
         <div class="qr-btn" onclick="openQR()"><i data-feather="maximize" style="width:24px;height:24px;"></i></div>
         <div class="nav-item" onclick="switchTab('map')"><i data-feather="map"></i></div>
-
-        <!-- ✅ 추가: 추천(⭐) -->
         <div class="nav-item" onclick="openRecommendModal()"><i data-feather="star"></i></div>
-
         <div class="nav-item" onclick="switchTab('my')"><i data-feather="user"></i></div>
         <div class="nav-item" onclick="switchTab('support')"><i data-feather="help-circle"></i></div>
       </div>
@@ -1073,29 +1058,29 @@
     <div id="onboarding" class="onb">
       <div class="onb-card">
         <div class="onb-top">
-          <div class="pill ghost" onclick="switchOnb(-1)"><i data-feather="chevron-left" style="width:14px;"></i> 이전</div>
-          <div class="skip" onclick="closeOnboarding()">건너뛰기</div>
+          <div class="pill ghost" onclick="switchOnb(-1)"><i data-feather="chevron-left" style="width:14px;"></i> <span data-i18n="prev">이전</span></div>
+          <div class="skip" onclick="closeOnboarding()" data-i18n="skip">건너뛰기</div>
         </div>
 
         <div class="onb-slide active">
           <div class="onb-h">B·PASS Living</div>
-          <div class="onb-desc">
-            MICE 체류 중 필요한 서비스를 <b>패스 하나</b>로 연결해요.<br>
-            교통 · 워크스페이스 · 헬스 · 식음할인 · 긴급지원을 한 번에.
+          <div class="onb-desc" data-i18n="onb1">
+            Business 체류 중 필요한 서비스를 <b>패스 하나</b>로 연결해요.<br>
+            이동 · 워크스페이스 · 헬스 · 식음 할인 · 긴급지원을 한 번에.
           </div>
         </div>
 
         <div class="onb-slide">
-          <div class="onb-h">앱처럼 간단하게</div>
-          <div class="onb-desc">
+          <div class="onb-h" data-i18n="onb2_title">앱처럼 간단하게</div>
+          <div class="onb-desc" data-i18n="onb2">
             ① 카카오 로그인 → ② 패스 구매 → ③ QR로 제휴처 이용.<br>
             지도에서 제휴처를 찾고, 상세 화면에서 혜택을 확인하세요.
           </div>
         </div>
 
         <div class="onb-slide">
-          <div class="onb-h">신뢰 요소까지</div>
-          <div class="onb-desc">
+          <div class="onb-h" data-i18n="onb3_title">신뢰 요소까지</div>
+          <div class="onb-desc" data-i18n="onb3">
             이용약관/개인정보/환불정책/문의 채널을 제공해요.<br>
             “진짜 서비스”처럼 보이게 만드는 핵심입니다.
           </div>
@@ -1108,22 +1093,23 @@
         </div>
 
         <div class="onb-actions">
-          <div class="pill ghost" onclick="switchOnb(1)"><i data-feather="chevron-right" style="width:14px;"></i> 다음</div>
-          <div class="pill primary" onclick="finishOnboarding()"><i data-feather="check" style="width:14px;"></i> 시작하기</div>
+          <div class="pill ghost" onclick="switchOnb(1)"><i data-feather="chevron-right" style="width:14px;"></i> <span data-i18n="next">다음</span></div>
+          <div class="pill primary" onclick="finishOnboarding()"><i data-feather="check" style="width:14px;"></i> <span data-i18n="start">시작하기</span></div>
         </div>
       </div>
     </div>
 
     <!-- =========================
-         LOGIN MODAL
+         LOGIN MODAL (유지: 혹시 대비)
+         - 하지만 "로그인하세요" 흐름은 이제 카카오로 즉시 이동하도록 변경
     ========================== -->
     <div id="loginModal" class="overlay">
       <div class="modal">
         <div class="grab"></div>
-        <h2>로그인</h2>
-        <p>소셜 계정으로 3초 만에 시작하세요. (게스트 모드로도 둘러볼 수 있어요)</p>
-        <button class="btn-main" style="background:#FEE500;color:#191919;" onclick="startKakaoLogin()">카카오 로그인</button>
-        <button class="btn-sub" onclick="closeModal('loginModal')">닫기</button>
+        <h2 data-i18n="login_title">로그인</h2>
+        <p data-i18n="login_desc">소셜 계정으로 3초 만에 시작하세요. (게스트 모드로도 둘러볼 수 있어요)</p>
+        <button class="btn-main" style="background:#FEE500;color:#191919;" onclick="startKakaoLogin()" data-i18n="kakao_login">카카오 로그인</button>
+        <button class="btn-sub" onclick="closeModal('loginModal')" data-i18n="close">닫기</button>
       </div>
     </div>
 
@@ -1133,8 +1119,8 @@
     <div id="langModal" class="overlay">
       <div class="modal">
         <div class="grab"></div>
-        <h2>언어 선택</h2>
-        <p>어떤 언어로 볼까요?</p>
+        <h2 data-i18n="lang_title">언어 선택</h2>
+        <p data-i18n="lang_desc">어떤 언어로 볼까요?</p>
 
         <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
           <div class="pill ghost" onclick="selectLang('kr')">🇰🇷 한국어</div>
@@ -1143,12 +1129,14 @@
           <div class="pill ghost" onclick="selectLang('jp')">🇯🇵 日本語</div>
         </div>
 
-        <button class="btn-sub" onclick="closeModal('langModal')">닫기</button>
+        <button class="btn-sub" onclick="closeModal('langModal')" data-i18n="close">닫기</button>
       </div>
     </div>
 
     <!-- =========================
          PASS DETAIL MODAL
+         - 3일/7일 탭으로 전환
+         - 택시 카드 제거(요청 반영)
     ========================== -->
     <div id="passDetailModal" class="overlay">
       <div class="modal" style="position:relative;">
@@ -1156,72 +1144,74 @@
 
         <div class="row" style="align-items:flex-start;">
           <div>
-            <div class="tag">EARLY BIRD</div>
-            <h2 style="margin:0;">Living Week (7일)</h2>
-            <p style="margin-top:8px;">
-              MICE 참가자의 “체류 불편”을 줄이기 위한 올인원 패스.
+            <div class="tag" id="pdTag">EARLY BIRD</div>
+            <h2 style="margin:0;" id="pdTitle">Living Week (7일)</h2>
+            <p style="margin-top:8px;" id="pdDesc">
+              비즈니스 일정의 “체류 번거로움”을 줄이는 올인원 패스.
             </p>
           </div>
           <div class="pill ghost" onclick="closeModal('passDetailModal')">
-            <i data-feather="x" style="width:14px;"></i> 닫기
+            <i data-feather="x" style="width:14px;"></i> <span data-i18n="close">닫기</span>
           </div>
         </div>
 
-        <div class="card" style="margin-top:14px;">
-          <div class="card-title">포함 서비스</div>
-          <div class="muted" style="line-height:1.55;">
+        <div class="tabs" style="margin-top:14px;">
+          <div class="tab" id="pd-tab-3" onclick="setPassPlan('day3', true)">3일</div>
+          <div class="tab" id="pd-tab-7" onclick="setPassPlan('week7', true)">7일</div>
+        </div>
+
+        <div class="card" style="margin-top:10px;">
+          <div class="card-title" data-i18n="included_title">포함 서비스</div>
+          <div class="muted" style="line-height:1.55;" data-i18n="pd_included_line">
             교통 · 워크스페이스 · 헬스 · 카페/식음 할인 · 긴급지원 · 정산용 이용내역 · 쿠폰/바우처
           </div>
         </div>
 
         <div class="card">
-          <div class="card-title">교통(택시 이용권 · 지급형)</div>
-          <div class="muted" style="line-height:1.55;">
-            택시는 <b style="color:var(--text);">사전 결제된 이용권(쿠폰번호)</b> 형태로 제공돼요.<br>
-            MY &gt; 바우처에서 <b style="color:var(--text);">쿠폰번호/사용여부</b>를 확인할 수 있어요.
+          <div class="card-title" data-i18n="pd_move_title">이동/교통</div>
+          <div class="muted" style="line-height:1.55;" data-i18n="pd_move_desc">
+            현지 이동에 도움이 되는 제휴처/안내를 지도에서 확인할 수 있어요.<br>
+            (예: 교통 편의, 충전/안내, 이동 동선 최적화 – 시연용)
           </div>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-            <div class="pill ghost" onclick="openTaxiBiz(); event.stopPropagation();">
-              <i data-feather="external-link" style="width:14px;"></i> 택시 이용권 안내
-            </div>
+          <div style="margin-top:12px;">
             <div class="pill ghost" onclick="switchTab('map'); filterMapAndGo('transport'); closeModal('passDetailModal'); event.stopPropagation();">
-              <i data-feather="map-pin" style="width:14px;"></i> 교통(택시) 보기
+              <i data-feather="map-pin" style="width:14px;"></i> <span data-i18n="pd_view_transport">교통 제휴처 보기</span>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-title">숙소(추천형)</div>
-          <div class="muted" style="line-height:1.55;">
-            패스 가격에 숙소를 포함하지 않고, <b style="color:var(--text);">벡스코·부산항 인근 추천 숙소</b>를 안내해요.<br>
+          <div class="card-title" data-i18n="pd_stay_title">숙소(추천형)</div>
+          <div class="muted" style="line-height:1.55;" data-i18n="pd_stay_desc">
+            패스 가격에 숙소를 포함하지 않고, <b style="color:var(--text);">주요 거점 인근 추천 숙소</b>를 안내해요.<br>
             (예약/결제는 숙소별 채널에서 진행)
           </div>
           <div style="margin-top:12px;">
             <div class="pill ghost" onclick="openRecommendModal(); event.stopPropagation();">
-              <i data-feather="star" style="width:14px;"></i> 숙소 추천 보기
+              <i data-feather="star" style="width:14px;"></i> <span data-i18n="pd_view_stay">숙소 추천 보기</span>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-title">이용 가능 지역/제휴처</div>
-          <div class="muted">지도에서 카테고리 필터로 제휴처를 확인할 수 있어요.</div>
+          <div class="card-title" data-i18n="pd_area_title">이용 가능 지역/제휴처</div>
+          <div class="muted" data-i18n="pd_area_desc">지도에서 카테고리 필터로 제휴처를 확인할 수 있어요.</div>
           <div style="margin-top:12px;">
             <div class="pill ghost" onclick="switchTab('map'); closeModal('passDetailModal');">
-              <i data-feather="map-pin" style="width:14px;"></i> 제휴처 지도 보기
+              <i data-feather="map-pin" style="width:14px;"></i> <span data-i18n="pd_view_map">제휴처 지도 보기</span>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-title">유의사항/환불 요약</div>
-          <div class="muted" style="line-height:1.55;">
+          <div class="card-title" data-i18n="pd_refund_title">유의사항/환불 요약</div>
+          <div class="muted" style="line-height:1.55;" data-i18n="pd_refund_desc">
             결제 후 사용 전/후 상태에 따라 환불 규정이 달라질 수 있습니다(시연용).<br>
             자세한 내용은 “환불/취소 정책” 페이지를 확인하세요.
           </div>
           <div style="margin-top:12px;">
             <div class="pill ghost" onclick="openLegal('refund')">
-              <i data-feather="rotate-ccw" style="width:14px;"></i> 환불/취소 정책 보기
+              <i data-feather="rotate-ccw" style="width:14px;"></i> <span data-i18n="legal_refund">환불/취소 정책 보기</span>
             </div>
           </div>
         </div>
@@ -1229,10 +1219,10 @@
         <div style="position:sticky;bottom:0;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.96) 35%, rgba(255,255,255,1) 100%);padding-top:10px;">
           <div class="row" style="align-items:flex-end;">
             <div>
-              <div class="price-old">정가 129,000원</div>
-              <div class="price-new">얼리버드 99,000원</div>
+              <div class="price-old" id="pdOld">정가 129,000원</div>
+              <div class="price-new" id="pdNew">얼리버드 99,000원</div>
             </div>
-            <button class="buy-btn" style="width:170px;" onclick="openPayment()">구매/결제</button>
+            <button class="buy-btn" style="width:170px;" onclick="openPayment()" data-i18n="btn_pay">구매/결제</button>
           </div>
         </div>
       </div>
@@ -1246,12 +1236,12 @@
         <div class="grab"></div>
         <h2 id="payName">Living Week (7일)</h2>
         <p id="payPrice"><b style="color:var(--primary);">얼리버드 99,000원</b> (정가 129,000원)</p>
-        <div class="muted" style="margin-top:8px;">아래 결제수단 선택 후 결제하기를 눌러주세요.</div>
+        <div class="muted" style="margin-top:8px;" data-i18n="pay_desc">아래 결제수단 선택 후 결제하기를 눌러주세요.</div>
 
         <div id="payment-method" style="margin-top:14px;"></div>
 
-        <button class="btn-main" id="btnPayNow" onclick="requestPay()">결제하기</button>
-        <button class="btn-sub" onclick="closeModal('paymentSheet')">닫기</button>
+        <button class="btn-main" id="btnPayNow" onclick="requestPay()" data-i18n="pay_now">결제하기</button>
+        <button class="btn-sub" onclick="closeModal('paymentSheet')" data-i18n="close">닫기</button>
       </div>
     </div>
 
@@ -1288,25 +1278,25 @@
 
             <div class="cert-mid">
               <div class="cert-name" id="certName">Guest</div>
-              <div class="cert-sub" id="certSub">
+              <div class="cert-sub" id="certSub" data-i18n="qr_sub">
                 비패스 회원증(시연용) · 제휴처에서 QR로 인증하세요.
               </div>
 
               <div class="cert-grid">
                 <div class="cert-field">
-                  <div class="k">회원 ID</div>
+                  <div class="k" data-i18n="qr_id">회원 ID</div>
                   <div class="v" id="certMemberId">-</div>
                 </div>
                 <div class="cert-field">
-                  <div class="k">패스</div>
+                  <div class="k" data-i18n="qr_plan">패스</div>
                   <div class="v" id="certPlan">Living Week (7일)</div>
                 </div>
                 <div class="cert-field">
-                  <div class="k">발급일</div>
+                  <div class="k" data-i18n="qr_issued">발급일</div>
                   <div class="v" id="certIssuedAt">-</div>
                 </div>
                 <div class="cert-field">
-                  <div class="k">만료</div>
+                  <div class="k" data-i18n="qr_expire">만료</div>
                   <div class="v" id="certExpireAt">-</div>
                 </div>
               </div>
@@ -1314,16 +1304,16 @@
               <div class="cert-bar"></div>
 
               <div class="cert-foot">
-                <div class="mini" id="qrRemain">로그인 후 이용 가능</div>
+                <div class="mini" id="qrRemain" data-i18n="qr_need_login">로그인 후 이용 가능</div>
                 <div class="pill" onclick="switchTab('my'); closeModal('qrModal');">
-                  <i data-feather="user" style="width:14px;"></i> MY로 이동
+                  <i data-feather="user" style="width:14px;"></i> <span data-i18n="go_my">MY로 이동</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <button class="btn-sub" onclick="closeModal('qrModal')">닫기</button>
+        <button class="btn-sub" onclick="closeModal('qrModal')" data-i18n="close">닫기</button>
       </div>
     </div>
 
@@ -1366,17 +1356,15 @@
         <div class="grab"></div>
         <div class="row">
           <h2 id="legalTitle" style="margin:0;">약관</h2>
-          <div class="pill ghost" onclick="closeModal('legalModal')"><i data-feather="x" style="width:14px;"></i> 닫기</div>
+          <div class="pill ghost" onclick="closeModal('legalModal')"><i data-feather="x" style="width:14px;"></i> <span data-i18n="close">닫기</span></div>
         </div>
         <div id="legalBody" class="muted" style="margin-top:12px;line-height:1.6;white-space:pre-line;"></div>
       </div>
     </div>
 
-    <!-- ==========================================================
-         ✅ 추천 모달 (하단 네비 ⭐ 버튼 전용)
-         - 모달 안에서 카테고리(숙소/카페/음식점/공유오피스) 선택
-         - 선택 즉시 추천 리스트 변경
-    ========================================================== -->
+    <!-- =========================
+         추천 모달 (⭐)
+    ========================== -->
     <div id="recommendModal" class="overlay">
       <div class="modal">
         <div class="grab"></div>
@@ -1387,21 +1375,20 @@
             <p id="recModalDesc" style="margin-top:8px;">카테고리별 추천 항목을 선택해 확인하세요. (시연용)</p>
           </div>
           <div class="pill ghost" onclick="closeModal('recommendModal')">
-            <i data-feather="x" style="width:14px;"></i> 닫기
+            <i data-feather="x" style="width:14px;"></i> <span data-i18n="close">닫기</span>
           </div>
         </div>
 
-        <!-- ✅ 모달 내부 카테고리 선택 탭 -->
         <div class="tabs" style="margin-top:14px;">
-          <div class="tab active" id="rm-stay" onclick="setRecommendCat('stay', true)">숙소</div>
-          <div class="tab" id="rm-cafe" onclick="setRecommendCat('food', true)">카페</div>
-          <div class="tab" id="rm-restaurant" onclick="setRecommendCat('restaurant', true)">음식점</div>
-          <div class="tab" id="rm-office" onclick="setRecommendCat('office', true)">공유 오피스</div>
+          <div class="tab active" id="rm-stay" onclick="setRecommendCat('stay', true)" data-i18n="rec_stay">숙소</div>
+          <div class="tab" id="rm-cafe" onclick="setRecommendCat('food', true)" data-i18n="rec_cafe">카페</div>
+          <div class="tab" id="rm-restaurant" onclick="setRecommendCat('restaurant', true)" data-i18n="rec_rest">음식점</div>
+          <div class="tab" id="rm-office" onclick="setRecommendCat('office', true)" data-i18n="rec_office">공유 오피스</div>
         </div>
 
         <div class="rec-list" id="recModalList"></div>
 
-        <button class="btn-sub" onclick="closeModal('recommendModal')">닫기</button>
+        <button class="btn-sub" onclick="closeModal('recommendModal')" data-i18n="close">닫기</button>
       </div>
     </div>
 
@@ -1426,12 +1413,23 @@
       paymentWidget:null,
       pendingOrder:null,
       myTab:"pass",
+      recommendCat: "stay",
 
-      // 추천(모달) 현재 선택
-      recommendCat: "stay"
+      // ✅ 선택된 상품(3일/7일)
+      selectedPlanId: "week7",
+
+      // ✅ 언어
+      lang: localStorage.getItem("bpass_lang") || "kr"
     };
 
-    const TAXI_BIZ_URL = "https://biz.giftishow.com/ggoods/detail?goodsNo=38310&goodsCode=G00001404576";
+    // ✅ 요금/스펙 (7일: 기존 스펙 유지)
+    // - 3일권 가격은 SHORT STAY 스펙으로 표기(필요하면 여기만 바꾸면 전체 반영됨)
+    const PLANS = {
+      day3:  { id:"day3",  tag:"SHORT STAY", title:"Living Day (3일)", sub:"짧은 출장/미팅 일정에 최적화된 체류 패스", old:"79,000원",  now:"59,000원",
+              payLine:`<b style="color:var(--primary);">얼리버드 59,000원</b> (정가 79,000원)` },
+      week7: { id:"week7", tag:"EARLY BIRD", title:"Living Week (7일)", sub:"비즈니스 체류에 필요한 혜택을 한 번에 묶은 올인원 패스", old:"129,000원", now:"99,000원",
+              payLine:`<b style="color:var(--primary);">얼리버드 99,000원</b> (정가 129,000원)` }
+    };
 
     const CATS = [
       { id:"all", label:"전체" },
@@ -1446,53 +1444,53 @@
       { id:"exchange", label:"환전" },
     ];
 
-    // 부산 주요 항목 샘플
+    // ✅ 택시 관련 데이터 제거 + 교통은 '이동 지원/안내' 중심으로 구성
     const partners = [
       { id:"p1", name:"WeWork Partner Space", cat:"office", coords:[35.1631,129.1635], hours:"10:00-18:00",
-        benefit:"데이패스 10% 할인", desc:"제휴 코워킹 스페이스. 좌석/회의실 이용 혜택 제공(시연용)." },
+        benefit:"데이패스 10% 할인", desc:"업무 집중이 필요한 날을 위한 코워킹 제휴(시연용). 좌석/회의실 혜택을 제공합니다." },
       { id:"p2", name:"Coffee Partner", cat:"food", coords:[35.1595,129.0604], hours:"08:00-22:00",
-        benefit:"10% 할인", desc:"패스 소지자 카페 메뉴 10% 할인(시연용)." },
+        benefit:"10% 할인", desc:"미팅/업무 전후로 들르기 좋은 카페 제휴(시연용). 메뉴 10% 혜택을 제공합니다." },
       { id:"p3", name:"Fitness Partner", cat:"gym", coords:[35.1060,129.0320], hours:"06:00-24:00",
-        benefit:"입장 1회 혜택", desc:"제휴 피트니스 예시. 패스 소지자 전용 혜택(시연용)." },
+        benefit:"입장 1회 혜택", desc:"체류 중 리프레시를 위한 피트니스 제휴 예시(시연용)." },
       { id:"p4", name:"Exchange Partner", cat:"exchange", coords:[35.1602,129.0612], hours:"10:00-18:00",
-        benefit:"환율 우대 안내", desc:"환전/결제 편의 안내(시연용)." },
+        benefit:"환율 우대 안내", desc:"결제/환전 편의를 위한 안내 제휴(시연용)." },
       { id:"p5", name:"Pharmacy Partner", cat:"pharmacy", coords:[35.1584,129.0630], hours:"09:00-21:00",
-        benefit:"기본 상담 안내", desc:"긴급 지원 UX(약국/의료/분실) 연결을 위한 제휴처 예시." },
+        benefit:"기본 상담 안내", desc:"긴급 지원 UX(약국/의료/분실 등) 연결을 위한 제휴처 예시(시연용)." },
       { id:"p6", name:"Clinic Partner", cat:"hospital", coords:[35.1611,129.0588], hours:"10:00-17:00",
-        benefit:"긴급 연결 안내", desc:"의료/긴급 지원 동선 UX를 위한 예시 제휴처." },
+        benefit:"긴급 연결 안내", desc:"의료/긴급 지원 동선 UX를 위한 예시 제휴처(시연용)." },
 
-      { id:"taxiVoucher", name:"택시 이용권 (쿠폰 지급형)", cat:"transport", coords:[35.1681,129.1366], hours:"상시",
-        benefit:"쿠폰번호 제공(사전 결제)", desc:"Giftishow biz에서 사전 결제한 택시 이용권을 패스 사용자에게 쿠폰번호로 제공(시연용)." },
+      { id:"t1", name:"Transit Support Point", cat:"transport", coords:[35.1559,129.0586], hours:"09:00-20:00",
+        benefit:"노선/충전 안내(시연)", desc:"현지 이동을 더 빠르게: 노선 안내/충전 등 교통 편의 안내 제휴 예시(시연용)." },
 
       { id:"stay1", name:"BEXCO Nearby Hotel A (추천)", cat:"stay", coords:[35.1688,129.1362], hours:"체크인/아웃: 숙소별 상이",
-        benefit:"추천(할인/제공 X)", desc:"패스에 숙소 비용은 포함되지 않으며, 행사장 인근 숙소를 추천 형태로 안내합니다(시연용)." },
+        benefit:"추천(할인/제공 X)", desc:"패스에 숙소 비용은 포함되지 않으며, 주요 거점 인근 숙소를 추천 형태로 안내합니다(시연용)." },
       { id:"stay2", name:"Busan Port Nearby Hotel B (추천)", cat:"stay", coords:[35.1004,129.0406], hours:"체크인/아웃: 숙소별 상이",
         benefit:"추천(할인/제공 X)", desc:"부산항 인근 숙소 추천(시연용). 예약/결제는 숙소 채널에서 진행됩니다." },
       { id:"stay3", name:"Haeundae Stay C (추천)", cat:"stay", coords:[35.1636,129.1639], hours:"체크인/아웃: 숙소별 상이",
-        benefit:"추천(할인/제공 X)", desc:"해운대 권역 숙소 추천(시연용). 행사/관광 동선에 적합." },
+        benefit:"추천(할인/제공 X)", desc:"해운대 권역 숙소 추천(시연용). 이동/업무 동선에 적합." },
       { id:"stay4", name:"Seomyeon Stay D (추천)", cat:"stay", coords:[35.1577,129.0592], hours:"체크인/아웃: 숙소별 상이",
         benefit:"추천(할인/제공 X)", desc:"서면 권역 숙소 추천(시연용). 교통 접근성 중심." },
 
       { id:"cafe1", name:"Gwangalli Coffee Spot", cat:"food", coords:[35.1531,129.1188], hours:"09:00-23:00",
-        benefit:"패스 10% 할인(시연)", desc:"광안리 인근 카페 추천(시연용). 업무/미팅 스팟." },
+        benefit:"패스 10% 할인(시연)", desc:"광안리 인근 카페 추천(시연용). 가볍게 미팅하기 좋은 스팟." },
       { id:"cafe2", name:"Centum Coffee Lounge", cat:"food", coords:[35.1695,129.1305], hours:"08:30-21:30",
-        benefit:"패스 10% 할인(시연)", desc:"센텀시티 권역 카페(시연용). 전시/행사 전후 동선." },
+        benefit:"패스 10% 할인(시연)", desc:"센텀 권역 카페(시연용). 행사 전후 동선에 편리." },
       { id:"cafe3", name:"Nampo Coffee Bar", cat:"food", coords:[35.0975,129.0347], hours:"10:00-22:00",
-        benefit:"패스 10% 할인(시연)", desc:"남포동 인근 카페(시연용). 관광 동선과 결합." },
+        benefit:"패스 10% 할인(시연)", desc:"남포동 인근 카페(시연용). 이동 중 잠깐 업무 보기 좋음." },
 
       { id:"rest1", name:"Busan Local Dining (Seomyeon)", cat:"restaurant", coords:[35.1579,129.0583], hours:"11:00-22:00",
-        benefit:"패스 메뉴 5% 혜택(시연)", desc:"서면 권역 음식점 추천(시연용). 회식/미팅 식사." },
+        benefit:"패스 메뉴 5% 혜택(시연)", desc:"서면 권역 식사 추천(시연용). 미팅/회식 동선에 적합." },
       { id:"rest2", name:"Haeundae Seafood Table", cat:"restaurant", coords:[35.1639,129.1630], hours:"12:00-22:00",
-        benefit:"패스 음료 제공(시연)", desc:"해운대 권역 해산물/식사(시연용). 관광+식사 동선." },
+        benefit:"패스 음료 제공(시연)", desc:"해운대 권역 식사(시연용). 일정 후 리프레시 코스." },
       { id:"rest3", name:"Nampo Street Food Pick", cat:"restaurant", coords:[35.0978,129.0340], hours:"12:00-21:00",
-        benefit:"패스 소지자 서비스(시연)", desc:"남포/자갈치 권역 간편식/로컬(시연용)." },
+        benefit:"패스 소지자 서비스(시연)", desc:"남포/자갈치 권역 간편식 추천(시연용)." },
       { id:"rest4", name:"Gwangan Night Dining", cat:"restaurant", coords:[35.1536,129.1182], hours:"17:00-01:00",
-        benefit:"패스 소지자 5% 혜택(시연)", desc:"광안리 권역 야간 식사/모임(시연용)." },
+        benefit:"패스 소지자 5% 혜택(시연)", desc:"광안리 야간 식사/모임(시연용)." },
 
       { id:"off2", name:"Busan Co-Office (Centum)", cat:"office", coords:[35.1701,129.1309], hours:"09:00-19:00",
         benefit:"데이패스 10% 혜택(시연)", desc:"센텀 권역 공유오피스(시연용). 회의실/라운지." },
       { id:"off3", name:"Seomyeon Work Hub", cat:"office", coords:[35.1571,129.0599], hours:"09:00-20:00",
-        benefit:"데이패스 10% 혜택(시연)", desc:"서면 권역 공유오피스(시연용). 교통 중심." },
+        benefit:"데이패스 10% 혜택(시연)", desc:"서면 권역 공유오피스(시연용). 이동 중심." },
       { id:"off4", name:"Busan Station Work Lounge", cat:"office", coords:[35.1151,129.0412], hours:"09:00-18:00",
         benefit:"라운지 이용 혜택(시연)", desc:"부산역 권역 라운지(시연용). 이동 직전 업무." },
     ];
@@ -1557,47 +1555,19 @@
       closeOnboarding();
     }
 
-    /* Carousel */
-    function catLabel(id){
-      const c = CATS.find(x=>x.id===id);
-      return c ? c.label : id;
-    }
-
-    function renderCarousel(){
-      const el = document.getElementById("partnerCarousel");
-      el.innerHTML = "";
-
-      const top = [
-        partners.find(p=>p.cat==="office"),
-        partners.find(p=>p.cat==="food"),
-        partners.find(p=>p.cat==="gym"),
-        partners.find(p=>p.id==="taxiVoucher"),
-      ].filter(Boolean);
-
-      top.forEach(p=>{
-        const card = document.createElement("div");
-        card.className = "partner";
-        card.innerHTML = `
-          <div class="partner-cat">${catLabel(p.cat)}</div>
-          <div class="partner-name">${p.name}</div>
-          <div class="partner-benefit">혜택: ${p.benefit}</div>
-          <div class="partner-actions">
-            <div class="pill ghost" onclick="switchTab('map'); focusPartner('${p.id}')">
-              <i data-feather="map-pin" style="width:14px;"></i> 지도에서 보기
-            </div>
-            <div class="pill ghost" onclick="openPartnerSheet('${p.id}')">
-              <i data-feather="info" style="width:14px;"></i> 상세
-            </div>
-          </div>
-        `;
-        el.appendChild(card);
-      });
-      feather.replace();
-    }
-
-    /* Login/Me */
-    function checkLogin(){ openModal("loginModal"); }
+    /* ✅ Login/Me */
+    // [요청 반영] "로그인하세요" → 카카오 로그인으로 즉시 이동
+    function checkLogin(){ startKakaoLogin(); }
     function startKakaoLogin(){ window.location.href="/auth/kakao/start"; }
+
+    function handleWalletClick(){
+      if(!state.loggedIn){
+        startKakaoLogin();
+        return;
+      }
+      // 로그인 상태면 MY로
+      switchTab("my");
+    }
 
     async function loadMe(){
       try{
@@ -1617,7 +1587,7 @@
       renderAuthUI();
       renderMy();
       renderQR();
-      renderRecommendModal();  // ✅ 추천 모달 리스트 준비
+      renderRecommendModal();
     }
 
     function renderAuthUI(){
@@ -1626,65 +1596,94 @@
 
       const bal = document.getElementById("balance");
       const wa = document.getElementById("walletActions");
-
       if(!state.loggedIn){
-        bal.innerText = "로그인해주세요";
+        bal.innerText = (state.lang==="kr") ? "카카오 로그인으로 이동" : "Go to Kakao login";
         wa.style.display = "none";
         return;
       }
       if(state.pass && state.pass.status==="ACTIVE"){
         bal.innerText = `ACTIVE · ${fmtRemain(state.pass.end_at)}`;
       } else {
-        bal.innerText = "패스 없음 · 구매 후 QR 사용";
+        bal.innerText = (state.lang==="kr") ? "패스 없음 · 구매 후 QR 사용" : "No pass · Buy to use QR";
       }
       wa.style.display = "flex";
     }
 
     async function handleLogout(){
-      if(!confirm("로그아웃 하시겠습니까?")) return;
+      if(!confirm(state.lang==="kr" ? "로그아웃 하시겠습니까?" : "Sign out?")) return;
       try{ await api("/api/logout",{method:"POST"}); }catch{}
       await loadMe();
-      alert("로그아웃 되었습니다.");
+      alert(state.lang==="kr" ? "로그아웃 되었습니다." : "Signed out.");
       switchTab("home");
     }
 
-    /* Payment */
-    function openPassDetail(){ openModal("passDetailModal"); }
+    /* ✅ PASS 선택/상세 */
+    function setPassPlan(planId, refresh){
+      state.selectedPlanId = planId;
+      const p = PLANS[planId] || PLANS.week7;
 
+      // 탭 UI
+      document.getElementById("pd-tab-3").classList.toggle("active", planId==="day3");
+      document.getElementById("pd-tab-7").classList.toggle("active", planId==="week7");
+
+      // 헤더/설명
+      document.getElementById("pdTag").innerText = p.tag;
+      document.getElementById("pdTitle").innerText = p.title;
+      document.getElementById("pdDesc").innerText =
+        (planId==="day3")
+          ? (state.lang==="kr" ? "짧은 일정에 딱 맞는, 가볍고 빠른 체류 패스." : "A compact pass for short business trips.")
+          : (state.lang==="kr" ? "비즈니스 일정의 “체류 번거로움”을 줄이는 올인원 패스." : "An all-in-one pass to reduce friction during your stay.");
+
+      document.getElementById("pdOld").innerText = `정가 ${p.old}`;
+      document.getElementById("pdNew").innerText = `얼리버드 ${p.now}`;
+
+      // 결제창 표시도 같이 갱신(열려있는 경우 대비)
+      if(refresh) feather.replace();
+    }
+
+    function openPassDetail(planId){
+      setPassPlan(planId || "week7", true);
+      openModal("passDetailModal");
+    }
+
+    /* Payment */
     async function openPayment(){
-       // ===== [추가] 시연용: 결제 성공처리만 =====
-      window.location.href = "/success.html";
-      return;
       if(!state.loggedIn){ checkLogin(); return; }
       if(!state.tossClientKey){
         alert("토스 결제 키가 설정되지 않았습니다(.env의 TOSS_CLIENT_KEY 확인).");
         return;
       }
+
+      const planId = state.selectedPlanId || "week7";
+      const p = PLANS[planId] || PLANS.week7;
+
       try{
-        const order = await api("/api/orders/create",{method:"POST"});
+        // 서버가 planId를 받을 수 있게 body로 전달(서버가 무시해도 UI는 동작)
+        const order = await api("/api/orders/create",{
+          method:"POST",
+          body: JSON.stringify({ planId })
+        });
         state.pendingOrder = order;
 
-        document.getElementById("payName").innerText = order.orderName || "Living Week (7일)";
-        document.getElementById("payPrice").innerHTML = `<b style="color:var(--primary);">얼리버드 99,000원</b> (정가 129,000원)`;
+        document.getElementById("payName").innerText = p.title;
+        document.getElementById("payPrice").innerHTML = p.payLine;
 
         openModal("paymentSheet");
         const customerKey = "customer_" + state.user.id;
         state.paymentWidget = PaymentWidget(state.tossClientKey, customerKey);
 
         document.getElementById("payment-method").innerHTML = "";
-        state.paymentWidget.renderPaymentMethods("#payment-method",{value:order.amount});
+        // 서버에서 내려준 amount 우선 사용(불일치 방지)
+        const amount = Number(order.amount || 0) || (planId==="week7" ? 99000 : 59000);
+        state.paymentWidget.renderPaymentMethods("#payment-method",{value:amount});
       }catch(e){
-        alert("주문 생성 실패");
+        alert(state.lang==="kr" ? "주문 생성 실패" : "Order create failed");
       }
     }
 
     async function requestPay(){
-
-       // ===== [추가] 시연용: 결제 성공처리만 =====
-      window.location.href = "/success.html";
-      return;
       if(!state.paymentWidget || !state.pendingOrder){
-        alert("결제 준비가 되지 않았습니다. 다시 시도해주세요.");
+        alert(state.lang==="kr" ? "결제 준비가 되지 않았습니다. 다시 시도해주세요." : "Payment is not ready. Try again.");
         return;
       }
       try{
@@ -1695,7 +1694,7 @@
           failUrl: state.pendingOrder.failUrl
         });
       }catch(e){
-        alert("결제가 취소되었거나 실패했습니다.");
+        alert(state.lang==="kr" ? "결제가 취소되었거나 실패했습니다." : "Payment canceled or failed.");
       }
     }
 
@@ -1719,13 +1718,16 @@
 
       const issued = fmtDate(new Date().toISOString());
 
+      // 선택된 플랜 표기(게스트에도 반영)
+      const sel = PLANS[state.selectedPlanId] || PLANS.week7;
+      certPlan.innerText = sel.title;
+
       if(!state.loggedIn){
         img.src = "https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=LOGIN_REQUIRED";
-        remain.innerText = "로그인 후 이용 가능";
+        remain.innerText = (state.lang==="kr" ? "로그인 후 이용 가능" : "Login required");
 
         certName.innerText = "Guest";
         certMemberId.innerText = "-";
-        certPlan.innerText = "Living Week (7일)";
         certIssuedAt.innerText = issued;
         certExpireAt.innerText = "-";
         certChip.classList.remove("active");
@@ -1735,12 +1737,11 @@
 
       certName.innerText = state.user?.name || "User";
       certMemberId.innerText = `BP-${String(state.user?.id || "").padStart(6,"0")}`;
-      certPlan.innerText = "Living Week (7일)";
       certIssuedAt.innerText = issued;
 
       if(!state.pass || state.pass.status!=="ACTIVE"){
         img.src = "https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=NO_PASS";
-        remain.innerText = "패스 구매 후 QR 사용";
+        remain.innerText = (state.lang==="kr" ? "패스 구매 후 QR 사용" : "Buy a pass to use QR");
 
         certExpireAt.innerText = "-";
         certChip.classList.remove("active");
@@ -1750,7 +1751,7 @@
 
       const qrText = `BPASS:${state.user.id}:${state.pass.plan_id}:${state.pass.end_at}`;
       img.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrText)}`;
-      remain.innerText = `남은 시간 ${fmtRemain(state.pass.end_at)}`;
+      remain.innerText = (state.lang==="kr" ? `남은 시간 ${fmtRemain(state.pass.end_at)}` : `Remaining ${fmtRemain(state.pass.end_at)}`);
 
       certExpireAt.innerText = fmtDate(state.pass.end_at);
       certChip.classList.add("active");
@@ -1762,8 +1763,7 @@
       document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
       document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
 
-      // nav-item 순서(중요): home(0), map(1), star(2), my(3), support(4)
-
+      // nav-item 순서: home(0), map(1), star(2), my(3), support(4)
       if(tab==="home"){
         document.getElementById("view-home").classList.add("active");
         document.querySelectorAll(".nav-item")[0].classList.add("active");
@@ -1807,13 +1807,17 @@
       const imgEl = document.getElementById("profileImg");
       const textEl = document.getElementById("myPassText");
 
+      // MY에 표시할 플랜 타이틀도 선택값을 반영(시연용)
+      const sel = PLANS[state.selectedPlanId] || PLANS.week7;
+      document.getElementById("myPlanTitle").innerText = sel.title;
+
       if(!state.loggedIn){
         nameEl.innerText = "Guest";
         imgEl.src = "";
-        textEl.innerText = "로그인하면 내 패스/QR을 확인할 수 있어요.";
+        textEl.innerText = (state.lang==="kr") ? "로그인하면 내 패스/QR을 확인할 수 있어요." : "Login to view your pass/QR.";
         document.getElementById("passStatus").innerHTML = `<span class="dot inactive"></span><span>INACTIVE</span>`;
         document.getElementById("remainText").innerText = "-";
-        document.getElementById("partnerCount").innerText = partners.length + "곳(시연)";
+        document.getElementById("partnerCount").innerText = partners.length + (state.lang==="kr" ? "곳(시연)" : " partners (demo)");
         renderVoucherDemo(false);
         renderHistoryDemo(false);
         return;
@@ -1823,15 +1827,17 @@
       imgEl.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(state.user?.name || "BPASS")}`;
 
       if(state.pass && state.pass.status==="ACTIVE"){
-        textEl.innerText = `패스 ACTIVE · 남은 시간 ${fmtRemain(state.pass.end_at)}`;
+        textEl.innerText = (state.lang==="kr")
+          ? `패스 ACTIVE · 남은 시간 ${fmtRemain(state.pass.end_at)}`
+          : `PASS ACTIVE · Remaining ${fmtRemain(state.pass.end_at)}`;
         document.getElementById("passStatus").innerHTML = `<span class="dot active"></span><span>ACTIVE</span>`;
         document.getElementById("remainText").innerText = fmtRemain(state.pass.end_at);
       } else {
-        textEl.innerText = "패스 없음 · 구매 후 QR 사용";
+        textEl.innerText = (state.lang==="kr") ? "패스 없음 · 구매 후 QR 사용" : "No pass · Buy to use QR";
         document.getElementById("passStatus").innerHTML = `<span class="dot inactive"></span><span>INACTIVE</span>`;
         document.getElementById("remainText").innerText = "-";
       }
-      document.getElementById("partnerCount").innerText = partners.length + "곳(시연)";
+      document.getElementById("partnerCount").innerText = partners.length + (state.lang==="kr" ? "곳(시연)" : " partners (demo)");
 
       renderVoucherDemo(true);
       renderHistoryDemo(true);
@@ -1841,36 +1847,34 @@
       const list = document.getElementById("voucherList");
       list.innerHTML = "";
 
+      // ✅ 택시 바우처 제거
       const items = logged ? [
-        { title:"카페 10% 할인", code:"VCH-COFFEE-1031", used:false, type:"normal" },
-        { title:"택시 이용권(쿠폰 지급형)", code:"TAXI-COUPON-8310", used:false, type:"taxi" }
+        { title:(state.lang==="kr"?"카페 10% 할인":"Cafe 10% off"), code:"VCH-COFFEE-1031", used:false, type:"normal" },
+        { title:(state.lang==="kr"?"워크스페이스 데이패스 혜택":"Workspace day-pass benefit"), code:"VCH-OFFICE-2011", used:false, type:"normal" }
       ] : [
-        { title:"(로그인 후 확인)", code:"-", used:false, type:"normal" }
+        { title:(state.lang==="kr"?"(로그인 후 확인)":"(Login to view)"), code:"-", used:false, type:"normal" }
       ];
 
       items.forEach(x=>{
         const row = document.createElement("div");
         row.className="list-row";
-        row.innerHTML = `
+                row.innerHTML = `
           <div style="display:flex;flex-direction:column;gap:4px;">
-            <div>${x.title}</div>
-            <div style="font-size:12px;color:var(--sub);font-weight:900;">${x.code}</div>
+            <div style="font-weight:980;letter-spacing:-.2px;">${x.title}</div>
+            <div class="muted" style="font-size:12px;">${state.lang==="kr" ? "코드" : "Code"} · <b style="color:var(--text)">${x.code}</b></div>
           </div>
-          <div style="font-size:12px;font-weight:950;color:${x.used ? "#9CA3AF" : "#10B981"};">
-            ${x.used ? "사용완료" : "사용가능"}
+          <div style="font-size:12px;font-weight:980;color:${x.used ? '#6B7280' : '#10B981'};">
+            ${x.used ? (state.lang==="kr" ? "사용완료" : "Used") : (state.lang==="kr" ? "사용가능" : "Available")}
           </div>
         `;
         row.onclick = ()=>{
-          if(!logged){ checkLogin(); return; }
-          if(x.type==="taxi"){
-            alert("택시 이용권은 쿠폰번호를 택시 앱/제휴 채널에 입력해 사용합니다(시연용).");
-          }else{
-            alert("바우처 상세(시연용)");
-          }
+          alert(state.lang==="kr"
+            ? `바우처: ${x.title}\n코드: ${x.code}\n상태: ${x.used ? "사용완료" : "사용가능"}\n\n(시연용)`
+            : `Voucher: ${x.title}\nCode: ${x.code}\nStatus: ${x.used ? "Used" : "Available"}\n\n(Demo)`
+          );
         };
         list.appendChild(row);
       });
-      feather.replace();
     }
 
     function renderHistoryDemo(logged){
@@ -1878,458 +1882,642 @@
       list.innerHTML = "";
 
       const items = logged ? [
-        { title:"Coffee Partner", time:"2026-01-08 10:20", detail:"패스 10% 할인 적용(시연)" },
-        { title:"WeWork Partner Space", time:"2026-01-07 14:10", detail:"데이패스 10% 할인(시연)" },
+        { at:"2026-01-12 09:24", place:(state.lang==="kr"?"Centum Coffee Lounge":"Centum Coffee Lounge"), benefit:(state.lang==="kr"?"10% 할인 적용":"10% discount applied"), amount:"-5,000원(시연)" },
+        { at:"2026-01-12 14:10", place:(state.lang==="kr"?"Busan Co-Office (Centum)":"Busan Co-Office (Centum)"), benefit:(state.lang==="kr"?"데이패스 혜택":"Day-pass benefit"), amount:"-10,000원(시연)" }
       ] : [
-        { title:"(로그인 후 확인)", time:"-", detail:"-" }
+        { at:"-", place:(state.lang==="kr"?"(로그인 후 확인)":"(Login to view)"), benefit:"-", amount:"-" }
       ];
 
       items.forEach(x=>{
         const row = document.createElement("div");
         row.className="list-row";
         row.innerHTML = `
-          <div style="display:flex;flex-direction:column;gap:4px;">
-            <div>${x.title}</div>
-            <div style="font-size:12px;color:var(--sub);font-weight:900;">${x.time} · ${x.detail}</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-weight:980;letter-spacing:-.2px;">${x.place}</div>
+            <div class="muted" style="font-size:12px;line-height:1.25;">
+              ${x.at} · ${x.benefit}
+            </div>
           </div>
-          <i data-feather="chevron-right" style="color:#c7c7c7;"></i>
+          <div style="font-size:12px;font-weight:980;color:var(--sub);">${x.amount}</div>
         `;
-        row.onclick = ()=>{ if(!logged) checkLogin(); else alert("이용내역 상세(시연용)"); };
+        row.onclick = ()=>alert(state.lang==="kr"
+          ? `이용처: ${x.place}\n시간: ${x.at}\n혜택: ${x.benefit}\n금액: ${x.amount}\n\n(시연용)`
+          : `Place: ${x.place}\nTime: ${x.at}\nBenefit: ${x.benefit}\nAmount: ${x.amount}\n\n(Demo)`
+        );
         list.appendChild(row);
       });
+    }
+
+    /* FAQ toggle */
+    function toggleFaq(card){
+      const ans = card.querySelector(".muted");
+      const icon = card.querySelector("svg, i");
+      const open = ans.style.display === "block";
+      ans.style.display = open ? "none" : "block";
       feather.replace();
     }
 
-    /* =========================
-       PART 2에서 이어짐
-    ========================= */
+    /* ===== MAP ===== */
+    function initMap(){
+      if(map) { setTimeout(()=>map.invalidateSize(), 0); return; }
+
+      map = L.map("map", { zoomControl:false }).setView([35.1595,129.0604], 12);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+        attribution:"&copy; OpenStreetMap"
+      }).addTo(map);
+
+      renderMapFilters();
+      renderMarkers();
+      setTimeout(()=>map.invalidateSize(), 50);
+    }
+
+    function getCatLabel(id){
+      const found = CATS.find(x=>x.id===id);
+      if(!found) return id;
+      // i18n 적용: label은 i18n에서 따로 관리할 수도 있지만, 지금은 KR label 그대로 + 영문은 간단 변환
+      if(state.lang==="kr") return found.label;
+      const enMap = {
+        "전체":"All",
+        "워크스페이스":"Workspace",
+        "카페":"Cafe",
+        "음식점":"Restaurant",
+        "헬스":"Gym",
+        "교통":"Transport",
+        "숙소(추천)":"Stay",
+        "약국":"Pharmacy",
+        "병원":"Hospital",
+        "환전":"Exchange"
+      };
+      return enMap[found.label] || found.label;
+    }
+
+    function renderMapFilters(){
+      const wrap = document.getElementById("mapFilters");
+      wrap.innerHTML = "";
+      CATS.forEach(c=>{
+        const btn = document.createElement("div");
+        btn.className = "chip" + (currentFilter===c.id ? " active" : "");
+        btn.innerText = getCatLabel(c.id);
+        btn.onclick = ()=> {
+          currentFilter = c.id;
+          wrap.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+          btn.classList.add("active");
+          renderMarkers();
+        };
+        wrap.appendChild(btn);
+      });
+    }
+
+    function clearMarkers(){
+      markers.forEach(m=>map.removeLayer(m));
+      markers = [];
+    }
+
+    function renderMarkers(){
+      if(!map) return;
+      clearMarkers();
+
+      const visible = partners.filter(p=> currentFilter==="all" ? true : p.cat===currentFilter);
+
+      visible.forEach(p=>{
+        const m = L.marker(p.coords).addTo(map);
+        m.on("click", ()=> openPlaceSheet(p));
+        markers.push(m);
+      });
+    }
+
+    function filterMapAndGo(cat){
+      currentFilter = cat || "all";
+      switchTab("map");
+      setTimeout(()=>{
+        renderMapFilters();
+        renderMarkers();
+      }, 0);
+    }
+
+    /* Map search UI */
+    function toggleMapSearch(open){
+      const bar = document.getElementById("mapSearchBar");
+      const viewMap = document.getElementById("view-map");
+      if(open){
+        bar.classList.add("open");
+        viewMap.classList.add("map-search-open");
+        setTimeout(()=>document.getElementById("mapSearchInput").focus(), 0);
+      }else{
+        bar.classList.remove("open");
+        viewMap.classList.remove("map-search-open");
+        document.getElementById("mapSearchInput").value = "";
+      }
+    }
+
+    function runMapSearch(){
+      const q = (document.getElementById("mapSearchInput").value||"").trim().toLowerCase();
+      if(!q){
+        alert(state.lang==="kr" ? "검색어를 입력하세요." : "Enter a keyword.");
+        return;
+      }
+      const hit = partners.find(p=> p.name.toLowerCase().includes(q));
+      if(!hit){
+        alert(state.lang==="kr" ? "검색 결과가 없습니다." : "No results.");
+        return;
+      }
+      currentFilter = "all";
+      renderMapFilters();
+      renderMarkers();
+      map.setView(hit.coords, 15);
+      openPlaceSheet(hit);
+    }
+
+    /* Near me */
+    function goNearMe(){
+      if(!navigator.geolocation){
+        alert(state.lang==="kr" ? "현재 브라우저에서 위치를 지원하지 않아요." : "Geolocation not supported.");
+        return;
+      }
+      navigator.geolocation.getCurrentPosition((pos)=>{
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+
+        if(!map) initMap();
+
+        if(myMarker) map.removeLayer(myMarker);
+        myMarker = L.circleMarker([lat,lng],{
+          radius:8,
+          weight:2,
+          opacity:1,
+          fillOpacity:.35
+        }).addTo(map);
+
+        map.setView([lat,lng], 15);
+
+      }, ()=>{
+        alert(state.lang==="kr" ? "위치 권한을 허용해주세요." : "Please allow location access.");
+      }, { enableHighAccuracy:true, timeout:8000 });
+    }
+
+    /* ===== Place bottom sheet ===== */
+    function openPlaceSheet(p){
+      lastOpenedPartner = p;
+      currentPartnerIdForDirections = p.id;
+
+      document.getElementById("psName").innerText = p.name;
+      document.getElementById("psMeta").innerText =
+        `${getCatLabel(p.cat)} · ${p.hours || "-"} · ${state.lang==="kr" ? "거리 계산(시연)" : "Distance (demo)"}`;
+
+      const b = document.getElementById("psBenefit");
+      b.innerHTML = `<i data-feather="percent" style="width:14px;"></i> ${p.benefit || (state.lang==="kr"?"혜택":"Benefit")}`;
+
+      document.getElementById("psDesc").innerText = p.desc || "";
+
+      // 시트 버튼 문구 i18n
+      const sheetActions = document.getElementById("sheetActions");
+      sheetActions.innerHTML = `
+        <div class="pill primary" onclick="openQR()"><i data-feather="maximize" style="width:16px;"></i> ${state.lang==="kr"?"QR 제시":"Show QR"}</div>
+        <div class="pill ghost" onclick="openDirections()"><i data-feather="navigation" style="width:16px;"></i> ${state.lang==="kr"?"길찾기":"Directions"}</div>
+        <div class="pill ghost" onclick="alert('${state.lang==="kr"?"혜택/이용조건은 시연용 문구입니다.":"Benefit/conditions are demo text."}')"><i data-feather="info" style="width:16px;"></i> ${state.lang==="kr"?"이용조건":"Conditions"}</div>
+      `;
+
+      document.getElementById("placeSheet").style.display="flex";
+      feather.replace();
+    }
+
+    function hidePlaceSheet(){
+      document.getElementById("placeSheet").style.display="none";
+      currentPartnerIdForDirections = null;
+    }
+
+    function closePlaceSheet(e){
+      if(e.target.id === "placeSheet") hidePlaceSheet();
+    }
+
+    function openDirections(){
+      if(!currentPartnerIdForDirections){
+        alert(state.lang==="kr" ? "장소를 먼저 선택하세요." : "Select a place first.");
+        return;
+      }
+      const p = partners.find(x=>x.id===currentPartnerIdForDirections);
+      if(!p){ alert("Not found"); return; }
+
+      // 구글맵 길찾기(웹)
+      const [lat,lng] = p.coords;
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+      window.open(url, "_blank");
+    }
+
+    /* ===== Legal ===== */
+    function openLegal(type){
+      const t = {
+        terms:  state.lang==="kr" ? "이용약관" : "Terms of Service",
+        privacy:state.lang==="kr" ? "개인정보처리방침" : "Privacy Policy",
+        refund: state.lang==="kr" ? "환불/취소 정책" : "Refund/Cancellation Policy"
+      }[type] || (state.lang==="kr" ? "약관" : "Legal");
+
+      document.getElementById("legalTitle").innerText = t;
+
+      const bodyKR = {
+        terms:
+`[이용약관(시연용)]
+- 본 화면은 프로토타입 시연 목적입니다.
+- 패스 구매/사용, 제휴처 혜택은 실제 운영 시 계약/정책에 따라 변경될 수 있습니다.
+- 서비스는 카카오 로그인 기반으로 이용자 식별을 수행합니다.`,
+        privacy:
+`[개인정보처리방침(시연용)]
+- 수집 항목: 카카오 프로필 정보(이름/식별자), 결제 관련 식별정보(주문ID)
+- 이용 목적: 로그인/구매/패스 활성화, 이용내역 제공
+- 보관: 시연 환경에서는 최소 보관을 전제로 합니다.`,
+        refund:
+`[환불/취소 정책(시연용)]
+- 결제 후 ‘미사용’ 상태에서는 취소/환불이 가능할 수 있습니다.
+- ‘사용 시작(ACTIVE)’ 이후에는 잔여 기간/사용 내역에 따라 제한될 수 있습니다.
+- 상세 규정은 실제 운영 정책에서 고지됩니다.`
+      };
+
+      const bodyEN = {
+        terms:
+`[Terms (Demo)]
+- This is a prototype UI for demo purposes.
+- Pass benefits/partners may change based on real operations.
+- Login uses Kakao authentication.`,
+        privacy:
+`[Privacy (Demo)]
+- Collected: Kakao profile (name/id), order identifier
+- Purpose: login, purchase, activation, usage history
+- Retention: minimal in demo environment.`,
+        refund:
+`[Refund/Cancellation (Demo)]
+- Refund may be available before usage.
+- After activation, refund may be limited depending on usage/remaining time.
+- Final policy will be announced in real operations.`
+      };
+
+      const body = (state.lang==="kr" ? bodyKR : bodyEN)[type] || "";
+      document.getElementById("legalBody").innerText = body;
+
+      openModal("legalModal");
+    }
+
+    /* ===== Recommend modal (⭐) ===== */
+    function openRecommendModal(){
+      renderRecommendModal();
+      openModal("recommendModal");
+    }
+
+    function setRecommendCat(cat, rerender){
+      state.recommendCat = cat;
+      document.getElementById("rm-stay").classList.toggle("active", cat==="stay");
+      document.getElementById("rm-cafe").classList.toggle("active", cat==="food");
+      document.getElementById("rm-restaurant").classList.toggle("active", cat==="restaurant");
+      document.getElementById("rm-office").classList.toggle("active", cat==="office");
+
+      if(rerender) renderRecommendModal();
+      feather.replace();
+    }
+
+    function renderRecommendModal(){
+      const titleEl = document.getElementById("recModalTitle");
+      const descEl  = document.getElementById("recModalDesc");
+      const listEl  = document.getElementById("recModalList");
+
+      if(!titleEl || !listEl) return;
+
+      const cat = state.recommendCat || "stay";
+
+      const titleMap = {
+        stay: state.lang==="kr" ? "숙소 추천" : "Stay Recommendations",
+        food: state.lang==="kr" ? "카페 추천" : "Cafe Recommendations",
+        restaurant: state.lang==="kr" ? "음식점 추천" : "Restaurant Recommendations",
+        office: state.lang==="kr" ? "공유 오피스 추천" : "Workspace Recommendations"
+      };
+
+      titleEl.innerText = titleMap[cat] || (state.lang==="kr" ? "추천" : "Recommendations");
+      descEl.innerText = state.lang==="kr"
+        ? "카테고리별 추천 항목을 선택해 확인하세요. (시연용)"
+        : "Pick a category to view recommended items. (Demo)";
+
+      const items = partners.filter(p=>p.cat===cat).slice(0,6);
+
+      listEl.innerHTML = "";
+      items.forEach(p=>{
+        const div = document.createElement("div");
+        div.className = "rec-item";
+        div.innerHTML = `
+          <div class="rec-title">${p.name}</div>
+          <div class="rec-meta">${getCatLabel(p.cat)} · ${p.hours || "-"}<br>${p.benefit || ""}</div>
+          <div class="rec-actions">
+            <div class="pill ghost" onclick="switchTab('map'); setTimeout(()=>{ map && map.setView([${p.coords[0]},${p.coords[1]}],15); openPlaceSheet(partners.find(x=>x.id==='${p.id}')); }, 250); closeModal('recommendModal');">
+              <i data-feather="map-pin" style="width:14px;"></i> ${state.lang==="kr"?"지도에서 보기":"View on map"}
+            </div>
+            <div class="pill ghost" onclick="alert('${state.lang==="kr"?"추천은 시연용 정보입니다.":"Recommendations are demo info."}')">
+              <i data-feather="info" style="width:14px;"></i> ${state.lang==="kr"?"안내":"Info"}
+            </div>
+          </div>
+        `;
+        listEl.appendChild(div);
+      });
+
+      feather.replace();
+    }
+
+    // =========================
+// i18n (KR/EN/CN/JP) + fallback(kr)
+// =========================
+const I18N = {
+  kr: {
+    hero_title: "Business 체류를 “패스 하나로”",
+    hero_desc: "교통 · 워크스페이스 · 헬스 · 카페 할인 · 긴급지원까지<br><b style='color:var(--text);'>업무·이동·휴식을 한 번에 연결하는 체류 패스</b>",
+    btn_detail: "상세",
+    step1_t: "로그인",
+    step1_d: "카카오로 3초 시작",
+    step2_t: "구매",
+    step2_d: "패스 결제 후 활성화",
+    step3_t: "이용",
+    step3_d: "QR 제시 후 혜택 적용",
+    wallet_label: "내 패스 상태",
+    wallet_my: "내 패스",
+    wallet_map: "제휴처 찾기",
+    wallet_help: "고객센터",
+    menu_transport: "교통",
+    menu_office: "워크스페이스",
+    menu_gym: "헬스",
+    menu_cafe: "카페",
+    included_title: "포함 서비스",
+    included_desc: "체류 중 필요한 핵심 서비스를 한 번에",
+    btn_pay_safe: "결제안심",
+    btn_refund: "환불규정",
+    btn_buy: "구매하기",
+    btn_pay: "구매/결제",
+    map_search: "검색",
+    map_close: "닫기",
+    map_near: "내 주변",
+    map_placeholder: "제휴처/장소 검색",
+    my_guest: "로그인하면 내 패스/QR을 확인할 수 있어요.",
+    kakao_start: "카카오로 시작하기",
+    my_tab_pass: "내 패스",
+    my_tab_voucher: "바우처",
+    my_tab_history: "이용내역",
+    my_pass_desc: "QR 제시 후 제휴처에서 혜택이 적용돼요.",
+    my_remain_k: "남은 시간",
+    my_partner_k: "사용 가능 제휴처",
+    my_qr: "QR 보기",
+    my_find: "제휴처 찾기",
+    support_title: "고객센터/문의",
+    support_desc: "운영 전 시연용 화면입니다. 실제 서비스 운영 시 문의 채널과 정책을 함께 제공합니다.",
+    faq_title: "FAQ",
+    faq_sub: "자주 묻는 질문",
+    pay_desc: "아래 결제수단 선택 후 결제하기를 눌러주세요.",
+    pay_now: "결제하기",
+    close: "닫기",
+    lang_title: "언어 선택",
+    lang_desc: "어떤 언어로 볼까요?",
+    earlybird: "얼리버드"
+  },
+
+  en: {
+    hero_title: "Business stay — one pass",
+    hero_desc: "Transit · Workspace · Gym · Cafe discounts · Emergency support<br><b style='color:var(--text);'>One pass connecting work, movement, and rest</b>",
+    btn_detail: "Details",
+    step1_t: "Login",
+    step1_d: "Start with Kakao in 3 sec",
+    step2_t: "Purchase",
+    step2_d: "Activate after payment",
+    step3_t: "Use",
+    step3_d: "Show QR for benefits",
+    wallet_label: "My pass status",
+    wallet_my: "My pass",
+    wallet_map: "Find partners",
+    wallet_help: "Support",
+    menu_transport: "Transit",
+    menu_office: "Workspace",
+    menu_gym: "Gym",
+    menu_cafe: "Cafe",
+    included_title: "Included",
+    included_desc: "Essential services in one pass",
+    btn_pay_safe: "Payment safety",
+    btn_refund: "Refund policy",
+    btn_buy: "Buy",
+    btn_pay: "Pay",
+    map_search: "Search",
+    map_close: "Close",
+    map_near: "Near me",
+    map_placeholder: "Search partners/places",
+    my_guest: "Login to view your pass/QR.",
+    kakao_start: "Start with Kakao",
+    my_tab_pass: "Pass",
+    my_tab_voucher: "Vouchers",
+    my_tab_history: "History",
+    my_pass_desc: "Show QR at partner locations to apply benefits.",
+    my_remain_k: "Remaining",
+    my_partner_k: "Partners",
+    my_qr: "Show QR",
+    my_find: "Find partners",
+    support_title: "Support / Contact",
+    support_desc: "Demo screen before launch. Real channels/policies will be provided.",
+    faq_title: "FAQ",
+    faq_sub: "Frequently asked",
+    pay_desc: "Select a method and press Pay.",
+    pay_now: "Pay now",
+    close: "Close",
+    lang_title: "Language",
+    lang_desc: "Choose a language",
+    earlybird: "EARLY BIRD"
+  },
+
+  cn: {
+    hero_title: "商务停留，一张通行证搞定",
+    hero_desc: "交通 · 办公空间 · 健身 · 咖啡折扣 · 紧急支援<br><b style='color:var(--text);'>工作、出行、休息一体化</b>",
+    btn_detail: "详情",
+    step1_t: "登录",
+    step1_d: "Kakao 3秒开始",
+    step2_t: "购买",
+    step2_d: "支付后激活",
+    step3_t: "使用",
+    step3_d: "出示二维码享受权益",
+    wallet_label: "通行证状态",
+    wallet_my: "我的通行证",
+    wallet_map: "查找合作点",
+    wallet_help: "客服",
+    menu_transport: "交通",
+    menu_office: "办公空间",
+    menu_gym: "健身",
+    menu_cafe: "咖啡",
+    included_title: "包含服务",
+    included_desc: "停留所需服务一站式",
+    btn_pay_safe: "支付保障",
+    btn_refund: "退款规则",
+    btn_buy: "购买",
+    btn_pay: "购买/支付",
+    map_search: "搜索",
+    map_close: "关闭",
+    map_near: "附近",
+    map_placeholder: "搜索合作点/地点",
+    my_guest: "登录后可查看通行证/二维码。",
+    kakao_start: "使用 Kakao 开始",
+    my_tab_pass: "通行证",
+    my_tab_voucher: "券/凭证",
+    my_tab_history: "使用记录",
+    my_pass_desc: "在合作点出示二维码即可享受权益。",
+    my_remain_k: "剩余时间",
+    my_partner_k: "可用合作点",
+    my_qr: "查看二维码",
+    my_find: "查找合作点",
+    support_title: "客服/咨询",
+    support_desc: "演示页面，正式运营后将提供真实渠道与政策。",
+    faq_title: "常见问题",
+    faq_sub: "FAQ",
+    pay_desc: "选择支付方式后点击支付。",
+    pay_now: "立即支付",
+    close: "关闭",
+    lang_title: "选择语言",
+    lang_desc: "请选择显示语言",
+    earlybird: "早鸟"
+  },
+
+  jp: {
+    hero_title: "ビジネス滞在を“パス1枚で”",
+    hero_desc: "交通 · ワークスペース · ジム · カフェ割引 · 緊急サポート<br><b style='color:var(--text);'>仕事・移動・休息を一括でつなぐ滞在パス</b>",
+    btn_detail: "詳細",
+    step1_t: "ログイン",
+    step1_d: "Kakaoで3秒スタート",
+    step2_t: "購入",
+    step2_d: "決済後に有効化",
+    step3_t: "利用",
+    step3_d: "QR提示で特典適用",
+    wallet_label: "パス状態",
+    wallet_my: "マイパス",
+    wallet_map: "提携先検索",
+    wallet_help: "サポート",
+    menu_transport: "交通",
+    menu_office: "ワークスペース",
+    menu_gym: "ジム",
+    menu_cafe: "カフェ",
+    included_title: "含まれるサービス",
+    included_desc: "滞在に必要な要素をひとつに",
+    btn_pay_safe: "決済安心",
+    btn_refund: "返金規定",
+    btn_buy: "購入",
+    btn_pay: "購入/決済",
+    map_search: "検索",
+    map_close: "閉じる",
+    map_near: "近く",
+    map_placeholder: "提携先/場所を検索",
+    my_guest: "ログインするとパス/QRを確認できます。",
+    kakao_start: "Kakaoで始める",
+    my_tab_pass: "パス",
+    my_tab_voucher: "バウチャー",
+    my_tab_history: "利用履歴",
+    my_pass_desc: "提携先でQRを提示すると特典が適用されます。",
+    my_remain_k: "残り時間",
+    my_partner_k: "利用可能提携先",
+    my_qr: "QRを見る",
+    my_find: "提携先を探す",
+    support_title: "サポート/お問い合わせ",
+    support_desc: "デモ画面です。正式運用時に実際の窓口/規約を提供します。",
+    faq_title: "FAQ",
+    faq_sub: "よくある質問",
+    pay_desc: "支払い方法を選択して決済してください。",
+    pay_now: "決済する",
+    close: "閉じる",
+    lang_title: "言語選択",
+    lang_desc: "表示言語を選んでください",
+    earlybird: "早割"
+  }
+};
+
+function t(key){
+  const langPack = I18N[state.lang] || I18N.kr;
+  return (langPack[key] ?? I18N.kr[key] ?? key);
+}
+
+function applyI18n(){
+  // text
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    el.innerHTML = t(key);
+  });
+
+  // placeholder
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.setAttribute("placeholder", t(key));
+  });
+
+  // top lang label
+  const langText = document.getElementById("langText");
+  if(langText){
+    const map = { kr:"KR", en:"EN", cn:"CN", jp:"JP" };
+    langText.textContent = map[state.lang] || "KR";
+  }
+
+  // 가격/뱃지 등 동적 텍스트도 다시 반영
+  setPassPlan(state.selectedPlanId || "week7", true);
+  renderAuthUI();
+  renderMy();
+  renderQR();
+  renderRecommendModal?.();
+}
+
+// 언어 선택에서 적용
+function selectLang(lang){
+  state.lang = lang;
+  localStorage.setItem("bpass_lang", lang);
+  closeModal("langModal");
+  applyI18n();
+}
+
+    function openLang(){ openModal("langModal"); }
+
+    function selectLang(code){
+      state.lang = code;
+      localStorage.setItem("bpass_lang", code);
+      document.getElementById("langText").innerText = (code||"kr").toUpperCase();
+      applyI18n();
+      closeModal("langModal");
+      renderAuthUI();
+      renderMy();
+      renderQR();
+      renderRecommendModal();
+      renderMapFilters();
+      feather.replace();
+    }
+
+    function applyI18n(){
+      const dict = I18N[state.lang] || I18N.kr;
+
+      // data-i18n text
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const k = el.getAttribute("data-i18n");
+        if(dict[k] != null) el.innerHTML = dict[k];
+      });
+
+      // placeholder
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+        const k = el.getAttribute("data-i18n-placeholder");
+        if(dict[k] != null) el.setAttribute("placeholder", dict[k]);
+      });
+
+      // langText
+      document.getElementById("langText").innerText = (state.lang||"kr").toUpperCase();
+    }
+
+    /* ===== Boot ===== */
+    window.addEventListener("load", async ()=>{
+      applyI18n();
+
+      // onboarding 1회
+      if(!localStorage.getItem("bpass_onboarding_done")){
+        showOnboarding();
+      }
+
+      // 로그인/상태 로드
+      await loadMe();
+
+      // 기본 추천 카테고리 탭 초기화
+      setRecommendCat(state.recommendCat || "stay", false);
+      setPassPlan(state.selectedPlanId || "week7", true);
+
+      feather.replace();
+    });
   </script>
 </body>
 </html>
-<!-- =========================
-  PART 1 / 2 끝
-========================= -->
-<!-- =========================
-  PART 2 / 2
-  (이 코드를 PART1의 <script> 끝부분 "/* PART 2에서 이어짐 */" 아래에 그대로 붙여넣기)
-========================= -->
-
-<script>
-  /* =========================
-     지도(Map)
-  ========================= */
-  function initMap(){
-    if(map) { setTimeout(()=>map.invalidateSize(), 50); return; }
-
-    map = L.map('map', { zoomControl:false }).setView([35.1601, 129.0609], 12);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    renderMapFilters();
-    renderMarkers();
-    setTimeout(()=>map.invalidateSize(), 50);
-  }
-
-  function renderMapFilters(){
-    const el = document.getElementById("mapFilters");
-    el.innerHTML = "";
-    CATS.forEach(c=>{
-      const chip = document.createElement("div");
-      chip.className = "chip" + (c.id===currentFilter ? " active" : "");
-      chip.innerText = c.label;
-      chip.onclick = ()=>{ setFilter(c.id); };
-      el.appendChild(chip);
-    });
-  }
-
-  function setFilter(cat){
-    currentFilter = cat;
-    renderMapFilters();
-    renderMarkers();
-  }
-
-  function renderMarkers(){
-    if(!map) return;
-
-    markers.forEach(m=>map.removeLayer(m));
-    markers = [];
-
-    const list = partners.filter(p=>{
-      if(currentFilter==="all") return true;
-      return p.cat === currentFilter;
-    });
-
-    list.forEach(p=>{
-      const m = L.marker(p.coords).addTo(map);
-      m.on("click", ()=>openPartnerSheet(p.id));
-      markers.push(m);
-    });
-  }
-
-  function focusPartner(pid){
-    const p = partners.find(x=>x.id===pid);
-    if(!p){ return; }
-    initMap();
-    setFilter("all");
-    map.setView(p.coords, 15, { animate:true });
-    setTimeout(()=>openPartnerSheet(pid), 120);
-  }
-
-  function openPartnerSheet(pid){
-    const p = partners.find(x=>x.id===pid);
-    if(!p) return;
-    lastOpenedPartner = p;
-
-    document.getElementById("psName").innerText = p.name;
-    document.getElementById("psMeta").innerText = `${catLabel(p.cat)} · ${p.hours}`;
-    document.getElementById("psDesc").innerText = p.desc;
-
-    const b = document.getElementById("psBenefit");
-    b.innerHTML = `<i data-feather="percent" style="width:14px;"></i> ${p.benefit}`;
-
-    currentPartnerIdForDirections = p.id;
-
-    document.getElementById("placeSheet").style.display = "flex";
-    feather.replace();
-  }
-
-  function hidePlaceSheet(){
-    document.getElementById("placeSheet").style.display = "none";
-  }
-  function closePlaceSheet(e){
-    if(e.target.id === "placeSheet") hidePlaceSheet();
-  }
-
-  function openDirections(){
-    if(!currentPartnerIdForDirections) return;
-    const p = partners.find(x=>x.id===currentPartnerIdForDirections);
-    if(!p) return;
-
-    // 구글지도 길찾기(좌표)
-    const [lat, lng] = p.coords;
-    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-    window.open(url, "_blank");
-  }
-
-  /* =========================
-     내 주변 / 검색
-  ========================= */
-  function goNearMe(){
-    if(!map) initMap();
-    if(!navigator.geolocation){
-      alert("이 기기에서 위치 사용이 지원되지 않습니다.");
-      return;
-    }
-    navigator.geolocation.getCurrentPosition((pos)=>{
-      const lat = pos.coords.latitude;
-      const lng = pos.coords.longitude;
-
-      if(myMarker) map.removeLayer(myMarker);
-      myMarker = L.marker([lat,lng]).addTo(map);
-
-      map.setView([lat,lng], 14, { animate:true });
-    }, ()=>{
-      alert("위치 권한을 확인해주세요.");
-    }, { enableHighAccuracy:true, timeout:8000 });
-  }
-
-  function toggleMapSearch(open){
-    const bar = document.getElementById("mapSearchBar");
-    const view = document.getElementById("view-map");
-
-    if(open){
-      bar.classList.add("open");
-      view.classList.add("map-search-open");
-      setTimeout(()=>document.getElementById("mapSearchInput").focus(), 50);
-    }else{
-      bar.classList.remove("open");
-      view.classList.remove("map-search-open");
-      document.getElementById("mapSearchInput").value = "";
-    }
-    setTimeout(()=>{ if(map) map.invalidateSize(); }, 50);
-  }
-
-  function runMapSearch(){
-    const q = (document.getElementById("mapSearchInput").value || "").trim().toLowerCase();
-    if(!q){ alert("검색어를 입력하세요."); return; }
-
-    const found = partners.find(p => p.name.toLowerCase().includes(q));
-    if(!found){ alert("검색 결과가 없습니다."); return; }
-
-    map.setView(found.coords, 15, { animate:true });
-    openPartnerSheet(found.id);
-  }
-
-  function filterMapAndGo(cat){
-    switchTab("map");
-    setTimeout(()=>{
-      initMap();
-      setFilter(cat);
-    }, 50);
-  }
-
-  /* =========================
-     FAQ
-  ========================= */
-  function toggleFaq(card){
-    const body = card.querySelector(".muted");
-    if(!body) return;
-    body.style.display = (body.style.display==="none" || !body.style.display) ? "block" : "none";
-    feather.replace();
-  }
-
-  /* =========================
-     언어
-  ========================= */
-  function openLang(){ openModal("langModal"); }
-  function selectLang(code){
-    const text = document.getElementById("langText");
-    if(code==="kr") text.innerText="KR";
-    if(code==="en") text.innerText="EN";
-    if(code==="cn") text.innerText="CN";
-    if(code==="jp") text.innerText="JP";
-    closeModal("langModal");
-  }
-
-  /* =========================
-     약관/정책
-  ========================= */
-  function openLegal(type){
-    const t = document.getElementById("legalTitle");
-    const b = document.getElementById("legalBody");
-
-    if(type==="terms"){
-      t.innerText = "이용약관(요약)";
-      b.innerText =
-`[시연용 약관 요약]
-- B·PASS Living은 체류형 패스 서비스(프로토타입)입니다.
-- 제휴처 혜택/운영시간은 실제 운영 시 변경될 수 있습니다.
-- 부정 사용 방지를 위해 QR 인증을 사용합니다.`;
-    }else if(type==="privacy"){
-      t.innerText = "개인정보처리방침(요약)";
-      b.innerText =
-`[시연용 개인정보 요약]
-- 로그인 시 프로필 식별 정보(닉네임/ID)를 사용합니다.
-- 결제 처리 및 고객지원 목적 범위 내에서만 활용합니다.
-- 실제 서비스 운영 시 별도 동의 및 보관 기간을 명시합니다.`;
-    }else if(type==="refund"){
-      t.innerText = "환불/취소 정책(요약)";
-      b.innerText =
-`[시연용 환불/취소 요약]
-- 사용 전: 결제 취소 가능(수수료 정책은 결제 수단에 따름)
-- 사용 후: 이용 내역/혜택 적용 여부에 따라 환불 금액이 달라질 수 있음
-- 자세한 정책은 실제 운영 시 고지됩니다.`;
-    }else{
-      t.innerText = "안내";
-      b.innerText = "정책 문서(시연용)";
-    }
-    openModal("legalModal");
-  }
-
-  /* =========================
-     택시 이용권 안내
-  ========================= */
-  function openTaxiBiz(){
-    window.open(TAXI_BIZ_URL, "_blank");
-  }
-
-  /* ==========================================================
-     ✅ 추천(⭐) 모달 기능
-     - HOME의 추천카드는 주석으로 보관했고
-     - 하단 네비의 ⭐를 누르면 이 모달이 열림
-     - 탭을 누르면 해당 카테고리 추천 리스트가 표시됨
-  ========================================================== */
-  function openRecommendModal(){
-    // 기본 탭 상태 유지하면서 오픈
-    openModal("recommendModal");
-    setRecommendCat(state.recommendCat || "stay", false);
-  }
-
-  function setRecommendCat(cat, rerender){
-    state.recommendCat = cat;
-
-    // 탭 active 처리
-    const mapTab = {
-      stay:"rm-stay",
-      food:"rm-cafe",
-      restaurant:"rm-restaurant",
-      office:"rm-office"
-    };
-    Object.values(mapTab).forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.classList.remove("active");
-    });
-    const activeId = mapTab[cat];
-    if(activeId) document.getElementById(activeId).classList.add("active");
-
-    // 타이틀/설명 변경
-    const title = document.getElementById("recModalTitle");
-    const desc  = document.getElementById("recModalDesc");
-
-    if(cat==="stay"){
-      title.innerText = "추천 · 숙소";
-      desc.innerText  = "부산 주요 거점(벡스코/부산항/해운대/서면) 인근 추천 숙소를 확인하세요. (시연용)";
-    }else if(cat==="food"){
-      title.innerText = "추천 · 카페";
-      desc.innerText  = "업무/미팅 동선에 맞춘 카페 추천을 확인하세요. (시연용)";
-    }else if(cat==="restaurant"){
-      title.innerText = "추천 · 음식점";
-      desc.innerText  = "지역 거점별 음식점 추천을 확인하세요. (시연용)";
-    }else if(cat==="office"){
-      title.innerText = "추천 · 공유오피스";
-      desc.innerText  = "행사/미팅을 위한 공유오피스 추천을 확인하세요. (시연용)";
-    }
-
-    if(rerender) renderRecommendModal();
-  }
-
-  function renderRecommendModal(){
-    const listEl = document.getElementById("recModalList");
-    if(!listEl) return;
-
-    // 모달에서 보여줄 추천 항목은 partners에서 cat 기준으로 뽑음
-    const cat = state.recommendCat || "stay";
-    const items = partners.filter(p => p.cat === cat);
-
-    listEl.innerHTML = "";
-
-    if(items.length===0){
-      const empty = document.createElement("div");
-      empty.className = "rec-item";
-      empty.innerHTML = `
-        <div class="rec-title">추천 항목이 없습니다</div>
-        <div class="rec-meta">현재 선택한 카테고리에 해당하는 데이터가 없습니다.</div>
-      `;
-      listEl.appendChild(empty);
-      return;
-    }
-
-    items.forEach(p=>{
-      const div = document.createElement("div");
-      div.className = "rec-item";
-      div.innerHTML = `
-        <div class="rec-title">${p.name}</div>
-        <div class="rec-meta">${p.benefit} · ${p.hours}</div>
-        <div class="rec-actions">
-          <div class="pill ghost" onclick="switchTab('map'); closeModal('recommendModal'); focusPartner('${p.id}')">
-            <i data-feather="map-pin" style="width:14px;"></i> 지도에서 보기
-          </div>
-          <div class="pill ghost" onclick="closeModal('recommendModal'); openPartnerSheet('${p.id}')">
-            <i data-feather="info" style="width:14px;"></i> 상세
-          </div>
-        </div>
-      `;
-      listEl.appendChild(div);
-    });
-
-    feather.replace();
-  }
-
-  /* =========================
-     초기 로딩
-  ========================= */
-  (function boot(){
-    renderCarousel();
-    loadMe();
-
-    // 온보딩 1회
-    const done = localStorage.getItem("bpass_onboarding_done");
-    if(!done) showOnboarding();
-  })();
-
-  /* ==========================================================
-   [추가] ✅ 모달이 항상 "마지막으로 연 것"이 위로 오게 (z-index 스택)
-   - 구매하기 창 위에 로그인 창이 바로 올라오게 해결
-========================================================== */
-let __modalZ = 20000;
-
-(function patchModalStacking(){
-  const _openModal = window.openModal;
-  const _closeModal = window.closeModal;
-
-  // openModal이 존재할 때만 패치
-  if(typeof _openModal === "function"){
-    window.openModal = function(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      // display 먼저
-      el.style.display = "flex";
-      // 항상 최신 모달이 위로 오도록 z-index 증가
-      __modalZ += 10;
-      el.style.zIndex = String(__modalZ);
-      // 아이콘 갱신
-      feather.replace();
-    };
-  }
-
-  // closeModal은 그대로 사용 (혹시 없으면 안전 처리)
-  if(typeof _closeModal !== "function"){
-    window.closeModal = function(id){
-      const el = document.getElementById(id);
-      if(el) el.style.display="none";
-    };
-  }
-})();
-
-/* ==========================================================
-   [추가] ✅ 모달 바깥(오버레이) 클릭 시 닫기
-   - 구매하기(passDetail/payment) / 추천(recommend) 포함
-========================================================== */
-(function enableOverlayOutsideClose(){
-  const closableOverlays = [
-    "passDetailModal",
-    "paymentSheet",
-    "recommendModal",
-    "legalModal",
-    "langModal",
-    "loginModal",
-    "qrModal"
-  ];
-
-  closableOverlays.forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-
-    // 이미 핸들러가 있다면 중복 등록 방지
-    if(el.__outsideCloseBound) return;
-    el.__outsideCloseBound = true;
-
-    el.addEventListener("click", (e)=>{
-      // 오버레이(배경) 자체를 클릭한 경우만 닫기
-      if(e.target === el){
-        closeModal(id);
-      }
-    });
-  });
-})();
-
-/* ==========================================================
-   [추가] ✅ 구매하기 눌렀을 때 로그인 창이 "즉시" 위로 뜨게 확실히 보장
-   - openPayment에서 checkLogin()을 호출해도, passDetailModal 위로 올라와야 함
-   - 위의 z-index 스택이 핵심 해결
-   - 혹시 기존 checkLogin이 openModal('loginModal')만 한다면 그대로 OK
-========================================================== */
-(function forceLoginOnTop(){
-  const _checkLogin = window.checkLogin;
-  if(typeof _checkLogin === "function"){
-    window.checkLogin = function(){
-      // 기존 로직 수행
-      _checkLogin();
-      // 혹시 display만 되고 z-index가 낮으면, 강제로 최상단 올림
-      const lm = document.getElementById("loginModal");
-      if(lm && lm.style.display !== "none"){
-        __modalZ += 10;
-        lm.style.zIndex = String(__modalZ);
-      }
-      feather.replace();
-    };
-  }
-})();
-
-</script>
-
-<!-- =========================
-  PART 2 / 2 끝
-========================= -->
