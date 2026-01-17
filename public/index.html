@@ -995,61 +995,61 @@
 
   /* --- 추천탭 --- [교체 시작] --- */
 
-/** [수정] 추천 탭은 실제 상호 기반으로 고정 리스트 사용 */
+/** [수정] 추천 탭은 실제 상호 기반으로 고정 리스트 사용 (안정적인 이미지 소스로 전체 교체) */
 const REC_PLACES = {
   stay: [
-    { id: 1001, cat: "stay", name: "시그니엘 부산", short: "해운대 오션뷰 럭셔리 호텔", img: "https://source.unsplash.com/600x600/?hotel,busan&sig=1001" },
-    { id: 1002, cat: "stay", name: "파라다이스 호텔 부산", short: "해운대 대표 리조트형 호텔", img: "https://source.unsplash.com/600x600/?resort,beach&sig=1002" },
-    { id: 1003, cat: "stay", name: "파크 하얏트 부산", short: "마린시티 인근 프리미엄 호텔", img: "https://source.unsplash.com/600x600/?luxury,hotel&sig=1003" },
-    { id: 1004, cat: "stay", name: "그랜드 조선 부산", short: "해운대 중심, 감각적인 스테이", img: "https://source.unsplash.com/600x600/?boutique,hotel&sig=1004" },
-    { id: 1005, cat: "stay", name: "웨스틴 조선 부산", short: "동백섬/해운대 산책 코스 최적", img: "https://source.unsplash.com/600x600/?hotel,sea&sig=1005" },
-    { id: 1006, cat: "stay", name: "신라스테이 해운대", short: "출장·워케이션 가성비 스테이", img: "https://source.unsplash.com/600x600/?business,hotel&sig=1006" },
-    { id: 1007, cat: "stay", name: "아난티 앳 부산 코브", short: "기장 오션 리조트, 감성 휴양", img: "https://source.unsplash.com/600x600/?ocean,resort&sig=1007" },
-    { id: 1008, cat: "stay", name: "롯데호텔 부산", short: "서면 중심, 이동/미팅 편리", img: "https://source.unsplash.com/600x600/?city,hotel&sig=1008" }
+    { id: 1001, cat: "stay", name: "시그니엘 부산", short: "해운대 오션뷰 럭셔리 호텔", img: "https://loremflickr.com/400/300/luxury,hotel?random=1001" },
+    { id: 1002, cat: "stay", name: "파라다이스 호텔 부산", short: "해운대 대표 리조트형 호텔", img: "https://loremflickr.com/400/300/resort,beach?random=1002" },
+    { id: 1003, cat: "stay", name: "파크 하얏트 부산", short: "마린시티 인근 프리미엄 호텔", img: "https://loremflickr.com/400/300/skyscraper,hotel?random=1003" },
+    { id: 1004, cat: "stay", name: "그랜드 조선 부산", short: "해운대 중심, 감각적인 스테이", img: "https://loremflickr.com/400/300/modern,hotel?random=1004" },
+    { id: 1005, cat: "stay", name: "웨스틴 조선 부산", short: "동백섬/해운대 산책 코스 최적", img: "https://loremflickr.com/400/300/sea,hotel?random=1005" },
+    { id: 1006, cat: "stay", name: "신라스테이 해운대", short: "출장·워케이션 가성비 스테이", img: "https://loremflickr.com/400/300/business,hotel?random=1006" },
+    { id: 1007, cat: "stay", name: "아난티 앳 부산 코브", short: "기장 오션 리조트, 감성 휴양", img: "https://loremflickr.com/400/300/pool,resort?random=1007" },
+    { id: 1008, cat: "stay", name: "롯데호텔 부산", short: "서면 중심, 이동/미팅 편리", img: "https://loremflickr.com/400/300/city,hotel?random=1008" }
   ],
 
   food: [
-    { id: 2001, cat: "food", name: "해운대암소갈비집", short: "부산 대표 한우갈비 맛집", img: "https://source.unsplash.com/600x600/?korean,bbq&sig=2001" },
-    { id: 2002, cat: "food", name: "초량밀면", short: "부산 하면 밀면, 클래식 원조", img: "https://source.unsplash.com/600x600/?noodles&sig=2002" },
-    { id: 2003, cat: "food", name: "개미집(낙곱새)", short: "낙지+곱창+새우 ‘낙곱새’", img: "https://source.unsplash.com/600x600/?spicy,stew&sig=2003" },
-    { id: 2004, cat: "food", name: "금수복국", short: "해운대 복국으로 유명", img: "https://source.unsplash.com/600x600/?fish,soup&sig=2004" },
-    { id: 2005, cat: "food", name: "쌍둥이돼지국밥", short: "서면 쪽 돼지국밥 강자", img: "https://source.unsplash.com/600x600/?soup,korean&sig=2005" },
-    { id: 2006, cat: "food", name: "이재모피자(서면)", short: "부산 로컬 피자 맛집으로 유명", img: "https://source.unsplash.com/600x600/?pizza&sig=2006" },
-    { id: 2007, cat: "food", name: "자갈치시장(회/해산물)", short: "부산 바다 먹거리의 상징", img: "https://source.unsplash.com/600x600/?seafood,market&sig=2007" },
-    { id: 2008, cat: "food", name: "동래할매파전", short: "동래 파전·막걸리 조합", img: "https://source.unsplash.com/600x600/?pancake,korean&sig=2008" }
+    { id: 2001, cat: "food", name: "해운대암소갈비집", short: "부산 대표 한우갈비 맛집", img: "https://loremflickr.com/400/300/beef,bbq?random=2001" },
+    { id: 2002, cat: "food", name: "초량밀면", short: "부산 하면 밀면, 클래식 원조", img: "https://loremflickr.com/400/300/noodle,soup?random=2002" },
+    { id: 2003, cat: "food", name: "개미집(낙곱새)", short: "낙지+곱창+새우 ‘낙곱새’", img: "https://loremflickr.com/400/300/seafood,spicy?random=2003" },
+    { id: 2004, cat: "food", name: "금수복국", short: "해운대 복국으로 유명", img: "https://loremflickr.com/400/300/fish,soup?random=2004" },
+    { id: 2005, cat: "food", name: "쌍둥이돼지국밥", short: "서면 쪽 돼지국밥 강자", img: "https://loremflickr.com/400/300/pork,soup?random=2005" },
+    { id: 2006, cat: "food", name: "이재모피자(서면)", short: "부산 로컬 피자 맛집으로 유명", img: "https://loremflickr.com/400/300/pizza,cheese?random=2006" },
+    { id: 2007, cat: "food", name: "자갈치시장(회/해산물)", short: "부산 바다 먹거리의 상징", img: "https://loremflickr.com/400/300/market,seafood?random=2007" },
+    { id: 2008, cat: "food", name: "동래할매파전", short: "동래 파전·막걸리 조합", img: "https://loremflickr.com/400/300/pancake,fried?random=2008" }
   ],
 
   cafe: [
-    { id: 3001, cat: "cafe", name: "모모스커피(부산)", short: "스페셜티 커피로 유명", img: "https://source.unsplash.com/600x600/?coffee,shop&sig=3001" },
-    { id: 3002, cat: "cafe", name: "웨이브온 커피(기장)", short: "바다뷰로 유명한 대형 카페", img: "https://source.unsplash.com/600x600/?cafe,ocean&sig=3002" },
-    { id: 3003, cat: "cafe", name: "F1963 테라로사", short: "문화공간+카페, 작업하기 좋음", img: "https://source.unsplash.com/600x600/?coffee,roastery&sig=3003" },
-    { id: 3004, cat: "cafe", name: "메이크씨(영도)", short: "영도 감성 바다 카페로 유명", img: "https://source.unsplash.com/600x600/?cafe,busan&sig=3004" },
-    { id: 3005, cat: "cafe", name: "옵스(OPS)", short: "부산 대표 베이커리", img: "https://source.unsplash.com/600x600/?bakery&sig=3005" },
-    { id: 3006, cat: "cafe", name: "카페051(부산)", short: "부산 로컬 카페 브랜드", img: "https://source.unsplash.com/600x600/?iced,coffee&sig=3006" },
-    { id: 3007, cat: "cafe", name: "흰여울문화마을 카페거리", short: "뷰+산책 코스, 카페 밀집", img: "https://source.unsplash.com/600x600/?cliff,cafe&sig=3007" },
-    { id: 3008, cat: "cafe", name: "해리단길 카페거리", short: "해운대 감성 카페/디저트", img: "https://source.unsplash.com/600x600/?dessert,cafe&sig=3008" }
+    { id: 3001, cat: "cafe", name: "모모스커피(부산)", short: "스페셜티 커피로 유명", img: "https://loremflickr.com/400/300/coffee,roaster?random=3001" },
+    { id: 3002, cat: "cafe", name: "웨이브온 커피(기장)", short: "바다뷰로 유명한 대형 카페", img: "https://loremflickr.com/400/300/ocean,cafe?random=3002" },
+    { id: 3003, cat: "cafe", name: "F1963 테라로사", short: "문화공간+카페, 작업하기 좋음", img: "https://loremflickr.com/400/300/industrial,cafe?random=3003" },
+    { id: 3004, cat: "cafe", name: "메이크씨(영도)", short: "영도 감성 바다 카페로 유명", img: "https://loremflickr.com/400/300/sea,coffee?random=3004" },
+    { id: 3005, cat: "cafe", name: "옵스(OPS)", short: "부산 대표 베이커리", img: "https://loremflickr.com/400/300/bakery,bread?random=3005" },
+    { id: 3006, cat: "cafe", name: "카페051(부산)", short: "부산 로컬 카페 브랜드", img: "https://loremflickr.com/400/300/iced,coffee?random=3006" },
+    { id: 3007, cat: "cafe", name: "흰여울문화마을 카페거리", short: "뷰+산책 코스, 카페 밀집", img: "https://loremflickr.com/400/300/coastal,village?random=3007" },
+    { id: 3008, cat: "cafe", name: "해리단길 카페거리", short: "해운대 감성 카페/디저트", img: "https://loremflickr.com/400/300/cafe,dessert?random=3008" }
   ],
 
   gym: [
-    { id: 4001, cat: "gym", name: "짐박스(부산)", short: "24시간 헬스장으로 유명한 편", img: "https://source.unsplash.com/600x600/?gym,fitness&sig=4001" },
-    { id: 4002, cat: "gym", name: "스포애니(부산)", short: "대형 체인, 접근성 좋은 편", img: "https://source.unsplash.com/600x600/?fitness,training&sig=4002" },
-    { id: 4003, cat: "gym", name: "애니타임 피트니스(부산)", short: "24시간 체인, 간편 이용", img: "https://source.unsplash.com/600x600/?workout&sig=4003" },
-    { id: 4004, cat: "gym", name: "크로스핏 해운대", short: "고강도 그룹 트레이닝", img: "https://source.unsplash.com/600x600/?crossfit&sig=4004" },
-    { id: 4005, cat: "gym", name: "센텀 피트니스(센텀권)", short: "센텀/벡스코 인근 운동", img: "https://source.unsplash.com/600x600/?dumbbell,gym&sig=4005" },
-    { id: 4006, cat: "gym", name: "서면 피트니스(서면권)", short: "서면 중심, 이동 편리", img: "https://source.unsplash.com/600x600/?fitness,gym&sig=4006" },
-    { id: 4007, cat: "gym", name: "마린시티 피트니스(마린시티)", short: "마린시티 인근 이용", img: "https://source.unsplash.com/600x600/?training,gym&sig=4007" },
-    { id: 4008, cat: "gym", name: "요가/필라테스 스튜디오(부산)", short: "컨디션 회복용 라이트 운동", img: "https://source.unsplash.com/600x600/?pilates,yoga&sig=4008" }
+    { id: 4001, cat: "gym", name: "짐박스(부산)", short: "24시간 헬스장으로 유명한 편", img: "https://loremflickr.com/400/300/gym,weights?random=4001" },
+    { id: 4002, cat: "gym", name: "스포애니(부산)", short: "대형 체인, 접근성 좋은 편", img: "https://loremflickr.com/400/300/fitness,treadmill?random=4002" },
+    { id: 4003, cat: "gym", name: "애니타임 피트니스(부산)", short: "24시간 체인, 간편 이용", img: "https://loremflickr.com/400/300/gym,night?random=4003" },
+    { id: 4004, cat: "gym", name: "크로스핏 해운대", short: "고강도 그룹 트레이닝", img: "https://loremflickr.com/400/300/crossfit,training?random=4004" },
+    { id: 4005, cat: "gym", name: "센텀 피트니스(센텀권)", short: "센텀/벡스코 인근 운동", img: "https://loremflickr.com/400/300/dumbbell,gym?random=4005" },
+    { id: 4006, cat: "gym", name: "서면 피트니스(서면권)", short: "서면 중심, 이동 편리", img: "https://loremflickr.com/400/300/fitness,center?random=4006" },
+    { id: 4007, cat: "gym", name: "마린시티 피트니스(마린시티)", short: "마린시티 인근 이용", img: "https://loremflickr.com/400/300/yoga,view?random=4007" },
+    { id: 4008, cat: "gym", name: "요가/필라테스 스튜디오(부산)", short: "컨디션 회복용 라이트 운동", img: "https://loremflickr.com/400/300/pilates,studio?random=4008" }
   ],
 
   work: [
-    { id: 5001, cat: "work", name: "WeWork 부산 BIFC", short: "부산 국제금융센터 공유오피스", img: "https://source.unsplash.com/600x600/?coworking,office&sig=5001" },
-    { id: 5002, cat: "work", name: "U-Space BIFC", short: "BIFC 인근 비즈니스 공간", img: "https://source.unsplash.com/600x600/?office,workspace&sig=5002" },
-    { id: 5003, cat: "work", name: "리저스(부산)", short: "미팅/업무 가능한 글로벌 오피스", img: "https://source.unsplash.com/600x600/?meeting,room&sig=5003" },
-    { id: 5004, cat: "work", name: "영도 코워킹(AREA6 등)", short: "영도 쪽 코워킹/크리에이티브", img: "https://source.unsplash.com/600x600/?creative,workspace&sig=5004" },
-    { id: 5005, cat: "work", name: "센텀 비즈니스 라운지(센텀권)", short: "센텀/벡스코 주변 업무 공간", img: "https://source.unsplash.com/600x600/?laptop,cafe&sig=5005" },
-    { id: 5006, cat: "work", name: "서면 비즈니스 라운지(서면권)", short: "서면 중심, 미팅/작업 편리", img: "https://source.unsplash.com/600x600/?workspace,laptop&sig=5006" },
-    { id: 5007, cat: "work", name: "부산창업카페/지원공간", short: "스타트업/창업 지원 공간 활용", img: "https://source.unsplash.com/600x600/?startup,office&sig=5007" },
-    { id: 5008, cat: "work", name: "스터디카페(부산)", short: "조용히 집중하기 좋은 공간", img: "https://source.unsplash.com/600x600/?study,cafe&sig=5008" }
+    { id: 5001, cat: "work", name: "WeWork 부산 BIFC", short: "부산 국제금융센터 공유오피스", img: "https://loremflickr.com/400/300/coworking,office?random=5001" },
+    { id: 5002, cat: "work", name: "U-Space BIFC", short: "BIFC 인근 비즈니스 공간", img: "https://loremflickr.com/400/300/desk,computer?random=5002" },
+    { id: 5003, cat: "work", name: "리저스(부산)", short: "미팅/업무 가능한 글로벌 오피스", img: "https://loremflickr.com/400/300/meeting,room?random=5003" },
+    { id: 5004, cat: "work", name: "영도 코워킹(AREA6 등)", short: "영도 쪽 코워킹/크리에이티브", img: "https://loremflickr.com/400/300/creative,workspace?random=5004" },
+    { id: 5005, cat: "work", name: "센텀 비즈니스 라운지(센텀권)", short: "센텀/벡스코 주변 업무 공간", img: "https://loremflickr.com/400/300/laptop,cafe?random=5005" },
+    { id: 5006, cat: "work", name: "서면 비즈니스 라운지(서면권)", short: "서면 중심, 미팅/작업 편리", img: "https://loremflickr.com/400/300/office,modern?random=5006" },
+    { id: 5007, cat: "work", name: "부산창업카페/지원공간", short: "스타트업/창업 지원 공간 활용", img: "https://loremflickr.com/400/300/startup,team?random=5007" },
+    { id: 5008, cat: "work", name: "스터디카페(부산)", short: "조용히 집중하기 좋은 공간", img: "https://loremflickr.com/400/300/study,library?random=5008" }
   ]
 };
 
