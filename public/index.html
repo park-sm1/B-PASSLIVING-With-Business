@@ -1,1331 +1,1214 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>B·PASS Living</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B·PASS Living</title>
+<meta name="theme-color" content="#FFFAF2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cmask%20id%3D%22MK%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2238%22%20r%3D%227%22%20fill%3D%22%23000%22/%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2238%22%20r%3D%227%22%20fill%3D%22%23000%22/%3E%3C/mask%3E%3C/defs%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%2217%22%20fill%3D%22%230B3D45%22%20mask%3D%22url%28%23MK%29%22/%3E%3Cpath%20d%3D%22M21%2015h13.5c6.2%200%2010%203.2%2010%208.2%200%203.2-1.7%205.6-4.5%206.7%203.8%201%206.2%203.9%206.2%207.9%200%205.6-4.3%209.2-11%209.2H21z%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M28%2021.5v6.6h5.6c2.4%200%203.8-1.2%203.8-3.3s-1.4-3.3-3.8-3.3zM28%2034v7.1h6.4c2.7%200%204.3-1.3%204.3-3.6S37.1%2034%2034.4%2034z%22%20fill%3D%22%230B3D45%22/%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2214%22%20r%3D%225%22%20fill%3D%22%23FF7A59%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: 부산에 도착한 출장자에게 말 거는 친절하고 믿음직한 서비스 홈페이지
+   IDEA: 바다 앞 승선권 — 패스는 노치가 있는 티켓, 로고도 티켓 위의 파도와 해
+   PICTURE: 해운대·광안대교 실사진에서 일하는 사람들로 넘어가는 풀블리드 히어로 슬라이드
+   COLOUR and TYPE: 크림 #FFFAF2 바탕, 바다 틸 #0F6E7A 주도, 노을 코럴 #FF6B4A 포인트 / IBM Plex Sans KR
+   LAYOUT: 상단 내비 + 섹션 밴드(크림/화이트/틸) 교차, 모바일은 하단 탭 */
+:root{color-scheme:light dark;
+--bg:light-dark(#FFFAF2,#0f1719);--bg2:light-dark(#ffffff,#141f22);--panel:light-dark(#ffffff,#18252a);
+--ink:light-dark(#14232b,#eef3f2);--sub:light-dark(#5b6870,#a4b4b6);--line:light-dark(#ece3d3,#26383d);
+--brand:#0F6E7A;--brand-d:#0a4e57;--brand-ink:light-dark(#0F6E7A,#5fc8d2);--brand-soft:light-dark(#e3f1f0,#173a3f);
+--coral:#FF6B4A;--coral-soft:light-dark(#ffeae3,#3d2720);--ok:light-dark(#11795a,#53d3a5);--ok-soft:light-dark(#dff4ec,#14352b);
+--shadow:0 10px 30px light-dark(rgba(60,45,20,.08),rgba(0,0,0,.35));--r:20px}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans",sans-serif;overflow-x:clip;padding-bottom:0}
+@media(max-width:899px){body{padding-bottom:72px}}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--brand-ink)}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+h1,h2,h3,h4{margin:0;line-height:1.2;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,18px)}
+.wrap.sec,.wrap.phead{padding-left:max(4vw,18px);padding-right:max(4vw,18px)}
+:lang(ko) body,:root:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+.sec{padding:clamp(56px,7vw,96px) 0}
+.sec.white{background:var(--bg2)}
+.sec.sea{background:var(--brand-d);color:#fff}
+.sec-head{margin-bottom:32px;max-width:640px}
+.kicker{display:inline-block;font-size:14px;font-weight:700;color:var(--coral);margin-bottom:10px}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.01em}
+.sec-head p{color:var(--sub);font-size:17px;margin-top:10px}
+.sea .sec-head p{color:rgba(255,255,255,.8)}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.g5{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;min-height:50px;padding:12px 22px;font-weight:700;font-size:16px;background:var(--brand);color:#fff;text-decoration:none;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.98)}
+.btn.coral{background:var(--coral)}
+.btn.soft{background:var(--brand-soft);color:var(--brand-ink)}
+.btn.line{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.white{background:#fff;color:var(--brand-d)}
+.btn.glass{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px)}
+.btn.full{width:100%}.btn.sm{min-height:42px;padding:8px 14px;font-size:14px;border-radius:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.note{font-size:14px;color:var(--sub)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ok-soft);color:var(--ok);white-space:nowrap}
+.badge.mute{background:var(--brand-soft);color:var(--sub)}
+.badge.coral{background:var(--coral-soft);color:var(--coral)}
+/* header */
+header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:none}
+.logo svg{width:40px;height:40px;flex:none}
+.wm{display:flex;flex-direction:column;line-height:1}
+.wm b{font-size:19px;letter-spacing:-.01em;font-weight:700}.wm b span{color:var(--coral)}.wm b em{font-style:normal;font-weight:500;color:var(--brand-ink);margin-left:4px}
+.wm small{font-size:11px;color:var(--sub);font-weight:600;margin-top:4px;letter-spacing:.02em}
+.topnav{display:none;gap:4px;margin-left:18px}
+.topnav button{background:none;border:0;padding:10px 14px;border-radius:12px;font-weight:600;color:var(--sub);font-size:15.5px}
+.topnav button.on,.topnav button:hover{color:var(--ink);background:var(--brand-soft)}
+@media(min-width:900px){.topnav{display:flex}}
+.top .sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 14px;min-height:42px;font-size:14px;font-weight:600;white-space:nowrap}
+.pill svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.authbox{display:flex;gap:8px;align-items:center}
+.authbox .pill{cursor:pointer}
+.authbox .btn.sm{min-height:42px}
+@media(max-width:560px){#langBtn .lname,.authbox .lname{display:none}.wm small{display:none}.top .wrap{gap:8px}.authbox .btn.sm{padding:8px 12px}.wm b{font-size:17px}}
+/* views */
+.view{display:none}.view.on{display:block}
+/* hero */
+.hero{position:relative;height:clamp(540px,84vh,780px);overflow:hidden;background:#0a2a30;color:#fff}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease}
+.slide.on{opacity:1;z-index:1}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+.slide.on img{animation:kb 8s ease-out forwards}
+.slide.bw img{filter:grayscale(1) contrast(1.05)}
+@keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(6,28,34,.78) 0%,rgba(6,28,34,.45) 45%,rgba(6,28,34,.05) 80%),linear-gradient(0deg,rgba(6,28,34,.6),transparent 40%)}
+.hero-in{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:110px}
+.cap{position:absolute;opacity:0;transform:translateY(18px);transition:opacity .7s .35s,transform .7s .35s;max-width:640px;pointer-events:none}
+.cap.on{opacity:1;transform:none;position:relative;pointer-events:auto}
+.cap .loc{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:6px 12px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(6px)}
+.cap .loc i{width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.cap h1{font-size:clamp(34px,5.4vw,60px);line-height:1.1;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.cap p{font-size:clamp(17px,1.8vw,20px);margin-top:16px;opacity:.92;max-width:34ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.dots{position:absolute;z-index:4;left:0;right:0;bottom:64px}
+.dots .wrap{display:flex;gap:10px}
+.dots button{flex:1;max-width:170px;background:none;border:0;padding:10px 0 0;color:rgba(255,255,255,.75);text-align:left;font-size:13px;font-weight:600}
+.dots button span{display:block;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden;margin-bottom:8px}
+.dots button span i{display:block;height:100%;width:0;background:#fff}
+.dots button.on{color:#fff}.dots em{font-style:normal}
+.dots button.on span i{animation:prog var(--dur,6s) linear forwards}
+.dots button.done span i{width:100%}
+@keyframes prog{to{width:100%}}
+@media(max-width:600px){.dots button em{font-style:normal}.dots button em{display:none}}
+@media(prefers-reduced-motion:reduce){.slide.on img,.dots button.on span i{animation:none}.dots button.on span i{width:100%}.cap{transition:none}}
+/* status strip */
+.status{position:relative;z-index:5}
+.status .card{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px}
+.status .dot{width:14px;height:14px;border-radius:50%;background:#c9c2b4;flex:none}
+.status.active .dot{background:#22c07a;box-shadow:0 0 0 6px rgba(34,192,122,.18)}
+.status .meta{flex:1;min-width:200px}.status .meta b{display:block;font-size:17px}.status .meta span{color:var(--sub);font-size:15px}
+/* features */
+.feat{display:flex;flex-direction:column;gap:12px}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--brand-soft);flex:none}
+.ico svg{width:26px;height:26px;stroke:var(--brand-ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;display:block}
+.feat h3{font-size:19px}.feat p{color:var(--sub);font-size:15.5px}
+.feat .badge{align-self:flex-start}
+/* steps */
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));counter-reset:s}
+.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:24px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--coral);color:#fff;font-weight:700;margin-bottom:16px}
+.step h3{font-size:19px;margin-bottom:6px}.step p{font-size:15.5px;opacity:.82}
+/* pass cards */
+.pc{position:relative;border-radius:26px;padding:28px;overflow:hidden;display:flex;flex-direction:column;gap:6px;box-shadow:0 18px 40px rgba(20,40,40,.16)}
+.pc.day{background:linear-gradient(140deg,#FFF1E6 0%,#FFD6BD 55%,#FFB896 100%);color:#2a140b}
+.pc.week{background:linear-gradient(140deg,#0B4954 0%,#0F6E7A 55%,#2FA39A 100%);color:#fff}
+.pc .num{position:absolute;right:22px;top:6px;font-size:150px;line-height:1;font-weight:700;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px #fff;opacity:.28;pointer-events:none;user-select:none}.pc.day .num{-webkit-text-stroke-color:#E8572F;opacity:.3}.pc .num small{font-size:22px;letter-spacing:.08em;-webkit-text-stroke:0;color:#fff;margin-left:4px}.pc.day .num small{color:#E8572F}.pc>*:not(.num){position:relative}
+.pc .tg{display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.55)}
+.pc.week .tg{background:rgba(255,255,255,.18)}
+.pc h3{font-size:30px;margin-top:10px;letter-spacing:-.01em}
+.pc .ds{opacity:.8;font-size:16px}
+.pc .pr{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.pc .pr s{opacity:.6;white-space:nowrap}
+.pc .pr b{font-size:clamp(34px,4vw,42px);white-space:nowrap;letter-spacing:-.02em}
+.pc .pr em{font-style:normal;font-weight:700;background:var(--coral);color:#fff;border-radius:8px;padding:2px 8px;font-size:14px;white-space:nowrap}
+.pc .tear{border-top:2px dashed currentColor;opacity:.25;margin:14px -28px}
+.pc ul{list-style:none;padding:0;margin:6px 0 18px;display:grid;gap:9px}
+.pc li{display:flex;gap:10px;align-items:center;font-size:15.5px}
+.pc li::before{content:"";width:20px;height:20px;border-radius:50%;flex:none;background:rgba(255,255,255,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' stroke='%230F6E7A' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.pc .acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px;margin-top:auto}
+.pc.day .btn.line{border-color:rgba(42,20,11,.25);color:#2a140b}
+.pc.week .btn.line{border-color:rgba(255,255,255,.45);color:#fff}
+.pc.week .btn.buy{background:#fff;color:var(--brand-d)}
+.pc.day .btn.buy{background:#2a140b;color:#fff}
+/* digital pass */
+.dp{border-radius:26px;padding:26px;position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(20,40,40,.18)}
+.dp.week{background:linear-gradient(140deg,#0B4954,#0F6E7A 60%,#2FA39A);color:#fff}
+.dp.day{background:linear-gradient(140deg,#FFF1E6,#FFD6BD 55%,#FFB896);color:#2a140b}
+.dp.off{background:var(--panel);border:2px dashed var(--line);color:var(--ink);box-shadow:none}
+.dp .r{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.dp .nm{font-size:28px;font-weight:700}
+.dp .lb{font-size:12.5px;opacity:.7}.dp .vl{font-weight:600;font-size:15.5px;overflow-wrap:anywhere}
+.dp .st{font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;background:rgba(127,127,127,.18)}
+.dp .st.on{background:#22c07a;color:#fff}
+.dp .tear{border-top:2px dashed currentColor;opacity:.3;margin:18px -26px;position:relative}
+.dp .body{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.dp .kvs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;flex:1;min-width:220px}
+.qrbox{background:#fff;border-radius:16px;padding:10px;width:148px;height:148px;flex:none}
+.qrbox canvas{width:100%;height:100%;display:block;image-rendering:pixelated}
+/* routes */
+.route{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.route .ph{position:relative;height:190px;overflow:hidden}
+.route .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.route:hover .ph img{transform:scale(1.05)}
+.route .ph .badge{position:absolute;left:16px;top:16px;background:rgba(255,255,255,.92);color:var(--brand-d)}
+.route .bd{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.route h3{font-size:20px}.route p{color:var(--sub);font-size:15.5px}
+.tl{list-style:none;margin:8px 0 0;padding:0;display:grid}
+.tl li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.tl .t{font-weight:700;color:var(--brand-ink);font-size:14px;white-space:nowrap}
+.tl button{background:none;border:0;padding:0;text-align:left}
+.tl b{display:block;font-size:15.5px}.tl span{display:block;font-size:14.5px;color:var(--sub)}
+.tl .bn{color:var(--coral);font-weight:700;font-size:13px;margin-top:2px}
+/* place cards */
+.place{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left;width:100%;transition:border-color .15s,box-shadow .15s}
+.place:hover,.place.sel{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.place .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center}.place .ico svg{width:24px;height:24px}
+.place b{display:block;font-size:16px}.place span{display:block;font-size:14px;color:var(--sub)}
+.place .bn{font-size:13px;font-weight:700;color:var(--coral);text-align:right;max-width:13ch}
+@media(max-width:480px){.place{grid-template-columns:44px minmax(0,1fr)}.place .bn{grid-column:2;text-align:left;max-width:none}}
+/* table */
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:14px;color:var(--sub);font-weight:600}
+td.c,th.c{text-align:center}
+.yes{color:var(--ok);font-weight:700}.no{color:var(--sub)}
+th.us{color:var(--brand-ink)}
+.scroll{overflow-x:auto}
+/* faq */
+.faq{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:20px 2px;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--brand-ink);font-size:24px;line-height:1;font-weight:400}
+.faq[open] summary::after{content:"−"}
+.faq p{color:var(--sub);padding:0 2px 20px;max-width:70ch}
+/* cta + footer */
+.cta{background:radial-gradient(120% 140% at 100% 0%,#14707c 0%,#0B3D45 55%,#082c32 100%);color:#fff;position:relative;overflow:hidden;border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta h2{font-size:clamp(26px,3.2vw,36px)}.cta p{opacity:.9;margin-top:8px}
+.cta .btn.white{color:#0B3D45}.cta::after{content:"";position:absolute;right:-60px;bottom:-90px;width:260px;height:260px;border-radius:50%;background:#FF7A59;opacity:.18;pointer-events:none}.cta>*{position:relative;z-index:1}
+footer{background:#0b2d33;color:#cfe0e0;padding:56px 0 40px;font-size:15px}
+footer .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:28px}
+footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+footer button{background:none;border:0;color:#cfe0e0;padding:5px 0;display:block;text-align:left;font-size:15px}
+footer button:hover{color:#fff;text-decoration:underline}
+footer .wm b{color:#fff}footer .wm b em{color:#8fd3d9}footer .wm small{color:#9fbcbc}
+footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;font-size:13.5px;color:#9fbcbc;display:grid;gap:6px}
+/* page heads */
+.phead{padding:44px 0 8px}
+.phead h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.02em}
+.phead p{color:var(--sub);font-size:17px;margin-top:8px;max-width:60ch}
+/* map page */
+.maplay{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:960px){.maplay{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}.mapbox{position:sticky;top:88px}}
+.mapbox{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--panel)}
+#map{height:clamp(360px,62vh,640px);background:#f2ede3}
+.mapnote{padding:10px 14px;font-size:13.5px;color:var(--sub);border-top:1px solid var(--line)}
+.ctrls{display:grid;gap:12px;margin-bottom:16px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:10px;min-height:44px;font-weight:600;font-size:15px;color:var(--sub)}
+.seg button.on{background:var(--brand);color:#fff}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 16px;min-height:42px;font-weight:600;font-size:14.5px}
+.chips button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{display:flex;gap:8px}.search .btn{white-space:nowrap;flex:none}
+input,select,textarea{width:100%;border:1.5px solid var(--line);background:var(--panel);border-radius:14px;padding:12px 14px;font-size:16px;min-height:50px}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);outline:0;box-shadow:0 0 0 4px var(--brand-soft)}
+.plist{display:grid;gap:10px}
+.empty{text-align:center;color:var(--sub);padding:36px 12px}
+/* leaflet (essential subset) */
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;position:relative;outline:0;-webkit-tap-highlight-color:transparent;font:inherit;touch-action:none}
+.leaflet-tile,.leaflet-marker-icon{user-select:none;-webkit-user-drag:none}
+.leaflet-container img.leaflet-tile,.leaflet-container .leaflet-tile-pane img{max-width:none!important;max-height:none!important;padding:0}
+.leaflet-tile{visibility:hidden}.leaflet-tile-loaded{visibility:inherit}
+.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+.leaflet-zoom-animated{transform-origin:0 0}
+.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}
+.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:grab}.leaflet-dragging .leaflet-grab{cursor:grabbing}
+.leaflet-pane>svg path{pointer-events:none}.leaflet-pane>svg path.leaflet-interactive{pointer-events:auto}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
+.leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}
+.leaflet-right .leaflet-control{float:right}
+.leaflet-top .leaflet-control{margin-top:12px}.leaflet-left .leaflet-control{margin-left:12px}.leaflet-right .leaflet-control{margin-right:0}.leaflet-bottom .leaflet-control{margin-bottom:0}
+.leaflet-bar{border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.leaflet-bar a{display:block;width:40px;height:40px;line-height:40px;text-align:center;background:#fff;color:#14232b;text-decoration:none;border-bottom:1px solid #eee;font:600 20px/40px system-ui}
+.leaflet-bar a:last-child{border-bottom:0}
+.leaflet-control-attribution{background:rgba(255,255,255,.85);font-size:11px;padding:2px 6px;color:#333}
+.leaflet-control-attribution a{color:#0F6E7A}
+.leaflet-div-icon{background:none;border:0}
+.leaflet-tooltip{position:absolute;padding:4px 9px;background:#fff;color:#14232b;border-radius:8px;white-space:nowrap;pointer-events:none;font-size:12.5px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{display:none}
+.mk{display:grid;place-items:center;width:38px;height:38px;border-radius:50% 50% 50% 6px;transform:rotate(-45deg);background:var(--brand);border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.28);transition:transform .15s}
+.mk svg{width:18px;height:18px;transform:rotate(45deg);stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk.stay{background:var(--coral)}
+.mk.sel{transform:rotate(-45deg) scale(1.22);background:#0b2d33}
+.mk.dim{opacity:.35}
+.mklabel{font-size:12px;font-weight:700;color:#6b7b80;white-space:nowrap;text-shadow:0 0 3px #f2ede3,0 0 3px #f2ede3}
+/* my page */
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin:18px 0 22px;scrollbar-width:none}
+.tabs button{flex:none;border:0;background:none;padding:12px 14px;font-weight:600;font-size:15.5px;color:var(--sub);border-bottom:3px solid transparent;min-height:48px}
+.tabs button.on{color:var(--ink);border-color:var(--coral)}
+.mygrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start}
+.vch{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center}
+.vch h3{font-size:18px}.vch .sub{color:var(--sub);font-size:14.5px}
+.cnt{font-size:30px;font-weight:700;white-space:nowrap;letter-spacing:-.02em}
+.meter{grid-column:1/-1;height:8px;border-radius:4px;background:var(--brand-soft);overflow:hidden;margin:6px 0 10px}
+.meter i{display:block;height:100%;background:var(--brand)}
+.pinbox{font-size:30px;font-weight:700;letter-spacing:.1em;text-align:center;background:var(--brand-soft);color:var(--brand-ink);border-radius:16px;padding:18px;margin:12px 0;font-variant-numeric:tabular-nums}
+.hist{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.hist span{display:block;font-size:13.5px;color:var(--sub)}
+.hist .amt{text-align:right;white-space:nowrap;font-weight:700}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 16px;margin:0}
+.kv dt{color:var(--sub)}.kv dd{margin:0;text-align:right;font-weight:600;overflow-wrap:anywhere}
+.menu{display:grid}
+.menu button{display:flex;justify-content:space-between;align-items:center;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 2px;text-align:left;font-size:16px;min-height:54px}
+.menu button::after{content:"›";color:var(--sub);font-size:22px}
+/* bottom nav */
+nav.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--panel);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+@media(min-width:900px){nav.bottom{display:none}}
+nav.bottom button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;font-weight:600;color:var(--sub);min-height:54px;justify-content:center}
+nav.bottom svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.bottom button.on{color:var(--brand-ink)}
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:flex-end;justify-content:center;background:rgba(8,22,26,.55);backdrop-filter:blur(3px)}
+.modal.on{display:flex}
+.sheet{background:var(--panel);width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));animation:up .25s ease-out}
+.sheet.wide{max-width:620px}
+@media(min-width:620px){.modal{align-items:center;padding:20px}.sheet{border-radius:26px}}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.sheet{animation:none}}
+.sheet .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.sheet .hd h3{font-size:22px}
+.x{border:0;background:var(--brand-soft);width:42px;height:42px;border-radius:50%;font-size:22px;flex:none;color:var(--ink)}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label{font-size:14.5px;font-weight:600}
+.field .err{color:var(--coral);font-size:13.5px;min-height:0}
+.pw{position:relative}.pw input{padding-right:64px}
+.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--brand-ink);font-weight:600;font-size:14px;padding:8px 10px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin:8px 0}
+.check input{width:20px;height:20px;min-height:0;margin-top:3px;flex:none;accent-color:var(--brand)}
+.check.all{font-weight:700;border-bottom:1px solid var(--line);padding-bottom:10px}
+.check a,.check button.lnk{background:none;border:0;padding:0;color:var(--sub);text-decoration:underline;font-size:13.5px;margin-left:auto;flex:none}
+.atabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);margin:-4px 0 20px}
+.atabs button{background:none;border:0;padding:12px;font-weight:700;font-size:16px;color:var(--sub);border-bottom:3px solid transparent;min-height:48px}
+.atabs button.on{color:var(--ink);border-color:var(--brand)}
+.demo{background:linear-gradient(135deg,var(--brand-soft),var(--coral-soft));border-radius:18px;padding:16px;margin-bottom:18px;display:grid;gap:10px}
+.demo b{font-size:16px}.demo span{font-size:14px;color:var(--sub)}
+.or{display:flex;align-items:center;gap:12px;color:var(--sub);font-size:13.5px;margin:18px 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.social{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.social button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:600;font-size:14.5px}
+.social .kakao{background:#FEE500;border-color:#FEE500;color:#191600}
+.social .naver{background:#03C75A;border-color:#03C75A;color:#fff}
+.social i{font-style:normal;font-weight:800}
+.links{display:flex;justify-content:center;gap:16px;margin-top:14px;font-size:14px}
+.links button{background:none;border:0;color:var(--sub);text-decoration:underline;padding:6px}
+.paym{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.paym button{border:1.5px solid var(--line);background:var(--panel);border-radius:14px;min-height:56px;font-weight:600;font-size:15px}
+.paym button.on{border-color:var(--brand);color:var(--brand-ink);box-shadow:0 0 0 3px var(--brand-soft)}
+.spinner{width:46px;height:46px;border-radius:50%;border:4px solid var(--brand-soft);border-top-color:var(--brand);animation:spin 1s linear infinite;margin:20px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.langs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.langs button{border:1.5px solid var(--line);background:var(--panel);border-radius:12px;padding:12px;text-align:left;min-height:56px}
+.langs button b{display:block;font-size:15.5px}.langs button span{font-size:12.5px;color:var(--sub)}
+.langs button.on{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.legaltxt{font-size:15px;color:var(--sub);display:grid;gap:8px}.legaltxt h4{color:var(--ink);font-size:16px;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(16px);background:#0b2d33;color:#fff;padding:13px 20px;border-radius:14px;font-size:15px;opacity:0;pointer-events:none;transition:.22s;z-index:90;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media(min-width:900px){.toast{bottom:32px}}
+[dir=rtl] .hero::after{transform:scaleX(-1)}
 
-  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+/* readability pass */
+:root{--sub:light-dark(#4a5861,#b3c2c4);--line:light-dark(#e6dccb,#2a3d42)}
+body{font-size:17px;line-height:1.65}
+.note{font-size:15px}
+.sec-head{margin-bottom:36px}
+.sec-head h2{font-size:clamp(28px,3.4vw,38px)}
+.sec-head p{font-size:18px;line-height:1.6}
+.card{padding:28px}
+.feat p,.route p,.step p{font-size:16px;line-height:1.6}
+.feat h3,.step h3{font-size:20px}
+.place b{font-size:16.5px}.place span{font-size:14.5px}
+.blockt{font-size:clamp(22px,2.4vw,28px);margin-bottom:20px}
+.phead{padding:48px 0 8px}.phead p{font-size:18px}
+.stops{color:var(--ink)!important;font-weight:600;font-size:15.5px!important;line-height:1.7}
+.route .bd{gap:10px}
+.profile{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow);margin-top:18px}
+.avatar.big{width:60px;height:60px;font-size:24px}
+.pinfo{flex:1;min-width:180px}.pinfo b{display:block;font-size:20px}.pinfo span{color:var(--sub);font-size:15px}
+.pstat{display:flex;gap:26px;flex-wrap:wrap}
+.pstat small{display:block;color:var(--sub);font-size:13.5px}.pstat b{font-size:17px;white-space:nowrap}
+@media(max-width:600px){.pstat{width:100%;gap:18px;justify-content:space-between}.profile .btn{width:100%}}
+.btn,.pill{white-space:nowrap}
+@media(max-width:420px){header.top .wm{display:none}}
+.status .card{align-items:center}
+/* landing */
+body.gate header.top,body.gate footer,body.gate nav.bottom{display:none}
+body.gate{padding-bottom:0}
+.hero.land{height:100vh;height:100svh;min-height:620px}
+.gtop{position:absolute;z-index:5;top:0;left:0;right:0}
+.gtop .wrap{display:flex;align-items:center;height:76px}
+.gtop .sp{flex:1}
+.logo.light .wm b,.logo.light .wm b em{color:#fff}.logo.light .wm small{color:rgba(255,255,255,.75);display:block}
+.glassp{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4);color:#fff;backdrop-filter:blur(8px)}
+.gate-cta{display:grid;grid-template-columns:repeat(2,minmax(0,200px));gap:12px;margin-top:34px}
+.btn.lg{min-height:58px;font-size:17px;border-radius:16px}
+.guest{background:none;border:0;color:rgba(255,255,255,.85);text-decoration:underline;text-underline-offset:4px;font-size:15px;padding:14px 2px;margin-top:6px;align-self:flex-start}
+@media(max-width:600px){.gate-cta{grid-template-columns:1fr 1fr}.hero.land .hero-in{justify-content:flex-end;padding-bottom:130px}}
+/* home hello band */
+.hello{background:radial-gradient(120% 160% at 100% 0%,#14707c 0%,#0B3D45 60%,#082c32 100%);color:#fff;padding:44px 0 34px}
+.hello .hi{opacity:.8;font-weight:600}
+.hello h1{font-size:clamp(28px,4vw,42px);margin:6px 0 22px;letter-spacing:-.02em}
+.hello .status{margin:0}
+.hello .status .card{color:var(--ink)}
+.quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.quick button{display:flex;flex-direction:column;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:16px;padding:14px 6px;font-weight:600;font-size:14px;min-height:84px;justify-content:center}
+.quick button:hover{background:rgba(255,255,255,.18)}
+.quick svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-  <style>
-    :root {
-      --primary: #2563EB;
-      --primary-grad: linear-gradient(135deg, #2563EB 0%, #00C6FF 100%);
-      --text: #191F28;
-      --sub: #6B7280;
-      --bg: #F8F9FE;
-      --card: rgba(255, 255, 255, 0.85);
-      --glass: rgba(255, 255, 255, 0.7);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.8);
-      --shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.1);
-      --radius: 24px;
-      --border: rgba(0,0,0,0.06); /* [수정] 누락 변수 보완 (login-box에서 사용됨) */
-      
-      /* 카테고리별 색상 */
-      --c-stay: #FF3B30;
-      --c-food: #F97316;
-      --c-cafe: #8D6E63;
-      --c-gym: #10B981;
-      --c-work: #6366F1;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Pretendard", sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background: var(--bg); color: var(--text); overflow: hidden; user-select: none; }
-    ::-webkit-scrollbar { display: none; }
-
-    /* 배경 오로라 */
-    .aurora {
-      position: fixed; inset: 0; z-index: -2;
-      background: 
-        radial-gradient(at 10% 10%, rgba(37,99,235,0.15) 0, transparent 60%),
-        radial-gradient(at 90% 90%, rgba(204,248,2,0.1) 0, transparent 60%);
-      animation: breathe 8s ease-in-out infinite alternate;
-    }
-    @keyframes breathe { from{opacity:.8;transform:scale(1)} to{opacity:1;transform:scale(1.05)} }
-
-    /* 앱 레이아웃 */
-    .app { max-width: 500px; height: 100dvh; margin: 0 auto; position: relative; display: flex; flex-direction: column; background: transparent; }
-
-    /* 헤더 */
-    header {
-      padding: 16px 24px; position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      max-width: 500px; margin: 0 auto; height: 100px; display: flex; flex-direction: column; justify-content: center;
-      background: linear-gradient(180deg, rgba(248,249,254,0.95) 0%, rgba(248,249,254,0) 100%);
-      pointer-events: none;
-    }
-    header > * { pointer-events: auto; }
-
-    /* [수정] WORK SMART 폰트 조금 줄이고, WORK~ vs 슬로건 행간(간격) 더 좁힘 */
-    .h-top { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 0px; }
-    .brand {
-      font-size: 22px;               /* [수정] 더 작게 */
-      font-weight: 950;
-      letter-spacing: 0.9px;         /* 자간은 유지/약간 넓게 */
-      line-height: 1.0;              /* [수정] 행간 더 줄임 */
-      background: linear-gradient(90deg, var(--primary), #00C6FF);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .lang-btn { 
-      background: rgba(255,255,255,0.6); padding: 8px 14px; border-radius: 20px; 
-      font-size: 12px; font-weight: 800; border: 1px solid rgba(255,255,255,0.8);
-      backdrop-filter: blur(10px); cursor: pointer; display: flex; align-items: center; gap: 4px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .h-sub {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--sub);
-      opacity: 0.9;
-      margin-top: 0px;              /* [수정] 더 좁힘 */
-      line-height: 1.05;            /* [수정] 행간 줄임 */
-    }
-
-    /* 뷰 컨테이너 */
-    .view { flex: 1; overflow-y: auto; padding: 110px 24px 120px; display: none; scroll-behavior: smooth; }
-    .view.active { display: block; animation: fadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-
-    /* 로그인 박스 (버전 D 디자인 복구) */
-    .login-box {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 24px; box-shadow: var(--shadow); backdrop-filter: blur(20px); margin-bottom: 16px;
-      transition: transform 0.2s; position: relative; overflow: hidden; cursor: pointer;
-    }
-    .login-box:active { transform: scale(0.98); }
-    .login-box::before {
-      content: ""; position: absolute; inset: -50%; 
-      background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 60%);
-      animation: rotate 6s linear infinite; z-index: -1;
-    }
-    @keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-    .lb-label { font-size: 13px; font-weight: 700; color: var(--sub); margin-bottom: 6px; }
-    .lb-title { font-size: 20px; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-
-    /* 퀵 메뉴 */
-    .quick-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 30px; }
-    .q-item { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
-    .q-icon {
-      width: 54px; height: 54px; border-radius: 20px; background: rgba(255,255,255,0.9);
-      border: 1px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-      display: flex; align-items: center; justify-content: center; color: var(--text);
-      transition: 0.2s;
-    }
-    .q-item:active .q-icon { transform: scale(0.92); background: var(--primary); color: #fff; }
-    .q-text { font-size: 11px; font-weight: 800; color: var(--sub); }
-    
-    /* 커스텀 SVG 아이콘 */
-    .svg-icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* 패스 상품 (Glass Style - z-index 수정) */
-    .pass-wrap { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-    .pass-card {
-      background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
-      border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.8);
-      position: relative; z-index: 1;
-    }
-    
-    .pc-tag { 
-      display: inline-block; padding: 6px 10px; border-radius: 8px; 
-      font-size: 11px; font-weight: 800; background: var(--primary-grad); color: #fff; margin-bottom: 12px;
-    }
-    .pc-title { font-size: 20px; font-weight: 900; margin-bottom: 4px; color: var(--text); }
-    .pc-desc { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
-    .pc-price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 16px; }
-    .pc-old { text-decoration: line-through; color: #bbb; font-size: 14px; }
-    .pc-new { font-size: 24px; font-weight: 900; color: var(--primary); }
-    
-    .pc-btns { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; }
-    .btn-glass { 
-      background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.1); 
-      padding: 14px; border-radius: 16px; font-size: 14px; font-weight: 800; cursor: pointer; color: var(--text);
-    }
-    .btn-solid { 
-      background: var(--primary); color: #fff; border: none;
-      padding: 14px; border-radius: 16px; font-size: 14px; font-weight: 800; 
-      cursor: pointer; box-shadow: 0 8px 20px rgba(37,99,235,0.25); 
-    }
-    .btn-solid:active { transform: scale(0.98); }
-
-    /* 언어 탭/결제 옵션 버튼 스타일 */
-    .btn-outline{
-      width: 100%;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(0,0,0,0.08);
-      padding: 14px;
-      border-radius: 16px;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      color: var(--text);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-    }
-    .btn-outline:active{ transform: scale(0.98); }
-
-    /* 지도 (Map) */
-    #view-map { padding: 0; height: 100%; position: relative; }
-    #map { width: 100%; height: 100%; z-index: 1; background: #E5E7EB; }
-    .map-ui { 
-      position: absolute; top: 110px; left: 16px; right: 16px; z-index: 100; 
-      pointer-events: none; display: flex; flex-direction: column; gap: 10px;
-    }
-    .map-ui > * { pointer-events: auto; }
-    
-    .map-mode { background: #fff; padding: 4px; border-radius: 14px; display: flex; width: fit-content; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 8px; }
-    .mm-btn { padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 800; color: var(--sub); cursor: pointer; }
-    .mm-btn.active { background: var(--text); color: #fff; }
-
-    /* 검색창 가로 */
-    .search-box {
-      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
-      border-radius: 16px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; flex-direction: row;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 8px; pointer-events: auto;
-    }
-    .sb-input { border: none; background: transparent; flex: 1; font-size: 14px; font-weight: 700; outline: none; height: 40px; }
-    .sb-btn { background: var(--text); color: #fff; border-radius: 12px; padding: 0 16px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; height: 36px; display: flex; align-items: center; }
-
-    .cat-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
-    .cat-chip { 
-      background: #fff; padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;
-      border: 1px solid rgba(0,0,0,0.05); color: var(--sub); box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; cursor: pointer;
-    }
-    .cat-chip[data-cat="stay"].active { background: var(--c-stay); color: #fff; }
-    .cat-chip[data-cat="food"].active { background: var(--c-food); color: #fff; }
-    .cat-chip[data-cat="cafe"].active { background: var(--c-cafe); color: #fff; }
-    .cat-chip[data-cat="gym"].active { background: var(--c-gym); color: #fff; }
-    .cat-chip[data-cat="work"].active { background: var(--c-work); color: #fff; }
-    .cat-chip[data-cat="all"].active { background: var(--text); color: #fff; }
-
-    /* 추천 뷰 */
-    .rec-header { padding-bottom: 20px; }
-    .rec-tabs { display: flex; gap: 16px; margin-bottom: 20px; overflow-x: auto; }
-    .rt-btn { 
-      padding: 0; background: transparent; border: none;
-      font-size: 17px; font-weight: 700; color: var(--sub); cursor: pointer; white-space: nowrap; margin-bottom: 4px;
-    }
-    .rt-btn.active { color: var(--text); font-weight: 950; border-bottom: 3px solid var(--text); padding-bottom: 4px; }
-    
-    .rec-list { padding-bottom: 100px; }
-    .rec-card { background: #fff; border-radius: 20px; padding: 16px; margin-bottom: 16px; display: flex; gap: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: none; }
-    .rc-img { width: 90px; height: 90px; border-radius: 14px; background: #eee; object-fit: cover; flex-shrink: 0; }
-    .rc-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-    .rc-title { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
-    .rc-desc { font-size: 12px; color: var(--sub); margin-bottom: 12px; line-height: 1.3; }
-    .rc-acts { display: flex; gap: 8px; }
-    .rc-btn { padding: 8px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; background: #F3F4F6; cursor: pointer; border: none; color: var(--text); }
-    .rc-btn.map { background: rgba(37,99,235,0.1); color: var(--primary); }
-
-    /* 패스 탭 (C 디자인) */
-    .cert-card {
-      background: linear-gradient(135deg, var(--primary), #00C6FF); color: #fff;
-      border-radius: 24px; padding: 28px 24px; position: relative; overflow: hidden;
-      box-shadow: 0 15px 40px rgba(37,99,235,0.3); margin-bottom: 24px;
-    }
-    .cert-card::after { content: "B·PASS"; position: absolute; bottom: -20px; right: -10px; font-size: 80px; font-weight: 900; opacity: 0.1; font-style: italic; }
-    .cc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
-    .cc-label { font-size: 12px; opacity: 0.8; font-weight: 700; margin-bottom: 4px; }
-    .cc-val { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-    .cc-status { background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; }
-    .cc-date { font-size: 13px; opacity: 0.9; }
-
-    /* MY 페이지 */
-    .my-tabs { 
-      display: flex; gap: 24px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 10px;
-    }
-    .mt-item { 
-      font-size: 17px; font-weight: 700; color: #ccc; cursor: pointer; white-space: nowrap; flex-shrink: 0; padding-bottom: 4px;
-    }
-    .mt-item.active { 
-      color: var(--text); font-weight: 950; border-bottom: 3px solid var(--text); 
-    }
-
-    .my-pass-bright {
-      background: linear-gradient(135deg, #60A5FA, #3B82F6); 
-      border-radius: 24px; padding: 24px; color: #fff;
-      box-shadow: 0 10px 30px rgba(59,130,246,0.3); margin-bottom: 20px;
-      position: relative; overflow: hidden;
-    }
-
-    /* MY 세부 칸 (유리 효과) */
-    .v-item { 
-      background: rgba(255,255,255,0.5); border-radius: 16px; padding: 20px; margin-bottom: 12px; 
-      border: none; backdrop-filter: blur(10px);
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    }
-    .v-btn {
-      background: var(--text); color: #fff; border: none; padding: 8px 16px; border-radius: 10px; 
-      font-size: 12px; font-weight: 800; cursor: pointer;
-    }
-
-    /* 하단 바 (C 버전: 아이콘+텍스트) */
-    .nav-bar {
-      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 48px); max-width: 450px;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.5); padding: 14px 20px; border-radius: 30px;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15); z-index: 1000;
-    }
-    .nav-item { color: #C0C0C0; cursor: pointer; transition: 0.2s; position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .nav-item.active { color: var(--primary); transform: translateY(-2px); }
-    .nav-item span { font-size: 9px; font-weight: 800; }
-    .nav-item i { width: 22px; height: 22px; }
-
-    .logout-btn {
-      width: 100%; padding: 16px; border-radius: 16px; background: #E5E7EB; 
-      color: var(--sub); font-weight: 800; border: none; margin-top: 30px; cursor: pointer;
-    }
-
-    /* 로딩 오버레이 */
-    .loading-overlay {
-      position: fixed; inset: 0; z-index: 3000; background: rgba(255,255,255,0.98);
-      display: none; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .spinner {
-      width: 60px; height: 60px; border: 6px solid rgba(37,99,235,0.1);
-      border-top-color: var(--primary); border-radius: 50%;
-      animation: spin 1s linear infinite; margin-bottom: 20px;
-    }
-    .loading-text { font-size: 20px; font-weight: 900; color: var(--text); animation: pulse 1s infinite; }
-    .check-icon { width: 60px; height: 60px; color: #10B981; display: none; animation: pop 0.3s; margin-bottom: 20px; }
-    @keyframes spin { to {transform: rotate(360deg);} }
-    @keyframes pulse { 0% {opacity:0.6} 100% {opacity:1} }
-    @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
-
-    /* 모달 */
-    .overlay {
-      position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px); display: none; align-items: flex-end; justify-content: center;
-    }
-    .modal {
-      width: 100%; max-width: 500px; background: #fff; border-radius: 30px 30px 0 0;
-      padding: 28px 24px 50px; animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
-      max-height: 85vh; overflow-y: auto;
-    }
-    @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
-    .grab { width: 40px; height: 4px; background: #E5E7EB; border-radius: 2px; margin: 0 auto 20px; }
-    .modal h2 { font-size: 22px; font-weight: 950; margin-bottom: 16px; color: var(--text); }
-    .modal-content { font-size: 14px; color: var(--sub); line-height: 1.6; white-space: pre-line; margin-bottom: 24px; }
-    
-    /* 핀 스타일 */
-    .pin {
-      width: 32px; height: 32px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px solid #fff; transition: 0.3s;
-    }
-    .pin > i, .pin > svg { transform: rotate(45deg); width: 16px; height: 16px; color: #fff; }
-    /* 핀 색상 */
-    .pin.stay { background: var(--c-stay); z-index: 1000 !important; width: 40px; height: 40px; }
-    .pin.food { background: var(--c-food); }
-    .pin.cafe { background: var(--c-cafe); }
-    .pin.gym { background: var(--c-gym); }
-    .pin.work { background: var(--c-work); }
-    .pin.dimmed { filter: grayscale(100%); opacity: 0.3; }
-    .pin.non-partner { opacity: 0.4; filter: grayscale(0.5); }
-
-    /* 모달 체크리스트 (C 스타일) */
-    .benefit-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; font-weight: 600; color: var(--text); }
-    .benefit-item i { color: var(--primary); margin-right: 10px; width: 18px; }
-  </style>
+[dir=rtl] .place .bn,[dir=rtl] .hist .amt,[dir=rtl] .kv dd{text-align:left}
+</style>
 </head>
-
 <body>
 
-  <div class="aurora"></div>
-  
-  <div id="loadingLayer" class="loading-overlay">
-    <div class="spinner" id="loadSpin"></div>
-    <i data-feather="check-circle" class="check-icon" id="loadCheck"></i>
-    <div class="loading-text" id="loadingText">결제 요청 중...</div>
+<header class="top">
+ <div class="wrap">
+  <a class="logo" href="#home" data-go="home" aria-label="B·PASS Living">
+   <svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="MK1"><rect width="64" height="64" fill="#fff"/><circle cx="0" cy="38" r="7" fill="#000"/><circle cx="64" cy="38" r="7" fill="#000"/></mask></defs><rect x="2" y="2" width="60" height="60" rx="17" fill="#0B3D45" mask="url(#MK1)"/><path d="M21 15h13.5c6.2 0 10 3.2 10 8.2 0 3.2-1.7 5.6-4.5 6.7 3.8 1 6.2 3.9 6.2 7.9 0 5.6-4.3 9.2-11 9.2H21z" fill="#fff"/><path d="M28 21.5v6.6h5.6c2.4 0 3.8-1.2 3.8-3.3s-1.4-3.3-3.8-3.3zM28 34v7.1h6.4c2.7 0 4.3-1.3 4.3-3.6S37.1 34 34.4 34z" fill="#0B3D45"/><circle cx="50" cy="14" r="5" fill="#FF7A59"/></svg>
+   <span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span>
+  </a>
+  <nav class="topnav" id="topnav"></nav>
+  <span class="sp"></span>
+  <button class="pill" id="langBtn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span class="lname">한국어</span></button>
+  <div class="authbox" id="authBox"></div>
+ </div>
+</header>
+
+<main>
+<!-- ================= WELCOME (landing) ================= -->
+<section class="view" id="v-welcome">
+ <div class="hero land" id="hero">
+  <div class="slide" data-s="0"><img src="img/haeundae.jpg" alt="해운대 해변과 마린시티 고층 빌딩"></div>
+  <div class="slide" data-s="1"><img src="img/gwangan.jpg" alt="광안대교와 부산 야경"></div>
+  <div class="slide" data-s="2"><img src="img/desk.jpg" alt="노트북으로 함께 일하는 사람들"></div>
+  <div class="slide bw" data-s="3"><img src="img/meeting.jpg" alt="회의실에서 노트북으로 미팅하는 사람들"></div>
+  <div class="gtop"><div class="wrap"><span class="logo light"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="MK4"><rect width="64" height="64" fill="#fff"/><circle cx="0" cy="38" r="7" fill="#000"/><circle cx="64" cy="38" r="7" fill="#000"/></mask></defs><rect x="2" y="2" width="60" height="60" rx="17" fill="#0B3D45" mask="url(#MK4)"/><path d="M21 15h13.5c6.2 0 10 3.2 10 8.2 0 3.2-1.7 5.6-4.5 6.7 3.8 1 6.2 3.9 6.2 7.9 0 5.6-4.3 9.2-11 9.2H21z" fill="#fff"/><path d="M28 21.5v6.6h5.6c2.4 0 3.8-1.2 3.8-3.3s-1.4-3.3-3.8-3.3zM28 34v7.1h6.4c2.7 0 4.3-1.3 4.3-3.6S37.1 34 34.4 34z" fill="#0B3D45"/><circle cx="50" cy="14" r="5" fill="#FF7A59"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></span><span class="sp"></span><button class="pill glassp" id="langBtn2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span class="lname2">한국어</span></button></div></div>
+  <div class="wrap hero-in">
+   <div id="caps"></div>
+   <div class="gate-cta">
+    <button class="btn white lg" id="gLogin"></button>
+    <button class="btn coral lg" id="gSignup"></button>
+   </div>
+   <button class="guest" id="gGuest"></button>
   </div>
+  <div class="dots"><div class="wrap" id="dots"></div></div>
+ </div>
+</section>
 
-  <div class="app">
-    <header>
-      <div class="h-top">
-        <div class="brand" data-i18n="brand">WORK SMART, STAY BUSAN</div>
-        <div class="lang-btn" onclick="openModal('modal-lang')">
-           <i data-feather="globe" style="width:14px;"></i> <span id="curLang">KR</span>
-        </div>
-      </div>
-      <div class="h-sub" data-i18n="slogan">비즈니스 트립의 새로운 기준, B·PASS Living</div>
-    </header>
-
-    <div id="view-home" class="view active">
-      
-      <div class="login-box" onclick="handleLoginBox()">
-        <div class="lb-label" id="homeLabel" data-i18n="login_label">내 패스 상태</div>
-        <div class="lb-title" id="homeTitle">
-          <span data-i18n="login_req">로그인 후 확인하세요</span> <i data-feather="chevron-right"></i>
-        </div>
-      </div>
-
-      <div class="quick-list">
-        <div class="q-item" onclick="openInfo('taxi')">
-          <div class="q-icon">
-            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
-          </div>
-          <span class="q-text" data-i18n="q_taxi">택시</span>
-        </div>
-        <div class="q-item" onclick="openInfo('work')">
-          <div class="q-icon"><i data-feather="briefcase"></i></div>
-          <span class="q-text" data-i18n="q_work">워크</span>
-        </div>
-        <div class="q-item" onclick="openInfo('gym')">
-          <div class="q-icon">
-             <svg class="svg-icon" viewBox="0 0 24 24"><path d="M6.5 10l-.8-2.3a2 2 0 0 0-2.6-1.1l-.3.1a2 2 0 0 0-1.1 2.6L4.2 17a2 2 0 0 0 2.6 1.1l.3-.1a2 2 0 0 0 1.1-2.6L7.5 13M17.5 10l.8-2.3a2 2 0 0 1 2.6-1.1l.3.1a2 2 0 0 1 1.1 2.6L19.8 17a2 2 0 0 1-2.6 1.1l-.3-.1a2 2 0 0 1-1.1-2.6L16.5 13M6.5 11.5h11"/></svg>
-          </div>
-          <span class="q-text" data-i18n="q_gym">헬스</span>
-        </div>
-        <div class="q-item" onclick="openInfo('cafe')">
-          <div class="q-icon"><i data-feather="coffee"></i></div>
-          <span class="q-text" data-i18n="q_cafe">카페</span>
-        </div>
-        <div class="q-item" onclick="openInfo('food')">
-          <div class="q-icon">
-            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M16 2v14a4 4 0 0 1-4 4H5"/><path d="M12 2v6"/><path d="M8 2v6"/><path d="M4 2v6a4 4 0 0 0 4 4"/></svg>
-          </div>
-          <span class="q-text" data-i18n="q_food">음식점</span>
-        </div>
-      </div>
-
-      <h3 style="margin: 30px 0 16px; font-size: 18px; font-weight: 800;" data-i18n="pass_title">패스 구매하기</h3>
-
-      <div class="pass-wrap">
-        <div class="pass-card">
-          <div class="pc-tag">SHORT STAY</div>
-          <div class="pc-title">Living Day (3일)</div>
-          <div class="pc-desc" data-i18n="p3_desc">짧은 출장과 미팅에 최적화된 패스</div>
-          <div class="pc-price">
-            <span class="pc-old">79,000</span>
-            <span class="pc-new">49,000원</span>
-          </div>
-          <div class="pc-btns">
-            <button class="btn-glass" onclick="openPassDetail('3')" data-i18n="btn_look">상세정보</button>
-            <button class="btn-solid" onclick="openPay('3')" data-i18n="btn_buy">구매하기</button>
-          </div>
-        </div>
-        <div class="pass-card">
-          <div class="pc-tag">LONG STAY</div>
-          <div class="pc-title">Living Week (7일)</div>
-          <div class="pc-desc" data-i18n="p7_desc">일주일간 부산 워케이션을 위한 올인원 패스</div>
-          <div class="pc-price">
-            <span class="pc-old">129,000</span>
-            <span class="pc-new">99,000원</span>
-          </div>
-          <div class="pc-btns">
-            <button class="btn-glass" onclick="openPassDetail('7')" data-i18n="btn_look">상세정보</button>
-            <button class="btn-solid" onclick="openPay('7')" data-i18n="btn_buy">구매하기</button>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:40px; text-align:center;">
-        <div style="display:flex; justify-content:center; gap:12px; margin-bottom:12px;">
-          <span style="font-size:11px; font-weight:700; color:var(--sub); cursor:pointer;" onclick="openTerms('terms')" data-i18n="f_terms">이용약관</span>
-          <span style="font-size:11px; font-weight:700; color:var(--sub); cursor:pointer;" onclick="openTerms('privacy')" data-i18n="f_priv">개인정보처리방침</span>
-          <span style="font-size:11px; font-weight:700; color:var(--sub); cursor:pointer;" onclick="openTerms('refund')" data-i18n="f_ref">유의사항/환불</span>
-          <span style="font-size:11px; font-weight:700; color:var(--sub); cursor:pointer;" onclick="openTerms('contact')" data-i18n="f_contact">문의하기</span>
-        </div>
-        <div style="font-size:10px; color:#bbb;">
-          * 본 화면은 시연/프로토타입 목적의 UI이며,<br>실제 제휴/운영 정보는 추후 적용될 수 있습니다.
-        </div>
-      </div>
-    </div>
-
-    <div id="view-pass" class="view">
-      <h2 style="font-size:24px; font-weight:950; margin-bottom:20px;">Digital Pass</h2>
-      
-      <div class="cert-card" id="certCard">
-        <div class="cc-top">
-          <div>
-            <div class="cc-label">NAME</div>
-            <div class="cc-val" id="certName">GUEST</div>
-          </div>
-          <div class="cc-status" id="certStatus">INACTIVE</div>
-        </div>
-        <div style="margin-bottom:20px;">
-          <div class="cc-label">PASS ID</div>
-          <div class="cc-val" id="certId" style="font-family:monospace;">-</div>
-        </div>
-        <div class="cc-date">
-          만료일: <span id="certDate">-</span>
-        </div>
-      </div>
-
-      <div style="font-size:13px; color:var(--sub); text-align:center; line-height:1.6;" id="certMsg">
-        로그인 및 구매 후 활성화됩니다.<br>
-        제휴처에서 이 화면을 보여주세요.
-      </div>
-    </div>
-
-    <div id="view-map" class="view">
-      <div class="map-ui">
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
-          <div class="map-mode">
-            <div class="mm-btn active" id="mode-cat" onclick="setMapMode('cat')">카테고리별</div>
-            <div class="mm-btn" id="mode-stay" onclick="setMapMode('stay')">숙소 주변</div>
-          </div>
-        </div>
-        
-        <div class="search-box">
-          <i data-feather="search" style="width:16px; color:var(--sub);"></i>
-          <input class="sb-input" id="mapSearchInput" placeholder="장소명 검색" onkeyup="if(event.key==='Enter') execSearch()">
-          <button class="sb-btn" onclick="execSearch()">검색</button>
-        </div>
-
-        <div class="cat-row" id="mapFilters">
-          <div class="cat-chip active" data-cat="all" onclick="filterMap('all', this)">전체</div>
-          <div class="cat-chip" data-cat="stay" onclick="filterMap('stay', this)">숙소</div>
-          <div class="cat-chip" data-cat="food" onclick="filterMap('food', this)">음식점</div>
-          <div class="cat-chip" data-cat="cafe" onclick="filterMap('cafe', this)">카페</div>
-          <div class="cat-chip" data-cat="gym" onclick="filterMap('gym', this)">헬스</div>
-          <div class="cat-chip" data-cat="work" onclick="filterMap('work', this)">워크스페이스</div>
-        </div>
-      </div>
-      <div id="map"></div>
-    </div>
-
-    <div id="view-rec" class="view">
-      <div class="rec-header">
-        <h2 style="font-size:24px; font-weight:950;">부산을 제대로 느껴 보세요!</h2>
-      </div>
-
-      <div class="rec-tabs">
-        <button class="rt-btn active" onclick="loadRec('stay', this)">숙소</button>
-        <button class="rt-btn" onclick="loadRec('food', this)">음식점</button>
-        <button class="rt-btn" onclick="loadRec('cafe', this)">카페</button>
-        <button class="rt-btn" onclick="loadRec('gym', this)">헬스장</button>
-        <button class="rt-btn" onclick="loadRec('work', this)">워크스페이스</button>
-      </div>
-
-      <div class="rec-list" id="recList"></div>
-    </div>
-
-    <div id="view-my" class="view">
-      <h2 style="font-size:24px; font-weight:950; margin-bottom:20px;">My Lounge</h2>
-
-      <div class="my-tabs">
-        <div class="mt-item active" onclick="switchMy(0)">내 패스</div>
-        <div class="mt-item" onclick="switchMy(1)">바우처</div>
-        <div class="mt-item" onclick="switchMy(2)">이용내역</div>
-        <div class="mt-item" onclick="switchMy(3)">정산</div>
-        <div class="mt-item" onclick="switchMy(4)">정보</div>
-      </div>
-
-      <div class="my-sec" id="ms-0">
-        <div class="my-pass-bright">
-          <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-            <div>
-              <div style="font-size:11px; opacity:0.8; margin-bottom:4px;">MEMBERSHIP</div>
-              <div style="font-size:22px; font-weight:900;" id="mp-title">구매 내역 없음</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.2); padding:6px 12px; border-radius:20px; height:fit-content; font-size:11px; font-weight:800;" id="mp-status">INACTIVE</div>
-          </div>
-          <div style="font-size:13px; opacity:0.9;">
-            <span id="mp-time">패스 구매 후 이용 가능합니다.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-sec" id="ms-1" style="display:none;">
-        <div id="voucherList">
-          <div style="text-align:center; padding:40px; color:#aaa; font-size:14px;">구매한 패스가 없습니다.</div>
-        </div>
-      </div>
-
-      <div class="my-sec" id="ms-2" style="display:none;">
-        <div class="v-item"><span style="color:var(--sub); font-size:14px;">내역이 없습니다.</span></div>
-      </div>
-
-      <div class="my-sec" id="ms-3" style="display:none;">
-        <div class="v-item" onclick="downloadReceipt()">
-          <span style="font-weight:700;">통합 영수증 발급</span>
-          <i data-feather="download"></i>
-        </div>
-        <div class="v-item" onclick="promptEmail()">
-          <span style="font-weight:700;">내역서 이메일 전송</span>
-          <i data-feather="mail"></i>
-        </div>
-      </div>
-
-      <div class="my-sec" id="ms-4" style="display:none;">
-        <div style="background:rgba(255,255,255,0.5); backdrop-filter:blur(10px); border-radius:16px;">
-          <div style="padding:18px; border-bottom:1px solid rgba(0,0,0,0.05); font-weight:700;" onclick="openTerms('contact')">고객센터 / 문의</div>
-          <div style="padding:18px; border-bottom:1px solid rgba(0,0,0,0.05); font-weight:700;" onclick="openTerms('terms')">이용약관</div>
-          <div style="padding:18px; border-bottom:1px solid rgba(0,0,0,0.05); font-weight:700;" onclick="openTerms('privacy')">개인정보처리방침</div>
-          <div style="padding:18px; font-weight:700;" onclick="openTerms('refund')">환불/취소 정책</div>
-        </div>
-      </div>
-
-      <button class="logout-btn" id="logoutBtn" onclick="handleLogout()">로그아웃</button>
-    </div>
-
-    <div class="nav-bar">
-      <div class="nav-item active" onclick="goView('home', this)"><i data-feather="home"></i><span>홈</span></div>
-      <div class="nav-item" onclick="goView('pass', this)"><i data-feather="credit-card"></i><span>패스</span></div>
-      <div class="nav-item" onclick="goView('map', this)"><i data-feather="map"></i><span>지도</span></div>
-      <div class="nav-item" onclick="goView('rec', this)"><i data-feather="star"></i><span>추천</span></div>
-      <div class="nav-item" onclick="goView('my', this)"><i data-feather="user"></i><span>MY</span></div>
-    </div>
-
-    <div id="modal-info" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2 id="mi-title">Title</h2>
-        <div class="modal-content" id="mi-desc">Desc</div>
-        <button class="btn-solid" style="width:100%" onclick="closeModal(document.getElementById('modal-info'))">확인</button>
-      </div>
-    </div>
-
-    <div id="modal-pass-detail" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2 id="pd-title">Living Week</h2>
-        <div class="md-list" style="margin-bottom:24px;">
-          <div class="benefit-item"><i data-feather="check"></i> <div>워크스페이스: 4시간권 <span id="md-work">(2매)</span></div></div>
-          <div class="benefit-item"><i data-feather="check"></i> <div>헬스장: 일일권 <span id="md-gym">(2매)</span></div></div>
-          <div class="benefit-item"><i data-feather="check"></i> <div>교통: 카카오T 핀번호 지급</div></div>
-          <div class="benefit-item"><i data-feather="check"></i> <div>F&B: 카페/맛집 20% 현장 할인</div></div>
-        </div>
-        <div style="background:#f5f5f5; padding:15px; border-radius:12px; margin-bottom:20px;">
-          <div style="font-weight:700; margin-bottom:4px; font-size:13px;">주요 이용 가능 제휴처</div>
-          <div style="font-size:12px; color:var(--sub); line-height:1.4;">
-            위워크 BIFC, 카페051 센텀점, 짐박스 센텀, 신라스테이 해운대, 해운대암소갈비 등
-          </div>
-        </div>
-        <button class="btn-solid" style="width:100%" onclick="closeModal(document.getElementById('modal-pass-detail'))">닫기</button>
-      </div>
-    </div>
-
-    <div id="modal-pay" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2>결제 수단 선택</h2>
-        <div style="font-size:24px; font-weight:900; color:var(--primary); margin-bottom:24px;" id="pay-amt">0원</div>
-        <div style="display:grid; gap:10px;">
-          <button class="btn-outline" style="background:#FEE500; border:none;" onclick="processPay()">카카오페이</button>
-          <button class="btn-outline" style="background:#03C75A; color:#fff; border:none;" onclick="processPay()">네이버페이</button>
-          <button class="btn-outline" onclick="processPay()">신용/체크카드</button>
-          <button class="btn-outline" onclick="processPay()">휴대폰결제</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal-rec-detail" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2 id="rd-title">장소명</h2>
-        <img id="rd-img" src="" style="width:100%; height:200px; border-radius:16px; object-fit:cover; margin-bottom:16px;">
-        <div class="modal-content" id="rd-desc">설명</div>
-        <button class="btn-solid" style="width:100%" onclick="closeModal(document.getElementById('modal-rec-detail'))">닫기</button>
-      </div>
-    </div>
-
-    <!-- [수정] 바우처 사용 모달 문구 변경 -->
-    <div id="modal-voucher-code" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2 style="text-align:center;">바우처 사용</h2>
-        <div style="text-align:center; padding:30px 0;">
-          <div style="color:var(--sub); font-size:14px; margin-bottom:10px;">카카오T 앱에서 PIN을 등록하세요</div>
-          <div style="font-size:30px; font-weight:900; letter-spacing:2px; color:var(--primary);">A1B2-C3D4</div>
-        </div>
-        <button class="btn-solid" style="width:100%" onclick="closeModal(document.getElementById('modal-voucher-code'))">사용 완료</button>
-      </div>
-    </div>
-
-    <div id="modal-lang" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div><h2>Language</h2>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <button class="btn-outline" onclick="setLang('KR')">🇰🇷 한국어</button>
-          <button class="btn-outline" onclick="setLang('EN')">🇺🇸 English</button>
-          <button class="btn-outline" onclick="setLang('CN')">🇨🇳 中文</button>
-          <button class="btn-outline" onclick="setLang('JP')">🇯🇵 日本語</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal-terms" class="overlay" onclick="closeModal(this)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <div class="grab"></div>
-        <h2 id="mt-title">제목</h2>
-        <div class="modal-content" id="mt-body">내용</div>
-      </div>
-    </div>
-
+<!-- ================= HOME ================= -->
+<section class="view" id="v-home">
+ <div class="hello">
+  <div class="wrap">
+   <p class="hi" id="hiT"></p>
+   <h1 id="hiH"></h1>
+   <div class="status" id="homeStatus">
+    <div class="card"><span class="dot"></span><div class="meta"><b id="hsTitle"></b><span id="hsSub"></span></div><button class="btn soft sm" id="hsBtn"></button></div>
+   </div>
+   <div class="quick" id="quick"></div>
   </div>
+ </div>
 
-    <script>
-    feather.replace();
+ <div class="sec">
+  <div class="wrap">
+   <div class="sec-head"><h2 id="featT"></h2><p id="featP"></p></div>
+   <div class="grid g5" id="feats"></div>
+  </div>
+ </div>
 
-    /* --- STATE --- */
-    let user = { loggedIn: false, hasPass: false, passDays: 0 };
-    let map = null, markers = [], mapMode = 'cat';
-    let curLang = 'KR';
-    let stayCenter = null;      // [추가] 선택한 숙소 좌표
-    let selectedStay = null;    // [추가] 선택한 숙소 객체
-    let stayCircle = null;      // [추가] 2km 원(표시용)
+ <div class="sec sea">
+  <div class="wrap">
+   <div class="sec-head"><h2 id="howT"></h2><p id="howP"></p></div>
+   <div class="steps" id="steps"></div>
+  </div>
+ </div>
 
+ <div class="sec white">
+  <div class="wrap">
+   <div class="sec-head"><h2 id="priceT"></h2><p id="priceP"></p></div>
+   <div class="grid g2" id="homePasses"></div>
+   <p class="note" style="margin-top:16px" id="priceNote"></p>
+  </div>
+ </div>
 
-    /* --- I18N DATA --- */
-    const i18n = {
-      KR: { brand:"WORK SMART, STAY BUSAN", sub:"비즈니스 트립의 새로운 기준, B·PASS Living", login_plz:"로그인 후 확인하세요", pass_need:"패스 구매가 필요합니다", my_pass:"내 패스 상태", welcome:"환영합니다", buy_title:"패스 구매하기", q_taxi:"택시", q_work:"워크", q_gym:"헬스", q_cafe:"카페", q_food:"음식점", short:"SHORT STAY", long:"LONG STAY", p3_desc:"짧은 출장과 미팅에 최적화된 패스", p7_desc:"일주일간 부산 워케이션을 위한 올인원 패스", look:"상세정보", buy:"구매하기" },
-      EN: { brand:"WORK SMART, STAY BUSAN", sub:"New Standard for Business Trips", login_plz:"Please Login", pass_need:"Pass Required", my_pass:"My Pass Status", welcome:"Welcome", buy_title:"Buy Pass", q_taxi:"Taxi", q_work:"Work", q_gym:"Gym", q_cafe:"Cafe", q_food:"Food", short:"SHORT STAY", long:"LONG STAY", p3_desc:"Best for short business trips", p7_desc:"All-in-one pass for week-long stay", look:"Details", buy:"Buy" },
-      CN: { brand:"工作与生活, 釜山", sub:"商务旅行的新标准", login_plz:"请登录", pass_need:"需要购买通行证", my_pass:"我的通行证", welcome:"欢迎", buy_title:"购买通行证", q_taxi:"出租车", q_work:"办公", q_gym:"健身", q_cafe:"咖啡", q_food:"美食", short:"短期停留", long:"长期停留", p3_desc:"适合短期出差", p7_desc:"一周工作度假全能通行证", look:"详情", buy:"购买" },
-      JP: { brand:"ワークスマート, 釜山ステイ", sub:"出張の新しいスタンダード", login_plz:"ログインしてください", pass_need:"パスの購入が必要です", my_pass:"パスの状態", welcome:"ようこそ", buy_title:"パス購入", q_taxi:"タクシー", q_work:"ワーク", q_gym:"ジム", q_cafe:"カフェ", q_food:"グルメ", short:"短期滞在", long:"長期滞在", p3_desc:"短期出張に最適", p7_desc:"1週間のワーケーション用", look:"詳細", buy:"購入" }
-    };
+ <div class="sec">
+  <div class="wrap">
+   <div class="sec-head"><h2 id="routeT"></h2><p id="routeP"></p></div>
+   <div class="grid g3" id="homeRoutes"></div>
+  </div>
+ </div>
 
-    /* --- MAP DATA --- */
-    const partners = [];
-    const areas = [
-      {lat:35.157, lng:129.059},
-      {lat:35.097, lng:129.034},
-      {lat:35.153, lng:129.118},
-      {lat:35.169, lng:129.136}
-    ];
-    
-    const cats = ['food','cafe','gym','work','stay'];
-    const names = {
-      food:['개미집','초량밀면','해운대암소갈비','이재모피자','수변최고국밥','금수복국','속시원한대구탕','옵스','고래사어묵','쌍둥이국밥'],
-      cafe:['카페051','스타벅스','블랙업커피','모모스커피','웨이브온','비비비당','랑데자뷰','블루샥','텐퍼센트','컴포즈','이디야','투썸플레이스','할리스','폴바셋','커피빈'],
-      gym:['짐박스','제임스짐','프라임휘트니스','마린시티짐','센텀헬스','해운대크로스핏','요가룩스','필라테스365','바디채널','스포애니','멋짐','피트니스101','버닝짐','히트짐','비타민휘트니스'],
-      work:['위워크','패스트파이브','패스파인더','0.9M','카페위드','무신사스튜디오','KT&G상상마당','부산콘텐츠코리아','부산창업카페','센텀비즈','워크플렉스','리저스','스파크플러스','가라지','마이워크스페이스'],
-      stay:['신라스테이','그랜드조선','파라다이스','웨스틴조선','파크하얏트','롯데호텔','아바니','라발스','페어필드','아난티','시그니엘','힐튼','하운드호텔','브라운도트','토요코인']
-    };
+ <div class="sec white">
+  <div class="wrap">
+   <div class="sec-head"><h2 id="ptT"></h2><p id="ptP"></p></div>
+   <div class="grid g2" id="homePlaces" style="gap:10px"></div>
+   <div style="margin-top:20px"><button class="btn line" data-go="map" id="ptMore"></button></div>
+  </div>
+ </div>
 
-    for(let i=0; i<100; i++) {
-      const c = cats[i % 5];
-      const n = names[c][i % 10];
-      const area = areas[i % 4];
-      partners.push({
-        id: i, cat: c, name: n,
-        lat: area.lat + (Math.random()-0.5)*0.03,
-        lng: area.lng + (Math.random()-0.5)*0.03,
-        partner: Math.random() > 0.4,
-        img: `https://picsum.photos/200/200?random=${i}`
-      });
-    }
+ <div class="sec">
+  <div class="wrap">
+   <div class="grid g2" style="gap:40px;align-items:start">
+    <div>
+     <div class="sec-head"><h2 id="cmpT"></h2><p id="cmpP"></p></div>
+     <div class="card scroll" style="padding:8px 16px"><table><thead><tr><th id="cmpH0"></th><th class="c" id="cmpH1"></th><th class="c us">B·PASS Living</th></tr></thead><tbody id="cmpBody"></tbody></table></div>
+    </div>
+    <div>
+     <div class="sec-head"><h2 id="faqT"></h2></div>
+     <div id="faqList"></div>
+    </div>
+   </div>
+  </div>
+ </div>
 
-    const recData = {
-      stay: partners.filter(p=>p.cat==='stay').slice(0,10),
-      food: partners.filter(p=>p.cat==='food').slice(0,10),
-      cafe: partners.filter(p=>p.cat==='cafe').slice(0,10),
-      gym: partners.filter(p=>p.cat==='gym').slice(0,10),
-      work: partners.filter(p=>p.cat==='work').slice(0,10)
-    };
+ <div class="sec" style="padding-top:0">
+  <div class="wrap">
+   <div class="cta"><div><h2 id="ctaT"></h2><p id="ctaP"></p></div><div class="hero-cta" style="margin:0"><button class="btn white" data-go="pass" id="ctaB1"></button><button class="btn glass" id="ctaB2"></button></div></div>
+  </div>
+ </div>
+</section>
 
-    /* --- INIT --- */
-    window.onload = () => {
-      loadRec('stay', document.querySelector('.rt-btn.active'));
-      updateHomeUI();
-    };
+<!-- ================= PASS ================= -->
+<section class="view" id="v-pass">
+ <div class="wrap phead"><h1 id="passH"></h1><p id="passHP"></p></div>
+ <div class="wrap sec" style="padding-top:28px">
+  <h2 class="blockt" id="buyT"></h2>
+  <div class="grid g2" id="passList" style="gap:22px"></div>
+  <p class="note" id="buyNote" style="margin-top:14px"></p>
+ </div>
+ <div class="sec white">
+  <div class="wrap">
+   <h2 class="blockt" id="dpT"></h2>
+   <div class="grid g2" style="gap:22px;align-items:start">
+    <div id="dpass"></div>
+    <div id="dpVouchers"></div>
+   </div>
+  </div>
+ </div>
+</section>
 
-    /* --- NAVIGATION --- */
-    function goView(id, el) {
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      document.getElementById('view-'+id).classList.add('active');
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      el.classList.add('active');
-      if(id==='map') setTimeout(initMap, 200);
-      feather.replace();
-    }
+<!-- ================= MAP ================= -->
+<section class="view" id="v-map">
+ <div class="wrap phead"><h1 id="mapH"></h1><p id="mapHP"></p></div>
+ <div class="wrap sec" style="padding-top:24px">
+  <div class="maplay">
+   <div class="mapbox"><div id="map" role="region" aria-label="map"></div><div class="mapnote" id="mapNote"></div></div>
+   <div>
+    <div class="ctrls">
+     <div class="seg" id="mapMode"><button data-m="cat"></button><button data-m="near"></button></div>
+     <div class="field" id="nearPick" hidden style="margin:0"><label for="stayPick" id="stayL"></label><select id="stayPick"></select></div>
+     <div class="search"><input id="q" type="search" autocomplete="off"><button class="btn" id="qBtn"></button></div>
+     <div class="chips" id="filters"></div>
+    </div>
+    <div class="plist" id="placeList"></div>
+   </div>
+  </div>
+ </div>
+</section>
 
-    /* --- HOME LOGIC --- */
-    function handleLoginBox() {
-      if(!user.loggedIn) {
-        if(confirm("로그인 페이지로 이동합니다.(시연용)")) {
-          user.loggedIn = true;
-          alert("로그인되었습니다.");
-          updateHomeUI();
-          updatePassUI();
-        }
-      } else if(!user.hasPass) {
-        alert("아래에서 패스를 구매해주세요.");
-        document.querySelector('.pass-wrap').scrollIntoView({behavior:'smooth'});
-      } else {
-        goView('pass', document.querySelectorAll('.nav-item')[1]);
-      }
-    }
+<!-- ================= PICKS ================= -->
+<section class="view" id="v-picks">
+ <div class="wrap phead"><h1 id="pkH"></h1><p id="pkHP"></p></div>
+ <div class="wrap sec" style="padding-top:24px"><div class="grid g2" id="routes" style="gap:22px"></div><p class="note" style="margin-top:16px" id="pkNote"></p></div>
+</section>
 
-    function updateHomeUI() {
-      // ✅ [추가] 로그인 상태에만 로그아웃 버튼 보이기
-const loBtn = document.getElementById('logoutBtn');
-if(loBtn){
-  loBtn.style.display = user.loggedIn ? 'block' : 'none';
-}
+<!-- ================= MY ================= -->
+<section class="view" id="v-my">
+ <div class="wrap phead"><h1>My Lounge</h1><p id="myHello"></p></div>
+ <div class="wrap"><div id="myProfile"></div></div>
+ <div class="wrap" style="padding-bottom:72px">
+  <div class="tabs" id="myTabs"></div>
+  <div id="myBody"></div>
+ </div>
+</section>
+</main>
 
-      const t = document.getElementById('homeTitle');
-      const l = document.getElementById('homeLabel');
-      const txt = i18n[curLang];
-      
-      if(user.loggedIn) {
-        l.innerText = "홍길동님, " + txt.welcome;
-        if(user.hasPass) {
-          t.innerHTML = `<span style="color:#10B981">ACTIVE PASS</span> <i data-feather="check-circle" style="color:#2563EB"></i>`;
-        } else {
-          t.innerHTML = `${txt.pass_need} <i data-feather="shopping-bag"></i>`;
-        }
-      } else {
-        l.innerText = txt.my_pass;
-        t.innerHTML = `${txt.login_plz} <i data-feather="chevron-right"></i>`;
-      }
-      feather.replace();
-    }
+<footer>
+ <div class="wrap">
+  <div class="grid">
+   <div>
+    <div class="logo" style="margin-bottom:14px"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="MK2"><rect width="64" height="64" fill="#fff"/><circle cx="0" cy="38" r="7" fill="#000"/><circle cx="64" cy="38" r="7" fill="#000"/></mask></defs><rect x="2" y="2" width="60" height="60" rx="17" fill="#0B3D45" mask="url(#MK2)"/><path d="M21 15h13.5c6.2 0 10 3.2 10 8.2 0 3.2-1.7 5.6-4.5 6.7 3.8 1 6.2 3.9 6.2 7.9 0 5.6-4.3 9.2-11 9.2H21z" fill="#fff"/><path d="M28 21.5v6.6h5.6c2.4 0 3.8-1.2 3.8-3.3s-1.4-3.3-3.8-3.3zM28 34v7.1h6.4c2.7 0 4.3-1.3 4.3-3.6S37.1 34 34.4 34z" fill="#0B3D45"/><circle cx="50" cy="14" r="5" fill="#FF7A59"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></div>
+    <p id="ftAbout" style="max-width:32ch"></p>
+   </div>
+   <div><h4 id="ftH1"></h4><div id="ftSvc"></div></div>
+   <div><h4 id="ftH2"></h4><div id="ftSup"></div></div>
+  </div>
+  <div class="legal"><p>© 2026 B·PASS Living · Team 디역비</p><p id="ftProto"></p></div>
+ </div>
+</footer>
 
-    function openInfo(type) {
-      const data = {
-        taxi: {t:"택시 이용 안내", d:"패스 구매 시 PIN이 지급됩니다.\nMY > 바우처에서 확인 후,\n카카오T 앱에 등록하여 즉시 사용하세요."},
-        work: {t:"워크스페이스 이용", d:"4시간 이용권 기준입니다.\n3일권은 2매, 7일권은 4매 지급됩니다.\n이용은 MY > 바우처에서 확인 후 사용 버튼을 눌러서 진행해 주세요."},
-        gym: {t:"헬스장 이용", d:"일일권으로 지급됩니다.\n3일권은 2매, 7일권은 4매 지급됩니다.\n이용은 MY > 바우처에서 확인 후 사용 버튼을 눌러서 진행해 주세요."},
-        cafe: {t:"카페 할인", d:"지도에 표시된 제휴 매장을 방문하여\n결제 전 패스 화면을 보여주시면 즉시 할인됩니다."},
-        food: {t:"음식점 할인", d:"지도에 표시된 제휴 매장을 방문하여\n결제 전 패스 화면을 보여주시면 즉시 할인됩니다."}
-      };
-      document.getElementById('mi-title').innerText = data[type].t;
-      document.getElementById('mi-desc').innerText = data[type].d;
-      openModal('modal-info');
-    }
+<nav class="bottom" id="bnav"></nav>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    /* --- PASS PURCHASE --- */
-    function openPassDetail(days) {
-      const is3 = days === '3';
-      const cnt = is3 ? '(2매)' : '(4매)';
-      document.getElementById('pd-title').innerText = is3 ? 'Living Day (3일)' : 'Living Week (7일)';
-      document.getElementById('md-work').innerText = cnt;
-      document.getElementById('md-gym').innerText = cnt;
-      feather.replace();
-      openModal('modal-pass-detail');
-    }
-
-    let tempPayDays = 0;
-    function openPay(days) {
-      if(!user.loggedIn) return alert("로그인 후 구매 가능합니다.");
-      tempPayDays = parseInt(days);
-      const pr = days==='3' ? "49,000원" : "99,000원";
-      document.getElementById('pay-amt').innerText = pr;
-      openModal('modal-pay');
-    }
-
-    function processPay() {
-      if(confirm("결제를 진행하시겠습니까?")) {
-        closeModal(document.getElementById('modal-pay'));
-        document.getElementById('loadingLayer').style.display = 'flex';
-        
-        const txt = document.getElementById('loadingText');
-        const check = document.getElementById('loadCheck');
-        const spin = document.getElementById('loadSpin');
-        
-        check.style.display = 'none'; spin.style.display = 'block';
-        txt.innerText = "결제 요청 중...";
-        
-        setTimeout(() => {
-          txt.innerText = "보안 연결 중...";
-          setTimeout(() => {
-            txt.innerText = "카드사 승인 중...";
-            setTimeout(() => {
-              spin.style.display = 'none';
-              check.style.display = 'block';
-              txt.innerText = "결제 완료!";
-              feather.replace();
-              setTimeout(() => {
-                document.getElementById('loadingLayer').style.display = 'none';
-                user.hasPass = true;
-                user.passDays = tempPayDays;
-                updateHomeUI();
-                updatePassUI();
-                updateVoucherUI();
-                alert("결제가 완료되었습니다! 패스가 활성화됩니다.");
-                goView('pass', document.querySelectorAll('.nav-item')[1]);
-              }, 1000);
-            }, 1000);
-          }, 1000);
-        }, 1000);
-      }
-    }
-
-    /* --- PASS UI --- */
-    function updatePassUI() {
-      if(user.hasPass) {
-        const end = new Date();
-        end.setDate(end.getDate() + user.passDays);
-        const diff = Math.ceil((end - new Date()) / (1000*60*60*24));
-        const str = end.toLocaleDateString();
-
-        document.getElementById('certName').innerText = "홍길동";
-        document.getElementById('certStatus').innerText = "ACTIVE";
-        document.getElementById('certId').innerText = "BP-" + Math.floor(Math.random()*100000);
-        document.getElementById('certDate').innerText = `${str} (${diff}일 남음)`;
-        document.getElementById('certMsg').innerText = "제휴처에서 위 화면을 제시하면\n즉시 혜택이 적용됩니다.";
-
-        document.getElementById('mp-title').innerText = user.passDays===3 ? 'Living Day (3일)' : 'Living Week (7일)';
-        document.getElementById('mp-status').innerText = "ACTIVE";
-        document.getElementById('mp-time').innerText = `${str} (${diff}일 남음)`;
-      }
-    }
-
-    /* --- VOUCHER UI --- */
-    function updateVoucherUI() {
-      const cnt = user.passDays === 3 ? 2 : 4;
-      const list = document.getElementById('voucherList');
-      
-      list.innerHTML = `
-        <div class="v-item">
-          <div>
-            <div style="font-weight:800; font-size:16px;">카카오T PIN</div>
-            <div style="font-size:13px; color:#888;">발급 완료</div>
-          </div>
-          <button class="v-btn" onclick="openVoucher()">사용</button>
-        </div>
-        <div class="v-item">
-          <div>
-            <div style="font-weight:800; font-size:16px;">공유오피스 4시간권</div>
-            <div style="font-size:13px; color:#888;">${cnt}매 보유</div>
-          </div>
-          <button class="v-btn" onclick="openVoucher()">사용</button>
-        </div>
-        <div class="v-item">
-          <div>
-            <div style="font-weight:800; font-size:16px;">헬스장 일일권</div>
-            <div style="font-size:13px; color:#888;">${cnt}매 보유</div>
-          </div>
-          <button class="v-btn" onclick="openVoucher()">사용</button>
-        </div>
-      `;
-    }
-
-    function openVoucher() { openModal('modal-voucher-code'); }
-    function downloadReceipt() { if(!user.loggedIn || !user.hasPass) return alert("패스 구매 후 이용 가능"); alert("다운로드 시작"); }
-    function promptEmail() { if(!user.loggedIn || !user.hasPass) return alert("패스 구매 후 이용 가능"); prompt("이메일 주소 입력:"); }
-
-    // ✅ [추가] 두 좌표 사이 거리(km)
-    function distKm(lat1, lng1, lat2, lng2) {
-      const R = 6371;
-      const dLat = (lat2 - lat1) * Math.PI / 180;
-      const dLng = (lng2 - lng1) * Math.PI / 180;
-      const a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLng/2) * Math.sin(dLng/2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      return R * c;
-    }
-
-    /* --- MAP --- */
-    function initMap() {
-      if(map) { map.invalidateSize(); return; }
-      map = L.map('map', { zoomControl: false }).setView([35.157, 129.059], 12);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
-      renderMarkers();
-    }
-
-    function setMapMode(mode) {
-      mapMode = mode;
-      // ✅ [추가] stay 모드로 다시 들어가면 숙소 선택 초기화
-  if(mode === 'stay'){
-    stayCenter = null;
-    selectedStay = null;
-    if(stayCircle){ map.removeLayer(stayCircle); stayCircle = null; }
-    const btn = document.getElementById('btnResetStay');
-    if(btn) btn.style.display = 'none';
-  }
-      document.getElementById('mode-cat').classList.toggle('active', mode==='cat');
-      document.getElementById('mode-stay').classList.toggle('active', mode==='stay');
-      document.getElementById('mapFilters').style.display = mode==='cat' ? 'flex' : 'none';
-      renderMarkers();
-    }
-
-    function filterMap(cat, el) {
-      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-      renderMarkers(cat);
-    }
-
-    function renderMarkers(filter = 'all') {
-      markers.forEach(m => map.removeLayer(m));
-      markers = [];
-      
-      let targets = partners;
-      if(mapMode === 'stay') {
-  // 숙소 선택 전: 숙소만 표시
-  if(!stayCenter){
-    targets = partners.filter(p => p.cat === 'stay');
-  } 
-  // 숙소 선택 후: 해당 숙소 + 반경 2km 제휴처(숙소 제외) 표시
-  else {
-    targets = partners.filter(p =>
-      p.partner &&
-      p.cat !== 'stay' &&
-      distKm(stayCenter.lat, stayCenter.lng, p.lat, p.lng) <= 2
-    );
-    // 선택한 숙소도 같이 보이게 맨 앞에
-    if(selectedStay) targets.unshift(selectedStay);
-  }
-} else {
-  const activeChip = document.querySelector('.cat-chip.active');
-  const activeCat = activeChip ? activeChip.dataset.cat : 'all';
-  if(activeCat !== 'all') targets = partners.filter(p => p.cat === activeCat);
-}
-
-
-      targets.forEach(p => {
-        const typeClass = p.cat + (p.partner ? '' : ' non-partner');
-        let iconSvg = '';
-        if(p.cat==='stay') iconSvg = '<i data-feather="home"></i>';
-        else if(p.cat==='food') iconSvg = '<svg class="svg-icon" viewBox="0 0 24 24"><path d="M16 2v14a4 4 0 0 1-4 4H5"/><path d="M12 2v6"/><path d="M8 2v6"/><path d="M4 2v6a4 4 0 0 0 4 4"/></svg>';
-        else if(p.cat==='cafe') iconSvg = '<i data-feather="coffee"></i>';
-        else if(p.cat==='gym') iconSvg = '<svg class="svg-icon" viewBox="0 0 24 24"><path d="M6.5 10l-.8-2.3a2 2 0 0 0-2.6-1.1l-.3.1a2 2 0 0 0-1.1 2.6L4.2 17a2 2 0 0 0 2.6 1.1l.3-.1a2 2 0 0 0 1.1-2.6L7.5 13M17.5 10l.8-2.3a2 2 0 0 1 2.6-1.1l.3.1a2 2 0 0 1 1.1 2.6L19.8 17a2 2 0 0 1-2.6 1.1l-.3-.1a2 2 0 0 1-1.1-2.6L16.5 13M6.5 11.5h11"/></svg>';
-        else iconSvg = '<i data-feather="briefcase"></i>';
-
-        const iconHtml = `<div class="pin ${typeClass}">${iconSvg}</div>`;
-        const icon = L.divIcon({ className:'custom', html:iconHtml, iconSize:[30,30], iconAnchor:[15,30] });
-        
-        const m = L.marker([p.lat, p.lng], { icon: icon }).addTo(map);
-        m.__pid = p.id; /* [수정] 검색용 id 연결 */
-
-        if(mapMode === 'stay') {
-  m.on('click', () => {
-
-    // ✅ 1) 숙소를 클릭한 경우: "반경 2km 제휴처 탐색" + 근처 제휴처 마커 표시
-    if(p.cat === 'stay'){
-      selectedStay = p;
-      stayCenter = { lat: p.lat, lng: p.lng };
-
-      // 2km 원 표시
-      if(stayCircle) map.removeLayer(stayCircle);
-      stayCircle = L.circle([p.lat, p.lng], { radius: 2000 }).addTo(map);
-
-      alert(`${p.name} 주변 2km 내 제휴처를 표시합니다.`);
-      map.setView([p.lat, p.lng], 15);
-      renderMarkers(); // ★ 진짜로 근처 제휴처 찍기
-      return;
-    }
-
-    // ✅ 2) 제휴처를 클릭한 경우: 항목에 맞는 문구 (카테고리별)
-    const catLabel = {
-      food: "음식점",
-      cafe: "카페",
-      gym: "헬스장",
-      work: "워크스페이스"
-    }[p.cat] || "제휴처";
-
-    // 화면 핀 강조(선택 효과)
-    document.querySelectorAll('.pin').forEach(el => el.classList.add('dimmed'));
-    const currentPin = m.getElement()?.querySelector('.pin');
-    if(currentPin) currentPin.classList.remove('dimmed');
-
-    alert(`${catLabel} 제휴처: ${p.name}\n패스 제시 후 혜택을 받으세요.`);
-    feather.replace();
-  });
-} else {
-  m.bindPopup(`<b>${p.name}</b><br>${p.partner?'제휴':'비제휴'}`);
-}
-        markers.push(m);
-      });
-      feather.replace();
-    }
-
-    function getDist(lat1, lng1, lat2, lng2) { return Math.sqrt(Math.pow(lat1-lat2, 2) + Math.pow(lng1-lng2, 2)); }
-
-    /* [수정] 지도 검색 진짜 동작: 이름 포함 매칭 -> 해당 마커로 이동 + 팝업 오픈 */
-    function execSearch() {
-      if(!map) initMap();
-      const input = document.getElementById('mapSearchInput');
-      const q = (input.value || "").trim().toLowerCase();
-      if(!q) return alert("검색어를 입력하세요.");
-
-      // stay 모드면 팝업이 없어서 cat 모드로 강제 (검색 UX)
-      if(mapMode !== 'cat') setMapMode('cat');
-
-      const found = partners.find(p => (p.name || "").toLowerCase().includes(q));
-      if(!found) return alert("검색 결과가 없습니다.");
-
-      // 혹시 필터가 걸려있으면 전체로 바꿔서 마커가 보이게 함
-      const allChip = document.querySelector('.cat-chip[data-cat="all"]');
-      if(allChip){
-        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-        allChip.classList.add('active');
-      }
-      renderMarkers('all');
-
-      setTimeout(() => {
-        map.setView([found.lat, found.lng], 15);
-        const mk = markers.find(m => m.__pid === found.id);
-        if(mk && mk.getPopup()){
-          mk.openPopup();
-        } else {
-          L.popup().setLatLng([found.lat, found.lng])
-            .setContent(`<b>${found.name}</b><br>${found.partner?'제휴':'비제휴'}`)
-            .openOn(map);
-        }
-      }, 50);
-    }
-
-  /* --- 추천탭 --- [교체 시작] --- */
-
-/** [수정] 추천 탭은 실제 상호 기반으로 고정 리스트 사용 (안정적인 이미지 소스로 전체 교체) */
-const REC_PLACES = {
-  stay: [
-    { id: 1001, cat: "stay", name: "시그니엘 부산", short: "해운대 오션뷰 럭셔리 호텔", img: "https://loremflickr.com/400/300/luxury,hotel?random=1001" },
-    { id: 1002, cat: "stay", name: "파라다이스 호텔 부산", short: "해운대 대표 리조트형 호텔", img: "https://loremflickr.com/400/300/resort,beach?random=1002" },
-    { id: 1003, cat: "stay", name: "파크 하얏트 부산", short: "마린시티 인근 프리미엄 호텔", img: "https://loremflickr.com/400/300/skyscraper,hotel?random=1003" },
-    { id: 1004, cat: "stay", name: "그랜드 조선 부산", short: "해운대 중심, 감각적인 스테이", img: "https://loremflickr.com/400/300/modern,hotel?random=1004" },
-    { id: 1005, cat: "stay", name: "웨스틴 조선 부산", short: "동백섬/해운대 산책 코스 최적", img: "https://loremflickr.com/400/300/sea,hotel?random=1005" },
-    { id: 1006, cat: "stay", name: "신라스테이 해운대", short: "출장·워케이션 가성비 스테이", img: "https://loremflickr.com/400/300/business,hotel?random=1006" },
-    { id: 1007, cat: "stay", name: "아난티 앳 부산 코브", short: "기장 오션 리조트, 감성 휴양", img: "https://loremflickr.com/400/300/pool,resort?random=1007" },
-    { id: 1008, cat: "stay", name: "롯데호텔 부산", short: "서면 중심, 이동/미팅 편리", img: "https://loremflickr.com/400/300/city,hotel?random=1008" }
-  ],
-
-  food: [
-    { id: 2001, cat: "food", name: "해운대암소갈비집", short: "부산 대표 한우갈비 맛집", img: "https://loremflickr.com/400/300/beef,bbq?random=2001" },
-    { id: 2002, cat: "food", name: "초량밀면", short: "부산 하면 밀면, 클래식 원조", img: "https://loremflickr.com/400/300/noodle,soup?random=2002" },
-    { id: 2003, cat: "food", name: "개미집(낙곱새)", short: "낙지+곱창+새우 ‘낙곱새’", img: "https://loremflickr.com/400/300/seafood,spicy?random=2003" },
-    { id: 2004, cat: "food", name: "금수복국", short: "해운대 복국으로 유명", img: "https://loremflickr.com/400/300/fish,soup?random=2004" },
-    { id: 2005, cat: "food", name: "쌍둥이돼지국밥", short: "서면 쪽 돼지국밥 강자", img: "https://loremflickr.com/400/300/pork,soup?random=2005" },
-    { id: 2006, cat: "food", name: "이재모피자(서면)", short: "부산 로컬 피자 맛집으로 유명", img: "https://loremflickr.com/400/300/pizza,cheese?random=2006" },
-    { id: 2007, cat: "food", name: "자갈치시장(회/해산물)", short: "부산 바다 먹거리의 상징", img: "https://loremflickr.com/400/300/market,seafood?random=2007" },
-    { id: 2008, cat: "food", name: "동래할매파전", short: "동래 파전·막걸리 조합", img: "https://loremflickr.com/400/300/pancake,fried?random=2008" }
-  ],
-
-  cafe: [
-    { id: 3001, cat: "cafe", name: "모모스커피(부산)", short: "스페셜티 커피로 유명", img: "https://loremflickr.com/400/300/coffee,roaster?random=3001" },
-    { id: 3002, cat: "cafe", name: "웨이브온 커피(기장)", short: "바다뷰로 유명한 대형 카페", img: "https://loremflickr.com/400/300/ocean,cafe?random=3002" },
-    { id: 3003, cat: "cafe", name: "F1963 테라로사", short: "문화공간+카페, 작업하기 좋음", img: "https://loremflickr.com/400/300/industrial,cafe?random=3003" },
-    { id: 3004, cat: "cafe", name: "메이크씨(영도)", short: "영도 감성 바다 카페로 유명", img: "https://loremflickr.com/400/300/sea,coffee?random=3004" },
-    { id: 3005, cat: "cafe", name: "옵스(OPS)", short: "부산 대표 베이커리", img: "https://loremflickr.com/400/300/bakery,bread?random=3005" },
-    { id: 3006, cat: "cafe", name: "카페051(부산)", short: "부산 로컬 카페 브랜드", img: "https://loremflickr.com/400/300/iced,coffee?random=3006" },
-    { id: 3007, cat: "cafe", name: "흰여울문화마을 카페거리", short: "뷰+산책 코스, 카페 밀집", img: "https://loremflickr.com/400/300/coastal,village?random=3007" },
-    { id: 3008, cat: "cafe", name: "해리단길 카페거리", short: "해운대 감성 카페/디저트", img: "https://loremflickr.com/400/300/cafe,dessert?random=3008" }
-  ],
-
-  gym: [
-    { id: 4001, cat: "gym", name: "짐박스(부산)", short: "24시간 헬스장으로 유명한 편", img: "https://loremflickr.com/400/300/gym,weights?random=4001" },
-    { id: 4002, cat: "gym", name: "스포애니(부산)", short: "대형 체인, 접근성 좋은 편", img: "https://loremflickr.com/400/300/fitness,treadmill?random=4002" },
-    { id: 4003, cat: "gym", name: "애니타임 피트니스(부산)", short: "24시간 체인, 간편 이용", img: "https://loremflickr.com/400/300/gym,night?random=4003" },
-    { id: 4004, cat: "gym", name: "크로스핏 해운대", short: "고강도 그룹 트레이닝", img: "https://loremflickr.com/400/300/crossfit,training?random=4004" },
-    { id: 4005, cat: "gym", name: "센텀 피트니스(센텀권)", short: "센텀/벡스코 인근 운동", img: "https://loremflickr.com/400/300/dumbbell,gym?random=4005" },
-    { id: 4006, cat: "gym", name: "서면 피트니스(서면권)", short: "서면 중심, 이동 편리", img: "https://loremflickr.com/400/300/fitness,center?random=4006" },
-    { id: 4007, cat: "gym", name: "마린시티 피트니스(마린시티)", short: "마린시티 인근 이용", img: "https://loremflickr.com/400/300/yoga,view?random=4007" },
-    { id: 4008, cat: "gym", name: "요가/필라테스 스튜디오(부산)", short: "컨디션 회복용 라이트 운동", img: "https://loremflickr.com/400/300/pilates,studio?random=4008" }
-  ],
-
-  work: [
-    { id: 5001, cat: "work", name: "WeWork 부산 BIFC", short: "부산 국제금융센터 공유오피스", img: "https://loremflickr.com/400/300/coworking,office?random=5001" },
-    { id: 5002, cat: "work", name: "U-Space BIFC", short: "BIFC 인근 비즈니스 공간", img: "https://loremflickr.com/400/300/desk,computer?random=5002" },
-    { id: 5003, cat: "work", name: "리저스(부산)", short: "미팅/업무 가능한 글로벌 오피스", img: "https://loremflickr.com/400/300/meeting,room?random=5003" },
-    { id: 5004, cat: "work", name: "영도 코워킹(AREA6 등)", short: "영도 쪽 코워킹/크리에이티브", img: "https://loremflickr.com/400/300/creative,workspace?random=5004" },
-    { id: 5005, cat: "work", name: "센텀 비즈니스 라운지(센텀권)", short: "센텀/벡스코 주변 업무 공간", img: "https://loremflickr.com/400/300/laptop,cafe?random=5005" },
-    { id: 5006, cat: "work", name: "서면 비즈니스 라운지(서면권)", short: "서면 중심, 미팅/작업 편리", img: "https://loremflickr.com/400/300/office,modern?random=5006" },
-    { id: 5007, cat: "work", name: "부산창업카페/지원공간", short: "스타트업/창업 지원 공간 활용", img: "https://loremflickr.com/400/300/startup,team?random=5007" },
-    { id: 5008, cat: "work", name: "스터디카페(부산)", short: "조용히 집중하기 좋은 공간", img: "https://loremflickr.com/400/300/study,library?random=5008" }
-  ]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+{
+/* ================= LANGUAGES ================= */
+const LANGS=[["ko","한국어","Korean"],["en","English","English"],["ja","日本語","Japanese"],["zh","简体中文","Chinese (Simplified)"],["zt","繁體中文","Chinese (Traditional)"],["vi","Tiếng Việt","Vietnamese"],["th","ไทย","Thai"],["id","Bahasa Indonesia","Indonesian"],["tl","Filipino","Filipino"],["es","Español","Spanish"],["fr","Français","French"],["de","Deutsch","German"],["ru","Русский","Russian"],["ar","العربية","Arabic"],["hi","हिन्दी","Hindi"],["mn","Монгол","Mongolian"]];
+const HTMLLANG={zh:"zh-Hans",zt:"zh-Hant",tl:"fil"};
+const D={
+home:"홈|Home|ホーム|首页|首頁|Trang chủ|หน้าแรก|Beranda|Home|Inicio|Accueil|Start|Главная|الرئيسية|होम|Нүүр",
+pass:"패스|Pass|パス|通行证|通行證|Thẻ|พาส|Pass|Pass|Pase|Pass|Pass|Пропуск|البطاقة|पास|Пасс",
+map:"지도|Map|地図|地图|地圖|Bản đồ|แผนที่|Peta|Mapa|Mapa|Carte|Karte|Карта|الخريطة|नक्शा|Газрын зураг",
+picks:"추천 코스|Routes|おすすめ|推荐路线|推薦路線|Gợi ý|เส้นทางแนะนำ|Rute|Ruta|Rutas|Itinéraires|Routen|Маршруты|مسارات|मार्ग|Маршрут",
+my:"MY|My|マイ|我的|我的|Của tôi|ของฉัน|Saya|Akin|Mi cuenta|Mon compte|Mein Konto|Мой|حسابي|मेरा|Миний",
+login:"로그인|Log in|ログイン|登录|登入|Đăng nhập|เข้าสู่ระบบ|Masuk|Mag-log in|Iniciar sesión|Connexion|Anmelden|Войти|تسجيل الدخول|लॉग इन|Нэвтрэх",
+signup:"회원가입|Sign up|新規登録|注册|註冊|Đăng ký|สมัครสมาชิก|Daftar|Mag-sign up|Registrarse|Inscription|Registrieren|Регистрация|إنشاء حساب|साइन अप|Бүртгүүлэх",
+logout:"로그아웃|Log out|ログアウト|退出登录|登出|Đăng xuất|ออกจากระบบ|Keluar|Mag-log out|Cerrar sesión|Déconnexion|Abmelden|Выйти|تسجيل الخروج|लॉग आउट|Гарах",
+demo:"데모 계정으로 바로 체험하기|Try with a demo account|デモアカウントで体験|使用演示账号体验|使用示範帳號體驗|Dùng thử tài khoản demo|ทดลองด้วยบัญชีเดโม|Coba dengan akun demo|Subukan gamit ang demo account|Probar con cuenta demo|Essayer avec un compte démo|Mit Demo-Konto testen|Войти в демо-аккаунт|جرّب بحساب تجريبي|डेमो खाते से आज़माएँ|Демо эрхээр туршиж үзэх",
+cta_pass:"패스 둘러보기|Explore passes|パスを見る|查看通行证|查看通行證|Xem các thẻ|ดูพาส|Lihat pass|Tingnan ang pass|Ver pases|Voir les pass|Pässe ansehen|Смотреть пропуска|استعرض البطاقات|पास देखें|Пасс үзэх",
+h1t:"바다 앞에서 시작하는 부산 출장|A Busan business trip that starts by the sea|海辺から始まる釜山出張|从海边开始的釜山出差|從海邊開始的釜山出差|Chuyến công tác Busan bắt đầu bên biển|ทริปธุรกิจปูซานที่เริ่มต้นริมทะเล|Perjalanan bisnis Busan yang dimulai dari tepi laut|Business trip sa Busan na nagsisimula sa tabing-dagat|Un viaje de negocios a Busan que empieza junto al mar|Un voyage d'affaires à Busan qui commence face à la mer|Eine Geschäftsreise nach Busan, die am Meer beginnt|Командировка в Пусан, которая начинается у моря|رحلة عمل إلى بوسان تبدأ من البحر|समुद्र किनारे से शुरू होने वाली बुसान बिज़नेस ट्रिप|Далайн эргээс эхлэх Пусаны томилолт",
+h1p:"이동, 업무, 운동, 식사까지 패스 하나로 이어져요|Transport, work, workouts and meals, all on one pass|移動・仕事・運動・食事までパス一つで|出行、工作、健身、用餐，一张通行证全搞定|交通、工作、運動、用餐，一張通行證全搞定|Di chuyển, làm việc, tập luyện, ăn uống — chỉ với một thẻ|เดินทาง ทำงาน ออกกำลังกาย และมื้ออาหาร ครบในพาสเดียว|Transportasi, kerja, olahraga, dan makan dalam satu pass|Biyahe, trabaho, ehersisyo at pagkain sa iisang pass|Transporte, trabajo, gimnasio y comidas en un solo pase|Transports, travail, sport et repas avec un seul pass|Mobilität, Arbeit, Training und Essen mit einem Pass|Транспорт, работа, спорт и еда по одному пропуску|التنقل والعمل والرياضة والطعام ببطاقة واحدة|यात्रा, काम, व्यायाम और भोजन — सब एक पास में|Тээвэр, ажил, спорт, хоол бүгд нэг пасст",
+h2t:"일이 끝난 저녁, 부산의 밤|When work is done, Busan at night|仕事のあとは釜山の夜を|工作结束后，享受釜山之夜|工作結束後，享受釜山之夜|Hết giờ làm, tận hưởng đêm Busan|เลิกงานแล้ว ไปสัมผัสค่ำคืนปูซาน|Selesai kerja, nikmati malam Busan|Pagkatapos ng trabaho, ang gabi ng Busan|Al terminar el trabajo, la noche de Busan|Après le travail, Busan la nuit|Nach der Arbeit: Busan bei Nacht|После работы — ночной Пусан|بعد العمل، ليل بوسان|काम के बाद, बुसान की रात|Ажлын дараа Пусаны шөнө",
+h2p:"제휴 맛집과 카페에서 현장 20% 할인|20% off on site at partner restaurants and cafés|提携の飲食店・カフェでその場で20%割引|合作餐厅和咖啡馆现场享8折|合作餐廳與咖啡廳現場享8折|Giảm 20% tại nhà hàng và quán cà phê đối tác|ส่วนลด 20% ที่ร้านอาหารและคาเฟ่พันธมิตร|Diskon 20% di restoran dan kafe mitra|20% diskwento sa mga partner na kainan at café|20% de descuento en restaurantes y cafés asociados|20 % de réduction dans les restaurants et cafés partenaires|20 % Rabatt in Partnerrestaurants und -cafés|Скидка 20% в ресторанах и кафе-партнёрах|خصم 20% في المطاعم والمقاهي الشريكة|पार्टनर रेस्तरां और कैफ़े में 20% छूट|Түнш ресторан, кафед 20% хөнгөлөлт",
+h3t:"일할 자리는 이미 준비돼 있어요|Your desk is already waiting|仕事の席はもう用意されています|办公座位已为您准备好|辦公座位已為您準備好|Chỗ làm việc đã sẵn sàng|ที่ทำงานพร้อมรอคุณแล้ว|Tempat kerja sudah siap|Handa na ang iyong mesa|Tu espacio de trabajo ya te espera|Votre bureau vous attend déjà|Ihr Arbeitsplatz wartet schon|Рабочее место уже ждёт вас|مكتبك جاهز بانتظارك|आपकी कार्य-डेस्क तैयार है|Таны ажлын байр бэлэн",
+h3p:"공유오피스 4시간권으로 미팅 사이 집중 업무|Focus between meetings with 4-hour workspace passes|4時間ワークスペース券で会議の合間に集中|用4小时办公券在会议间隙专注工作|用4小時辦公券在會議空檔專心工作|Tập trung giữa các cuộc họp với vé 4 giờ|โฟกัสงานระหว่างประชุมด้วยบัตร 4 ชั่วโมง|Fokus di sela rapat dengan pass 4 jam|Mag-focus sa pagitan ng meeting gamit ang 4-hour pass|Concéntrate entre reuniones con pases de 4 horas|Concentrez-vous entre deux réunions avec des pass de 4 h|Zwischen Meetings fokussiert arbeiten – mit 4-Stunden-Pässen|Работайте между встречами по 4-часовым пропускам|ركّز بين الاجتماعات بتصاريح 4 ساعات|4 घंटे के पास से मीटिंग के बीच काम करें|4 цагийн эрхээр уулзалтын хооронд ажиллах",
+h4t:"미팅도, 집중 업무도 부산에서|Meetings and deep work, in Busan|会議も集中作業も釜山で|会议与专注工作，都在釜山|會議與專注工作，都在釜山|Họp hành và làm việc tập trung tại Busan|ประชุมและทำงานจริงจังที่ปูซาน|Rapat dan kerja fokus di Busan|Meeting at seryosong trabaho, sa Busan|Reuniones y trabajo profundo, en Busan|Réunions et travail concentré, à Busan|Meetings und konzentriertes Arbeiten in Busan|Встречи и продуктивная работа в Пусане|اجتماعات وعمل مركّز في بوسان|मीटिंग और गहन काम, बुसान में|Уулзалт ба ажил Пусанд",
+h4p:"3일·7일 패스로 출장과 워케이션을 한 번에|Business trips and workations with a 3- or 7-day pass|3日・7日パスで出張もワーケーションも|3天/7天通行证，出差与旅居办公一次搞定|3天/7天通行證，出差與旅居辦公一次搞定|Công tác và workation với thẻ 3 hoặc 7 ngày|ทริปธุรกิจและเวิร์กเคชันด้วยพาส 3 หรือ 7 วัน|Perjalanan bisnis dan workation dengan pass 3 atau 7 hari|Business trip at workation gamit ang 3- o 7-araw na pass|Viajes de negocios y workation con pases de 3 o 7 días|Voyages d'affaires et workation avec un pass 3 ou 7 jours|Geschäftsreise und Workation mit 3- oder 7-Tage-Pass|Командировки и воркейшн с пропуском на 3 или 7 дней|رحلات عمل وعمل عن بُعد ببطاقة 3 أو 7 أيام|3 या 7 दिन के पास से बिज़नेस ट्रिप और वर्केशन|3 ба 7 хоногийн пассаар томилолт, воркейшн",
+taxi:"택시|Taxi|タクシー|出租车|計程車|Taxi|แท็กซี่|Taksi|Taxi|Taxi|Taxi|Taxi|Такси|تاكسي|टैक्सी|Такси",
+work:"워크스페이스|Workspace|ワークスペース|办公空间|辦公空間|Không gian làm việc|พื้นที่ทำงาน|Ruang kerja|Workspace|Coworking|Espace de travail|Workspace|Коворкинг|مساحة عمل|वर्कस्पेस|Ажлын орон зай",
+gym:"헬스장|Gym|ジム|健身房|健身房|Phòng gym|ยิม|Gym|Gym|Gimnasio|Salle de sport|Fitnessstudio|Спортзал|صالة رياضية|जिम|Фитнесс",
+cafe:"카페|Café|カフェ|咖啡馆|咖啡廳|Cà phê|คาเฟ่|Kafe|Café|Cafetería|Café|Café|Кафе|مقهى|कैफ़े|Кафе",
+food:"맛집|Food|グルメ|美食|美食|Ẩm thực|ร้านอาหาร|Kuliner|Kainan|Comida|Restaurants|Essen|Еда|مطاعم|भोजन|Хоол",
+stay:"숙소|Stays|宿泊|住宿|住宿|Lưu trú|ที่พัก|Penginapan|Tuluyan|Alojamiento|Hébergement|Unterkunft|Жильё|إقامة|ठहराव|Буудал",
+all:"전체|All|すべて|全部|全部|Tất cả|ทั้งหมด|Semua|Lahat|Todo|Tout|Alle|Все|الكل|सभी|Бүгд",
+featT:"패스 하나로 이어지는 부산의 하루|A day in Busan, connected by one pass|パス一つでつながる釜山の一日|一张通行证串联釜山的一天|一張通行證串起釜山的一天|Một ngày ở Busan, kết nối bằng một thẻ|หนึ่งวันในปูซาน เชื่อมด้วยพาสเดียว|Sehari di Busan, terhubung satu pass|Isang araw sa Busan, konektado sa isang pass|Un día en Busan, conectado con un pase|Une journée à Busan, reliée par un seul pass|Ein Tag in Busan, verbunden durch einen Pass|День в Пусане по одному пропуску|يوم في بوسان ببطاقة واحدة|एक पास से जुड़ा बुसान का एक दिन|Нэг пассаар холбогдох Пусан дахь өдөр",
+howT:"이용 방법|How it works|ご利用方法|使用方法|使用方式|Cách sử dụng|วิธีใช้งาน|Cara kerja|Paano gamitin|Cómo funciona|Comment ça marche|So funktioniert's|Как это работает|كيف تعمل|यह कैसे काम करता है|Хэрхэн ашиглах",
+s1:"패스 고르기|Pick a pass|パスを選ぶ|选择通行证|選擇通行證|Chọn thẻ|เลือกพาส|Pilih pass|Pumili ng pass|Elige un pase|Choisissez un pass|Pass wählen|Выберите пропуск|اختر بطاقة|पास चुनें|Пасс сонгох",
+s2:"간편 결제|Pay easily|かんたん決済|便捷支付|快速付款|Thanh toán nhanh|ชำระเงินง่าย|Bayar mudah|Madaling magbayad|Paga fácilmente|Payez facilement|Einfach bezahlen|Простая оплата|ادفع بسهولة|आसान भुगतान|Хялбар төлбөр",
+s3:"패스 제시|Show your pass|パスを提示|出示通行证|出示通行證|Xuất trình thẻ|แสดงพาส|Tunjukkan pass|Ipakita ang pass|Muestra tu pase|Présentez votre pass|Pass vorzeigen|Покажите пропуск|أظهر بطاقتك|पास दिखाएँ|Пассаа үзүүлэх",
+s4:"통합 영수증|One receipt|まとめて領収書|合并收据|合併收據|Một hóa đơn|ใบเสร็จรวม|Satu kuitansi|Iisang resibo|Un recibo|Un reçu unique|Eine Quittung|Единый чек|إيصال موحّد|एक रसीद|Нэгдсэн баримт",
+priceT:"패스 요금|Passes & pricing|パス料金|通行证价格|通行證價格|Giá thẻ|ราคาพาส|Harga pass|Presyo ng pass|Pases y precios|Pass et tarifs|Pässe & Preise|Пропуска и цены|البطاقات والأسعار|पास और कीमतें|Пасс ба үнэ",
+buy:"구매하기|Buy now|購入する|立即购买|立即購買|Mua ngay|ซื้อเลย|Beli|Bilhin|Comprar|Acheter|Kaufen|Купить|اشترِ الآن|खरीदें|Худалдан авах",
+detail:"상세정보|Details|詳細|详情|詳情|Chi tiết|รายละเอียด|Detail|Detalye|Detalles|Détails|Details|Подробнее|التفاصيل|विवरण|Дэлгэрэнгүй",
+days:"일|days|日間|天|天|ngày|วัน|hari|araw|días|jours|Tage|дн.|أيام|दिन|хоног",
+i_work:"워크스페이스 4시간권|4-hour workspace pass|ワークスペース4時間券|4小时办公券|4小時辦公券|Vé làm việc 4 giờ|บัตรพื้นที่ทำงาน 4 ชม.|Pass ruang kerja 4 jam|4-oras na workspace pass|Pase de coworking de 4 h|Pass espace de travail 4 h|4-Std.-Workspace-Pass|Коворкинг на 4 часа|تصريح مساحة عمل 4 ساعات|4 घंटे का वर्कस्पेस पास|4 цагийн ажлын эрх",
+i_gym:"헬스장 일일권|Gym day pass|ジム1日券|健身房日票|健身房日票|Vé gym 1 ngày|บัตรยิมรายวัน|Pass gym harian|Gym day pass|Pase diario de gimnasio|Pass journée salle de sport|Fitness-Tagespass|Дневной абонемент в зал|تصريح يومي للصالة|जिम डे पास|Фитнессийн өдрийн эрх",
+i_taxi:"카카오T 핀번호|Kakao T PIN|カカオT PIN|Kakao T PIN码|Kakao T PIN碼|Mã PIN Kakao T|PIN Kakao T|PIN Kakao T|Kakao T PIN|PIN de Kakao T|Code PIN Kakao T|Kakao-T-PIN|PIN Kakao T|رمز Kakao T|Kakao T पिन|Kakao T ПИН",
+i_fb:"카페·맛집 현장 20% 할인|20% off at cafés & restaurants|カフェ・飲食店で20%割引|咖啡馆与餐厅8折|咖啡廳與餐廳8折|Giảm 20% cà phê & nhà hàng|ลด 20% คาเฟ่และร้านอาหาร|Diskon 20% kafe & restoran|20% off sa café at kainan|20% en cafés y restaurantes|-20 % cafés et restaurants|20 % Rabatt in Cafés & Restaurants|−20% в кафе и ресторанах|خصم 20% في المقاهي والمطاعم|कैफ़े व रेस्तरां में 20% छूट|Кафе, ресторанд 20% хөнгөлөлт",
+dpT:"디지털 패스|Digital pass|デジタルパス|电子通行证|電子通行證|Thẻ điện tử|พาสดิจิทัล|Pass digital|Digital pass|Pase digital|Pass numérique|Digitaler Pass|Цифровой пропуск|البطاقة الرقمية|डिजिटल पास|Цахим пасс",
+holder:"이름|Holder|名義|持有人|持有人|Chủ thẻ|ผู้ถือ|Pemegang|May-ari|Titular|Titulaire|Inhaber|Владелец|الحامل|धारक|Эзэмшигч",
+expires:"만료|Expires|有効期限|到期|到期|Hết hạn|หมดอายุ|Berlaku s.d.|Mag-e-expire|Vence|Expire le|Gültig bis|Действует до|ينتهي|समाप्ति|Дуусах",
+remaining:"남은 기간|Remaining|残り|剩余|剩餘|Còn lại|เหลือ|Sisa|Natitira|Restante|Restant|Verbleibend|Осталось|المتبقي|शेष|Үлдсэн",
+show_staff:"제휴처 직원에게 이 화면을 보여 주세요|Show this screen to partner staff|提携先のスタッフにこの画面を見せてください|请向合作商户员工出示此页面|請向合作商家員工出示此頁面|Hãy cho nhân viên đối tác xem màn hình này|แสดงหน้าจอนี้ให้พนักงานร้านพันธมิตร|Tunjukkan layar ini ke staf mitra|Ipakita ang screen na ito sa staff ng partner|Muestra esta pantalla al personal del socio|Montrez cet écran au personnel partenaire|Zeigen Sie diesen Bildschirm dem Partnerpersonal|Покажите этот экран сотруднику партнёра|أظهر هذه الشاشة لموظف الشريك|यह स्क्रीन पार्टनर स्टाफ़ को दिखाएँ|Түншийн ажилтанд энэ дэлгэцийг үзүүлнэ үү",
+mapH:"부산 제휴처 지도|Partner map of Busan|釜山提携先マップ|釜山合作商户地图|釜山合作商家地圖|Bản đồ đối tác Busan|แผนที่พันธมิตรปูซาน|Peta mitra Busan|Mapa ng mga partner sa Busan|Mapa de socios en Busan|Carte des partenaires à Busan|Partnerkarte Busan|Карта партнёров в Пусане|خريطة الشركاء في بوسان|बुसान पार्टनर मैप|Пусан дахь түншүүдийн газрын зураг",
+by_cat:"카테고리별|By category|カテゴリ別|按类别|依類別|Theo danh mục|ตามหมวดหมู่|Per kategori|Ayon sa kategorya|Por categoría|Par catégorie|Nach Kategorie|По категориям|حسب الفئة|श्रेणी अनुसार|Ангиллаар",
+near:"숙소 주변|Near my stay|宿泊先周辺|住处附近|住處附近|Gần chỗ ở|ใกล้ที่พัก|Dekat penginapan|Malapit sa tuluyan|Cerca de mi alojamiento|Près de mon hébergement|In meiner Nähe|Рядом с жильём|بالقرب من إقامتي|मेरे ठहराव के पास|Буудлын ойролцоо",
+search:"검색|Search|検索|搜索|搜尋|Tìm kiếm|ค้นหา|Cari|Hanapin|Buscar|Rechercher|Suchen|Поиск|بحث|खोजें|Хайх",
+t_pass:"내 패스|My pass|マイパス|我的通行证|我的通行證|Thẻ của tôi|พาสของฉัน|Pass saya|Aking pass|Mi pase|Mon pass|Mein Pass|Мой пропуск|بطاقتي|मेरा पास|Миний пасс",
+t_v:"바우처|Vouchers|クーポン|优惠券|優惠券|Phiếu|บัตรกำนัล|Voucher|Voucher|Cupones|Bons|Gutscheine|Ваучеры|القسائم|वाउचर|Купон",
+t_h:"이용내역|History|利用履歴|使用记录|使用紀錄|Lịch sử|ประวัติ|Riwayat|Kasaysayan|Historial|Historique|Verlauf|История|السجل|इतिहास|Түүх",
+t_s:"정산|Settlement|精算|结算|結算|Quyết toán|สรุปค่าใช้จ่าย|Rekap|Settlement|Liquidación|Récapitulatif|Abrechnung|Расчёты|التسوية|निपटान|Тооцоо",
+t_i:"정보|Info|情報|信息|資訊|Thông tin|ข้อมูล|Info|Impormasyon|Información|Infos|Info|Информация|معلومات|जानकारी|Мэдээлэл",
+email:"이메일|Email|メール|邮箱|電子郵件|Email|อีเมล|Email|Email|Correo|E-mail|E-Mail|Эл. почта|البريد الإلكتروني|ईमेल|И-мэйл",
+password:"비밀번호|Password|パスワード|密码|密碼|Mật khẩu|รหัสผ่าน|Kata sandi|Password|Contraseña|Mot de passe|Passwort|Пароль|كلمة المرور|पासवर्ड|Нууц үг",
+name:"이름|Name|お名前|姓名|姓名|Họ tên|ชื่อ|Nama|Pangalan|Nombre|Nom|Name|Имя|الاسم|नाम|Нэр",
+pw2:"비밀번호 확인|Confirm password|パスワード確認|确认密码|確認密碼|Xác nhận mật khẩu|ยืนยันรหัสผ่าน|Konfirmasi kata sandi|Kumpirmahin ang password|Confirmar contraseña|Confirmer le mot de passe|Passwort bestätigen|Повторите пароль|تأكيد كلمة المرور|पासवर्ड की पुष्टि करें|Нууц үг давтах",
+or:"또는|or|または|或|或|hoặc|หรือ|atau|o|o|ou|oder|или|أو|या|эсвэл",
+close:"닫기|Close|閉じる|关闭|關閉|Đóng|ปิด|Tutup|Isara|Cerrar|Fermer|Schließen|Закрыть|إغلاق|बंद करें|Хаах",
+lang:"언어|Language|言語|语言|語言|Ngôn ngữ|ภาษา|Bahasa|Wika|Idioma|Langue|Sprache|Язык|اللغة|भाषा|Хэл",
+faqT:"자주 묻는 질문|FAQ|よくある質問|常见问题|常見問題|Câu hỏi thường gặp|คำถามที่พบบ่อย|FAQ|Mga madalas itanong|Preguntas frecuentes|FAQ|Häufige Fragen|Частые вопросы|الأسئلة الشائعة|अक्सर पूछे जाने वाले प्रश्न|Түгээмэл асуулт",
+ptT:"주요 제휴처|Featured partners|主な提携先|主要合作商户|主要合作商家|Đối tác nổi bật|พันธมิตรหลัก|Mitra unggulan|Mga tampok na partner|Socios destacados|Partenaires phares|Ausgewählte Partner|Основные партнёры|أبرز الشركاء|प्रमुख पार्टनर|Гол түншүүд",
+cmpT:"관광 패스와 무엇이 다른가요|How it differs from tourist passes|観光パスとの違い|与旅游通票的区别|與旅遊通票的差異|Khác gì thẻ du lịch?|ต่างจากพาสท่องเที่ยวอย่างไร|Bedanya dengan pass wisata|Paano ito naiiba sa tourist pass|En qué se diferencia de un pase turístico|Ce qui le distingue d'un pass touristique|Der Unterschied zum Touristenpass|Чем отличается от туристического пропуска|ما الفرق عن بطاقات السياحة|टूरिस्ट पास से क्या अलग है|Аялалын пассаас юугаараа ялгаатай вэ",
+paying:"결제 요청 중…|Processing payment…|決済処理中…|正在支付…|付款處理中…|Đang xử lý thanh toán…|กำลังชำระเงิน…|Memproses pembayaran…|Pinoproseso ang bayad…|Procesando pago…|Paiement en cours…|Zahlung wird verarbeitet…|Обработка платежа…|جارٍ معالجة الدفع…|भुगतान हो रहा है…|Төлбөр хийгдэж байна…",
+pay_t:"결제 수단 선택|Payment method|支払い方法|支付方式|付款方式|Phương thức thanh toán|วิธีชำระเงิน|Metode pembayaran|Paraan ng pagbayad|Método de pago|Moyen de paiement|Zahlungsart|Способ оплаты|طريقة الدفع|भुगतान का तरीका|Төлбөрийн хэлбэр",
+pay_go:"결제하기|Pay|支払う|支付|付款|Thanh toán|ชำระเงิน|Bayar|Magbayad|Pagar|Payer|Bezahlen|Оплатить|ادفع|भुगतान करें|Төлөх",
+use:"사용하기|Use|使う|使用|使用|Sử dụng|ใช้|Gunakan|Gamitin|Usar|Utiliser|Einlösen|Использовать|استخدم|उपयोग करें|Ашиглах",
+copy:"복사|Copy|コピー|复制|複製|Sao chép|คัดลอก|Salin|Kopyahin|Copiar|Copier|Kopieren|Копировать|نسخ|कॉपी|Хуулах",
+help:"문의하기|Contact|お問い合わせ|联系我们|聯絡我們|Liên hệ|ติดต่อ|Kontak|Makipag-ugnayan|Contacto|Contact|Kontakt|Связаться|اتصل بنا|संपर्क|Холбоо барих",
+terms:"이용약관|Terms|利用規約|使用条款|使用條款|Điều khoản|ข้อกำหนด|Ketentuan|Mga tuntunin|Términos|Conditions|AGB|Условия|الشروط|शर्तें|Үйлчилгээний нөхцөл",
+privacy:"개인정보처리방침|Privacy|プライバシー|隐私政策|隱私權政策|Quyền riêng tư|ความเป็นส่วนตัว|Privasi|Privacy|Privacidad|Confidentialité|Datenschutz|Конфиденциальность|الخصوصية|गोपनीयता|Нууцлал",
+refund:"환불 정책|Refunds|返金|退款|退款|Hoàn tiền|การคืนเงิน|Pengembalian dana|Refund|Reembolsos|Remboursements|Erstattung|Возврат|الاسترداد|रिफ़ंड|Буцаалт"
 };
+const LI=Object.fromEntries(LANGS.map((l,i)=>[l[0],i]));
+let lang="ko";
+const t=k=>{const a=(D[k]||"").split("|");return a[LI[lang]]||a[1]||a[0]||k};
+const ko=()=>lang==="ko";
+const K=(k,e)=>ko()?k:e; /* 상세 문구: 한국어 외에는 영어로 표시 */
+const L=o=>o?(ko()?o.ko:(o[lang]||o.en)):"";
 
-/** [수정] id로 추천 장소 찾기 (partners 말고 REC_PLACES에서 검색) */
-function getPartnerById(id){
-  const all = [
-    ...REC_PLACES.stay,
-    ...REC_PLACES.food,
-    ...REC_PLACES.cafe,
-    ...REC_PLACES.gym,
-    ...REC_PLACES.work
-  ];
-  return all.find(p => p.id === id);
+/* ================= DATA ================= */
+const ICON={taxi:"M4 16.5v-3.2l1.8-4.6A2 2 0 0 1 7.7 7.4h8.6a2 2 0 0 1 1.9 1.3l1.8 4.6v3.2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM6.5 17.5V19M17.5 17.5V19M4.5 13h15M7.5 15.2h.01M16.5 15.2h.01M10 5h4",work:"M5 6.5a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 19 6.5V15H5zM3 18h18M10 18v-.01",gym:"M7 7v10M17 7v10M4 9.5v5M20 9.5v5M7 12h10",cafe:"M5 10h11v3.5A5.5 5.5 0 0 1 10.5 19A5.5 5.5 0 0 1 5 13.5zM16 11h1.2a2.3 2.3 0 0 1 0 4.6H16M8.5 3.5c-.8 1 .8 1.8 0 3M12.5 3.5c-.8 1 .8 1.8 0 3",food:"M7 3.5v17M4.5 3.5v4.2a2.5 2.5 0 0 0 5 0V3.5M17.5 20.5V3.5c-2.2 1.2-3.3 3.8-3.3 7.5h3.3",stay:"M3.5 19V6.5M3.5 14.5h17V19M20.5 14.5v-1.8a3 3 0 0 0-3-3H11v4.8M7.2 12.2a1.7 1.7 0 1 0 0-.01"};
+const svg=(c,cls)=>`<svg viewBox="0 0 24 24" class="${cls||""}"><path d="${ICON[c]}"/></svg>`;
+const PASSES=[
+ {id:"day",name:"Living Day",days:3,list:79000,price:49000,v:{work:1,gym:1},
+  desc:{ko:"짧은 출장과 미팅에 맞춘 패스",en:"For short business trips and meetings"},tag:{ko:"출장 추천",en:"Best for trips"}},
+ {id:"week",name:"Living Week",days:7,list:129000,price:99000,v:{work:2,gym:2},
+  desc:{ko:"일주일간 부산 워케이션을 위한 올인원 패스",en:"All-in-one pass for a week-long Busan workation"},tag:{ko:"워케이션 추천",en:"Best for workation"}}
+];
+const incl=p=>[`${t("i_work")} ×${p.v.work}`,`${t("i_gym")} ×${p.v.gym}`,t("i_taxi"),t("i_fb")];
+/* 좌표는 지역 기준 대략 위치예요 */
+const PLACES=[
+ {id:"wework",cat:"work",name:"위워크 BIFC",en:"WeWork BIFC",area:"문현",aen:"Munhyeon",ll:[35.1466,129.0669],v:"work",bn:{ko:"4시간권 사용",en:"Use 4-hour pass"},d:{ko:"부산국제금융센터(BIFC) 안의 공유오피스. 오전 미팅 전후로 노트북 작업하기 좋아요.",en:"Shared office inside Busan International Finance Center (BIFC)."}},
+ {id:"cafe051",cat:"cafe",name:"카페051 센텀점",en:"Cafe051 Centum",area:"센텀시티",aen:"Centum City",ll:[35.1698,129.1318],v:"fb",bn:{ko:"현장 20% 할인",en:"20% off"},d:{ko:"BEXCO와 가까워 행사 중간에 들르기 좋은 카페.",en:"A café close to BEXCO, handy between sessions."}},
+ {id:"gymbox",cat:"gym",name:"짐박스 센텀",en:"Gymbox Centum",area:"센텀시티",aen:"Centum City",ll:[35.1722,129.1290],v:"gym",bn:{ko:"일일권 사용",en:"Use day pass"},d:{ko:"센텀 숙소에서 걸어갈 수 있는 피트니스. 아침 운동 후 바로 출근해요.",en:"Fitness within walking distance of Centum stays."}},
+ {id:"shilla",cat:"stay",name:"신라스테이 해운대",en:"Shilla Stay Haeundae",area:"해운대",aen:"Haeundae",ll:[35.1628,129.1597],v:null,bn:{ko:"제휴 숙소",en:"Partner stay"},d:{ko:"해운대 해변과 가까운 비즈니스호텔. 숙소 주변 검색의 기준점으로 쓸 수 있어요.",en:"Business hotel near Haeundae beach."}},
+ {id:"amso",cat:"food",name:"해운대암소갈비",en:"Haeundae Amso Galbi",area:"해운대",aen:"Haeundae",ll:[35.1642,129.1675],v:"fb",bn:{ko:"현장 20% 할인",en:"20% off"},d:{ko:"부산 출장에서 손님 접대 자리로 자주 찾는 갈비집.",en:"A galbi restaurant often chosen for client dinners."}},
+ {id:"jagalchi",cat:"food",name:"자갈치시장",en:"Jagalchi Market",area:"남포",aen:"Nampo",ll:[35.0967,129.0305],v:"fb",bn:{ko:"제휴 점포 20%",en:"20% at partners"},d:{ko:"부산 대표 수산시장. 제휴 점포에서 패스를 보여 주면 할인돼요.",en:"Busan's signature fish market. Show your pass at partner stalls."}},
+ {id:"gukje",cat:"food",name:"국제시장",en:"Gukje Market",area:"남포",aen:"Nampo",ll:[35.1016,129.0282],v:"fb",bn:{ko:"제휴 점포 20%",en:"20% at partners"},d:{ko:"분식, 호떡, 생활용품까지 부산 골목 상권을 한 번에 경험할 수 있는 시장.",en:"Street food and everyday goods in Busan's classic market."}},
+ {id:"bupyeong",cat:"food",name:"부평깡통시장 야시장",en:"Bupyeong Kkangtong Night Market",area:"남포",aen:"Nampo",ll:[35.1020,129.0254],v:"fb",bn:{ko:"제휴 점포 20%",en:"20% at partners"},d:{ko:"저녁 일정이 끝난 뒤 들르기 좋은 야시장.",en:"A night market for after your evening schedule."}},
+ {id:"kakaot",cat:"taxi",name:"카카오T 택시",en:"Kakao T Taxi",area:"부산 전역",aen:"All of Busan",ll:null,v:"taxi",bn:{ko:"핀번호로 결제",en:"Pay with PIN"},d:{ko:"바우처의 핀번호를 카카오T 앱에 등록하면 택시 요금 결제에 쓸 수 있어요.",en:"Register the PIN from Vouchers in the Kakao T app to pay for rides."}}
+];
+const STAYS=[{id:"shilla",name:"신라스테이 해운대",en:"Shilla Stay Haeundae",ll:[35.1628,129.1597]},{id:"bexco",name:"BEXCO 인근",en:"Near BEXCO",ll:[35.1690,129.1361]},{id:"station",name:"부산역 인근",en:"Near Busan Station",ll:[35.1152,129.0423]},{id:"seomyeon",name:"서면 인근",en:"Near Seomyeon",ll:[35.1578,129.0594]}];
+const AREAS=[["해운대","Haeundae",35.170,129.165],["센텀시티","Centum City",35.176,129.128],["광안리","Gwangalli",35.157,129.108],["서면","Seomyeon",35.160,129.058],["문현","Munhyeon",35.141,129.072],["부산역","Busan Stn.",35.118,129.050],["남포","Nampo",35.104,129.034],["영도","Yeongdo",35.078,129.060]];
+const FEATS=[
+ {c:"taxi",d:{ko:"카카오T 핀번호로 숙소에서 미팅 장소까지 바로 이동해요.",en:"Ride from your stay to meetings with a Kakao T PIN."},b:"i_taxi"},
+ {c:"work",d:{ko:"BIFC 공유오피스에서 미팅 사이 4시간 집중 업무.",en:"Four focused hours at a BIFC shared office between meetings."},b:"i_work"},
+ {c:"gym",d:{ko:"센텀 피트니스 일일권으로 아침 루틴을 그대로.",en:"Keep your morning routine with a Centum gym day pass."},b:"i_gym"},
+ {c:"cafe",d:{ko:"행사장 근처 제휴 카페에서 커피 미팅.",en:"Coffee meetings at partner cafés near the venue."},b:"i_fb"},
+ {c:"food",d:{ko:"해운대 갈비부터 자갈치·국제시장까지 로컬 맛집.",en:"From Haeundae galbi to Jagalchi and Gukje markets."},b:"i_fb"}
+];
+const STEPS=[["s1",{ko:"체류 일정에 맞춰 3일 또는 7일 패스를 골라요.",en:"Choose a 3- or 7-day pass for your stay."}],["s2",{ko:"카카오페이·네이버페이·카드·휴대폰 결제 후 바로 활성화돼요.",en:"Pay by KakaoPay, Naver Pay, card or phone. It activates instantly."}],["s3",{ko:"제휴처에서 QR이 있는 패스 화면을 보여 주면 혜택이 적용돼요.",en:"Show the pass screen with the QR at partners."}],["s4",{ko:"출장비 정산용 통합 영수증과 이용 내역서를 한 번에 받아요.",en:"Get one combined receipt and statement for expenses."}]];
+const ROUTES=[
+ {id:"r1",img:"img/desk.jpg",p:"day",t:{ko:"3일 출장 · 센텀 BEXCO 동선",en:"3-day trip · Centum & BEXCO"},d:{ko:"행사장과 숙소, 저녁 자리를 가깝게 잇는 코스",en:"Venue, stay and dinner close together"},
+  s:[[{ko:"1일차",en:"Day 1"},"gymbox",{ko:"아침 운동 후 BEXCO 행사장으로",en:"Morning workout, then BEXCO"}],[{ko:"1일차",en:"Day 1"},"cafe051",{ko:"세션 사이 커피 미팅",en:"Coffee between sessions"}],[{ko:"2일차",en:"Day 2"},"wework",{ko:"택시로 문현 이동, 4시간 집중 업무",en:"Taxi to Munhyeon, 4 focused hours"}],[{ko:"2일차",en:"Day 2"},"amso",{ko:"해운대에서 손님 접대 저녁",en:"Client dinner in Haeundae"}],[{ko:"3일차",en:"Day 3"},"kakaot",{ko:"택시로 공항·부산역 이동",en:"Taxi to airport or station"}]]},
+ {id:"r2",img:"img/haeundae.jpg",p:"week",t:{ko:"7일 워케이션 · 일하고 머무는 부산",en:"7-day workation · Work and stay"},d:{ko:"오전 업무, 오후 운동, 저녁 로컬 시장으로 이어지는 일주일",en:"Mornings at work, afternoons active, evenings at markets"},
+  s:[[{ko:"1~2일",en:"Day 1–2"},"shilla",{ko:"해운대 숙소 체크인, 주변 제휴처 확인",en:"Check in, see nearby partners"}],[{ko:"2·5일",en:"Day 2·5"},"wework",{ko:"4시간권 2매로 주 2회 집중 업무",en:"Two 4-hour sessions"}],[{ko:"3·6일",en:"Day 3·6"},"gymbox",{ko:"일일권 2매로 주 2회 운동",en:"Two gym days"}],[{ko:"4일",en:"Day 4"},"jagalchi",{ko:"자갈치시장 제휴 점포에서 저녁",en:"Dinner at Jagalchi partner stalls"}],[{ko:"매일",en:"Daily"},"cafe051",{ko:"제휴 카페 20% 할인으로 업무 시작",en:"Start work with 20% off coffee"}]]},
+ {id:"r3",img:"img/gwangan.jpg",p:null,t:{ko:"반나절 로컬 시장 탐방 · 남포",en:"Half-day markets · Nampo"},d:{ko:"프랜차이즈 대신 부산 골목 상권에서 보내는 반나절",en:"Half a day in Busan's own markets"},
+  s:[[{ko:"오후 3시",en:"3 PM"},"gukje",{ko:"국제시장 골목 분식",en:"Gukje street food"}],[{ko:"오후 5시",en:"5 PM"},"jagalchi",{ko:"자갈치시장 해산물",en:"Seafood at Jagalchi"}],[{ko:"저녁 7시",en:"7 PM"},"bupyeong",{ko:"부평깡통시장 야시장",en:"Bupyeong night market"}]]}
+];
+const CMP=[["i_work",0],["i_gym",0],["i_fb",0],["i_taxi",0],[{ko:"출장비 통합 영수증",en:"Combined expense receipt"},0],[{ko:"다국어 지원",en:"Multilingual"},1]];
+const FAQ=[
+ [{ko:"패스는 언제부터 계산되나요?",en:"When does the pass period start?"},{ko:"결제가 끝난 시점부터 Living Day는 3일, Living Week는 7일 동안 쓸 수 있어요. 남은 기간은 디지털 패스에서 확인해요.",en:"From payment: 3 days for Living Day, 7 days for Living Week."}],
+ [{ko:"제휴처에서는 어떻게 쓰나요?",en:"How do I use it at partners?"},{ko:"디지털 패스(QR) 화면을 직원에게 보여 주면 혜택이 적용돼요. 워크스페이스·헬스장은 바우처가 1매씩 차감돼요.",en:"Show the digital pass (QR) to staff. Workspace and gym use one voucher each time."}],
+ [{ko:"택시는 어떻게 타나요?",en:"How do taxi rides work?"},{ko:"MY › 바우처에서 카카오T 핀번호를 확인하고 카카오T 앱에 등록하면 결제에 쓸 수 있어요.",en:"Find the Kakao T PIN under MY › Vouchers and register it in Kakao T."}],
+ [{ko:"회사 출장비로 정산할 수 있나요?",en:"Can I claim it as a business expense?"},{ko:"MY › 정산에서 통합 영수증과 이용 내역서를 받을 수 있어요.",en:"Get a combined receipt and statement under MY › Settlement."}],
+ [{ko:"환불은 어떻게 되나요?",en:"What is the refund policy?"},{ko:"바우처를 하나도 쓰지 않았다면 결제 후 7일 이내 전액 환불돼요. 일부 사용했다면 남은 바우처 기준으로 부분 환불을 안내해요.",en:"Fully refundable within 7 days if unused; partial refunds are based on remaining vouchers."}]
+];
+const NAT=[["KR",{ko:"대한민국",en:"South Korea"}],["CN",{ko:"중국",en:"China"}],["JP",{ko:"일본",en:"Japan"}],["TW",{ko:"대만",en:"Taiwan"}],["US",{ko:"미국",en:"United States"}],["VN",{ko:"베트남",en:"Vietnam"}],["TH",{ko:"태국",en:"Thailand"}],["PH",{ko:"필리핀",en:"Philippines"}],["ID",{ko:"인도네시아",en:"Indonesia"}],["RU",{ko:"러시아",en:"Russia"}],["MN",{ko:"몽골",en:"Mongolia"}],["IN",{ko:"인도",en:"India"}],["FR",{ko:"프랑스",en:"France"}],["DE",{ko:"독일",en:"Germany"}],["ES",{ko:"스페인",en:"Spain"}],["SA",{ko:"사우디아라비아",en:"Saudi Arabia"}],["XX",{ko:"기타",en:"Other"}]];
+const PURP=[["biz",{ko:"출장·미팅",en:"Business trip"}],["mice",{ko:"MICE·학회·전시",en:"MICE / conference"}],["work",{ko:"워케이션·원격 근무",en:"Workation / remote"}],["study",{ko:"유학·연구",en:"Study / research"}],["trip",{ko:"여행·한 달 살기",en:"Travel / month-long stay"}]];
+
+/* ================= STATE ================= */
+const KEY="bpass-living-v3";
+const blank=()=>({users:{},user:null,pass:null,vouchers:null,hist:[],orders:[],inq:[]});
+let S=blank();
+try{const raw=localStorage.getItem(KEY);if(raw)S=Object.assign(blank(),JSON.parse(raw))}catch(e){}
+try{const l=localStorage.getItem(KEY+"-lang");if(l&&LI[l]!=null)lang=l}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const won=n=>ko()?n.toLocaleString("ko-KR")+"원":"₩"+n.toLocaleString("en-US");
+const pad=n=>String(n).padStart(2,"0");
+const fmtD=ts=>{const d=new Date(ts);return d.getFullYear()+"."+pad(d.getMonth()+1)+"."+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes())};
+const pname=p=>ko()?p.name:p.en;
+const parea=p=>ko()?p.area:p.aen;
+const uname=()=>S.user?(S.user.demo?K("데모 사용자","Demo User"):S.user.name):"";
+const isActive=()=>!!(S.pass&&S.pass.exp>Date.now());
+const P=id=>PLACES.find(p=>p.id===id);
+const rid=n=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let s="";for(let i=0;i<n;i++)s+=c[Math.floor(Math.random()*c.length)];return s};
+async function hash(s){try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){let h=5381;for(const c of s)h=(h*33^c.charCodeAt(0))>>>0;return "x"+h}}
+
+/* ================= UI HELPERS ================= */
+const modal=$("modal"),sheet=$("sheet");
+function open(title,html,wide){sheet.className="sheet"+(wide?" wide":"");sheet.innerHTML=`<div class="hd"><h3>${title}</h3><button class="x" data-close aria-label="${t("close")}">×</button></div>${html}`;modal.classList.add("on");const f=sheet.querySelector("input:not([type=checkbox]),select");if(f)setTimeout(()=>f.focus(),50)}
+function close(){modal.classList.remove("on")}
+modal.addEventListener("click",e=>{if(e.target===modal||e.target.closest("[data-close]"))close()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+let tt;function toast(m){const el=$("toast");el.textContent=m;el.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("on"),2600)}
+async function copy(x){try{await navigator.clipboard.writeText(x);toast(K("복사했어요","Copied"))}catch(e){toast(K("복사할 수 없어요. 직접 선택해 복사해 주세요.","Copy failed. Select it manually."))}}
+
+/* ================= ROUTING ================= */
+const VIEWS=["welcome","home","pass","map","picks","my"];const NAVV=["home","pass","map","picks","my"];
+const NAVIC={home:"M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z",pass:"M3 5h18v14H3zM3 10h18M7 15h4",map:"M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5",picks:"M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",my:"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"};
+let cur=null;
+function go(v,keepScroll){
+ if(!VIEWS.includes(v))v="home";
+ if(v!==cur){cur=v;document.querySelectorAll("main .view").forEach(s=>s.classList.toggle("on",s.id==="v-"+v));document.body.classList.toggle("gate",v==="welcome");if(!keepScroll)window.scrollTo(0,0);if(v==="welcome"&&!spaused)show(si);else clearTimeout(stimer)}
+ document.querySelectorAll("[data-nav]").forEach(b=>b.classList.toggle("on",b.dataset.nav===v));
+ try{if(location.hash!=="#"+v)location.hash=v}catch(e){}
+ if(v==="map")setTimeout(initMap,30);
 }
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){e.preventDefault();close();go(g.dataset.go)}});
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(VIEWS.includes(h)&&h!==cur)go(h)});
 
-/* --- 추천탭 --- [교체 끝] --- */
+/* ================= HERO SLIDESHOW ================= */
+const SL=[{loc:{ko:"해운대 · Haeundae",en:"Haeundae, Busan"},t:"h1t",p:"h1p",lab:{ko:"해운대",en:"Haeundae"}},{loc:{ko:"광안대교 · Gwangan Bridge",en:"Gwangan Bridge"},t:"h2t",p:"h2p",lab:{ko:"광안대교",en:"Gwangan"}},{loc:{ko:"워크스페이스",en:"Workspace"},t:"h3t",p:"h3p",lab:{ko:"업무",en:"Work"}},{loc:{ko:"미팅 · 워케이션",en:"Meetings & workation"},t:"h4t",p:"h4p",lab:{ko:"미팅",en:"Meetings"}}];
+const DUR=6000;let si=0,stimer=null,spaused=false;
+function renderHeroText(){
+ $("caps").innerHTML=SL.map((s,i)=>`<div class="cap ${i===si?"on":""}" data-c="${i}"><span class="loc"><i></i>${L(s.loc)}</span><h1>${t(s.t)}</h1><p>${t(s.p)}</p></div>`).join("");
+ $("dots").innerHTML=SL.map((s,i)=>`<button data-d="${i}" style="--dur:${DUR}ms" class="${i===si?"on":i<si?"done":""}" aria-label="${L(s.lab)}"><span><i></i></span><em>${String(i+1).padStart(2,"0")} ${L(s.lab)}</em></button>`).join("");
+}
+function show(i){
+ si=(i+SL.length)%SL.length;
+ document.querySelectorAll("#hero .slide").forEach(s=>s.classList.toggle("on",+s.dataset.s===si));
+ document.querySelectorAll("#caps .cap").forEach(c=>c.classList.toggle("on",+c.dataset.c===si));
+ document.querySelectorAll("#dots button").forEach((b,j)=>{b.classList.remove("on","done");void b.offsetWidth;b.classList.add(j===si?"on":j<si?"done":"x")});
+ clearTimeout(stimer);if(!spaused&&cur==="welcome")stimer=setTimeout(()=>show(si+1),DUR);
+}
+$("dots").addEventListener("click",e=>{const b=e.target.closest("[data-d]");if(b)show(+b.dataset.d)});
+const rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let tx=null;$("hero").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+$("hero").addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(si+(dx<0?1:-1));tx=null});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(stimer);else if(cur==="welcome")show(si)});
 
-
-    function openRecDetail(id){
-      const item = getPartnerById(id);
-      if(!item) return;
-
-      document.getElementById('rd-title').innerText = item.name;
-      document.getElementById('rd-img').src = item.img;
-
-      const catLabel = { stay:"숙소", food:"음식점", cafe:"카페", gym:"헬스장", work:"워크스페이스" }[item.cat] || "장소";
-      const partnerTxt = item.partner ? "제휴처" : "비제휴(추천)";
-      document.getElementById('rd-desc').innerText =
-        `${catLabel} · ${partnerTxt}\n` +
-        `출발지 기준으로 접근성이 좋은 위치에 있는 추천 장소입니다.\n` +
-        `현장 방문 시 운영 시간/이용 조건은 변동될 수 있으니 확인 후 이용해 주세요.`;
-
-      openModal('modal-rec-detail');
-    }
-
-    function openRecMap(id){
-      const item = getPartnerById(id);
-      if(!item) return;
-
-      goView('map', document.querySelectorAll('.nav-item')[2]);
-      setTimeout(() => {
-        initMap();
-        if(map){
-          map.setView([item.lat, item.lng], 15);
-          L.popup()
-            .setLatLng([item.lat, item.lng])
-            .setContent(`<b>${item.name}</b><br>${item.partner?'제휴':'비제휴'}`)
-            .openOn(map);
-        }
-      }, 260);
-    }
-
-    function loadRec(cat, el) {
-  document.querySelectorAll('.rt-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-
-  const list = document.getElementById('recList');
-  list.innerHTML = "";
-
-  // ✅ [수정] 반복되는 recData 대신, 고정 추천 리스트(REC_PLACES)를 사용
-  (REC_PLACES[cat] || []).forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'rec-card';
-    div.innerHTML = `
-      <img src="${item.img}" class="rc-img">
-      <div class="rc-info">
-        <div class="rc-title">${item.name}</div>
-        <div class="rc-desc">${item.short || "부산 추천 장소"}</div>
-        <div class="rc-acts">
-          <button class="rc-btn" onclick="openRecDetail(${item.id})">자세히</button>
-          <button class="rc-btn map" onclick="openRecMap(${item.id})">지도</button>
-        </div>
-      </div>`;
-    list.appendChild(div);
+/* ================= AUTH ================= */
+function authSheet(mode,next){
+ mode=mode||"login";
+ const natOpts=NAT.map(n=>`<option value="${n[0]}">${L(n[1])}</option>`).join("");
+ const purOpts=PURP.map(n=>`<option value="${n[0]}">${L(n[1])}</option>`).join("");
+ const pwField=(id,lab,ac)=>`<div class="field"><label for="${id}">${lab}</label><div class="pw"><input id="${id}" type="password" autocomplete="${ac}" required><button type="button" data-eye="${id}">${K("보기","Show")}</button></div><span class="err" id="${id}E"></span></div>`;
+ open(`<span style="display:flex;align-items:center;gap:10px"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><defs><mask id="MK3"><rect width="64" height="64" fill="#fff"/><circle cx="0" cy="38" r="7" fill="#000"/><circle cx="64" cy="38" r="7" fill="#000"/></mask></defs><rect x="2" y="2" width="60" height="60" rx="17" fill="#0B3D45" mask="url(#MK3)"/><path d="M21 15h13.5c6.2 0 10 3.2 10 8.2 0 3.2-1.7 5.6-4.5 6.7 3.8 1 6.2 3.9 6.2 7.9 0 5.6-4.3 9.2-11 9.2H21z" fill="#fff"/><path d="M28 21.5v6.6h5.6c2.4 0 3.8-1.2 3.8-3.3s-1.4-3.3-3.8-3.3zM28 34v7.1h6.4c2.7 0 4.3-1.3 4.3-3.6S37.1 34 34.4 34z" fill="#0B3D45"/><circle cx="50" cy="14" r="5" fill="#FF7A59"/></svg>B·PASS Living</span>`,`
+ <div class="atabs"><button data-am="login" class="${mode==="login"?"on":""}">${t("login")}</button><button data-am="signup" class="${mode==="signup"?"on":""}">${t("signup")}</button></div>
+ <div class="demo"><b>${K("가입 없이 바로 둘러보기","Look around without signing up")}</b><span>${K("이용 중인 Living Week 패스와 바우처, 이용 내역이 채워진 데모 계정으로 들어가요.","Enter a demo account with an active Living Week pass, vouchers and history.")}</span><button class="btn coral full" type="button" id="demoGo">${t("demo")}</button></div>
+ ${mode==="login"?`
+ <form id="af" novalidate>
+  <div class="field"><label for="ae">${t("email")}</label><input id="ae" type="email" autocomplete="email" placeholder="name@company.com" required><span class="err" id="aeE"></span></div>
+  ${pwField("ap",t("password"),"current-password")}
+  <label class="check"><input type="checkbox" id="arem" checked><span>${K("로그인 상태 유지","Keep me signed in")}</span></label>
+  <span class="err" id="afE" style="display:block;margin-bottom:8px"></span>
+  <button class="btn full" type="submit">${t("login")}</button>
+ </form>
+ <div class="links"><button type="button" id="forgot">${K("비밀번호 찾기","Forgot password")}</button><button type="button" data-am="signup">${K("처음이신가요? 회원가입","New here? Sign up")}</button></div>`:`
+ <form id="sf" novalidate>
+  <div class="field"><label for="sn">${t("name")}</label><input id="sn" autocomplete="name" required><span class="err" id="snE"></span></div>
+  <div class="field"><label for="se">${t("email")}</label><input id="se" type="email" autocomplete="email" placeholder="name@company.com" required><span class="err" id="seE"></span></div>
+  ${pwField("sp",t("password")+` <small style="color:var(--sub);font-weight:400">${K("(8자 이상, 영문·숫자 포함)","(8+ chars, letters & numbers)")}</small>`,"new-password")}
+  ${pwField("sp2",t("pw2"),"new-password")}
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">
+   <div class="field"><label for="snat">${K("국적","Nationality")}</label><select id="snat">${natOpts}</select></div>
+   <div class="field"><label for="spur">${K("방문 목적","Purpose")}</label><select id="spur">${purOpts}</select></div>
+  </div>
+  <div class="field"><label for="sco">${K("회사 / 소속 (선택)","Company (optional)")}</label><input id="sco" autocomplete="organization"></div>
+  <label class="check all"><input type="checkbox" id="agAll"><span>${K("전체 동의","Agree to all")}</span></label>
+  <label class="check"><input type="checkbox" class="ag" id="ag1" required><span>${K("[필수] 이용약관 동의","[Required] Terms of Service")}</span><button type="button" class="lnk" data-legal="terms">${K("보기","View")}</button></label>
+  <label class="check"><input type="checkbox" class="ag" id="ag2" required><span>${K("[필수] 개인정보 수집·이용 동의","[Required] Privacy Policy")}</span><button type="button" class="lnk" data-legal="privacy">${K("보기","View")}</button></label>
+  <label class="check"><input type="checkbox" class="ag" id="ag3"><span>${K("[선택] 제휴 혜택·이벤트 알림 받기","[Optional] Partner offers and news")}</span></label>
+  <span class="err" id="sfE" style="display:block;margin:6px 0 8px"></span>
+  <button class="btn full" type="submit">${K("가입하고 시작하기","Create account")}</button>
+ </form>`}
+ <div class="or">${t("or")}</div>
+ <div class="social"><button type="button" class="kakao" data-soc="Kakao"><i>K</i>${K("카카오","Kakao")}</button><button type="button" class="naver" data-soc="Naver"><i>N</i>${K("네이버","Naver")}</button><button type="button" data-soc="Google"><i style="color:#4285F4">G</i>Google</button><button type="button" data-soc="Apple"><i></i>Apple</button></div>
+ <p class="note" style="margin-top:14px;text-align:center">${K("시연 버전이에요. 계정 정보는 이 브라우저에만 저장돼요.","Demo version. Account data stays in this browser.")}</p>`);
+ sheet.querySelectorAll("[data-am]").forEach(b=>b.onclick=()=>authSheet(b.dataset.am,next));
+ sheet.querySelectorAll("[data-eye]").forEach(b=>b.onclick=()=>{const i=$(b.dataset.eye);const s=i.type==="password";i.type=s?"text":"password";b.textContent=s?K("숨김","Hide"):K("보기","Show")});
+ $("demoGo").onclick=()=>{demoLogin();if(next)next()};
+ sheet.querySelectorAll("[data-soc]").forEach(b=>b.onclick=()=>socialSheet(b.dataset.soc,next));
+ const em=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+ const er=(id,m)=>{$(id+"E").textContent=m||""};
+ if(mode==="login"){
+  $("forgot").onclick=()=>open(K("비밀번호 찾기","Reset password"),`<p style="color:var(--sub);margin-bottom:16px">${K("시연 버전에서는 재설정 메일이 발송되지 않아요. 데모 계정으로 들어가거나 새로 가입해 주세요.","The demo can't send reset emails. Use the demo account or sign up again.")}</p><div class="grid" style="grid-template-columns:1fr 1fr;gap:10px"><button class="btn line" id="fb1">${t("signup")}</button><button class="btn coral" id="fb2">${K("데모 계정","Demo account")}</button></div>`);
+  sheet.addEventListener("click",e=>{if(e.target.id==="fb1")authSheet("signup",next);if(e.target.id==="fb2"){demoLogin();if(next)next()}});
+  $("af").addEventListener("submit",async e=>{e.preventDefault();
+   const mail=$("ae").value.trim().toLowerCase(),pw=$("ap").value;let ok=true;
+   er("ae",em(mail)?"":K("이메일 형식을 확인해 주세요","Check the email format"));if(!em(mail))ok=false;
+   er("ap",pw?"":K("비밀번호를 입력해 주세요","Enter your password"));if(!pw)ok=false;
+   if(!ok)return;
+   if(mail==="demo@bpass.living"){demoLogin();if(next)next();return}
+   const u=S.users[mail];
+   if(!u||u.hash!==await hash(pw)){er("af",K("이메일 또는 비밀번호가 맞지 않아요.","Email or password is incorrect."));return}
+   S.user={name:u.name,email:mail,co:u.co,nat:u.nat,purpose:u.purpose};
+   if(S.owner!==mail){S.pass=null;S.vouchers=null;S.hist=[];S.orders=[];S.owner=mail}
+   save();close();renderAll();afterAuth();toast(K(`환영해요, ${u.name}님`,`Welcome, ${u.name}`));if(next)next();
   });
+ }else{
+  $("agAll").onchange=e=>sheet.querySelectorAll(".ag").forEach(c=>c.checked=e.target.checked);
+  sheet.querySelectorAll(".ag").forEach(c=>c.onchange=()=>{$("agAll").checked=[...sheet.querySelectorAll(".ag")].every(x=>x.checked)});
+  $("sf").addEventListener("submit",async e=>{e.preventDefault();
+   const name=$("sn").value.trim(),mail=$("se").value.trim().toLowerCase(),pw=$("sp").value,pw2=$("sp2").value;let ok=true;
+   const chk=(id,cond,m)=>{er(id,cond?"":m);if(!cond)ok=false};
+   chk("sn",name.length>=2,K("이름을 2자 이상 입력해 주세요","Enter at least 2 characters"));
+   chk("se",em(mail),K("이메일 형식을 확인해 주세요","Check the email format"));
+   if(em(mail)&&(S.users[mail]||mail==="demo@bpass.living")){er("se",K("이미 가입된 이메일이에요","This email is already registered"));ok=false}
+   chk("sp",pw.length>=8&&/[A-Za-z]/.test(pw)&&/\d/.test(pw),K("8자 이상, 영문과 숫자를 함께 써 주세요","Use 8+ characters with letters and numbers"));
+   chk("sp2",pw2&&pw===pw2,K("비밀번호가 서로 달라요","Passwords don't match"));
+   const ag=$("ag1").checked&&$("ag2").checked;er("sf",ag?"":K("필수 약관에 동의해 주세요","Please accept the required terms"));if(!ag)ok=false;
+   if(!ok)return;
+   S.users[mail]={name,hash:await hash(pw),co:$("sco").value.trim(),nat:$("snat").value,purpose:$("spur").value,mkt:$("ag3").checked,ts:Date.now()};
+   S.user={name,email:mail,co:S.users[mail].co,nat:S.users[mail].nat,purpose:S.users[mail].purpose};
+   S.pass=null;S.vouchers=null;S.hist=[];S.orders=[];S.owner=mail;
+   save();close();renderAll();afterAuth();toast(K(`가입을 환영해요, ${name}님`,`Welcome aboard, ${name}`));if(next)next();
+  });
+ }
+}
+function socialSheet(n,next){
+ open(n+" "+t("login"),`<p style="color:var(--sub);margin-bottom:16px">${K(`시연 버전에서는 ${n} 로그인이 연결되어 있지 않아요. 실제 서비스에서는 ${n} 계정으로 바로 가입·로그인할 수 있어요.`,`${n} sign-in isn't connected in the demo. In the live service you can sign in with ${n} directly.`)}</p><div class="grid" style="grid-template-columns:1fr 1fr;gap:10px"><button class="btn line" id="sb1">${K("이메일로 가입","Sign up by email")}</button><button class="btn coral" id="sb2">${K("데모 계정","Demo account")}</button></div>`);
+ $("sb1").onclick=()=>authSheet("signup",next);$("sb2").onclick=()=>{demoLogin();if(next)next()};
+}
+function demoLogin(){
+ const now=Date.now(),H=3600000,start=now-2*24*H-3*H;
+ S.user={name:K("데모 사용자","Demo User"),email:"demo@bpass.living",co:"B·PASS Demo Co.",nat:"KR",purpose:"work",demo:true};S.owner="demo@bpass.living";
+ S.pass={type:"week",name:"Living Week",start,exp:start+7*24*H,id:"BPL-DEMO-"+rid(4),price:99000,list:129000};
+ S.vouchers={work:{total:2,used:1},gym:{total:2,used:0},taxi:{pin:"7KQ2-MV9D",reg:true},fb:{count:2,saved:13600}};
+ S.orders=[{id:"ORD-DEMO"+rid(4),ts:start,item:"Living Week (7)",amount:99000,method:K("카카오페이","KakaoPay")}];
+ S.hist=[
+  {ts:now-5*H,txt:K("카페051 센텀점 · 20%","Cafe051 Centum · 20%"),amt:-12800,save:3200},
+  {ts:now-26*H,txt:K("해운대암소갈비 · 20%","Haeundae Amso Galbi · 20%"),amt:-41600,save:10400},
+  {ts:now-30*H,txt:K("위워크 BIFC · 워크스페이스 4시간권","WeWork BIFC · Workspace 4h"),amt:0},
+  {ts:start+2*H,txt:K("카카오T 핀번호 등록","Kakao T PIN registered"),amt:0},
+  {ts:start,txt:K("패스 구매 · Living Week","Pass purchase · Living Week"),amt:-99000}];
+ save();close();renderAll();afterAuth();toast(K("데모 계정으로 로그인했어요","Signed in with the demo account"));
+}
+function logout(){S.user=null;save();renderAll();go("welcome");toast(K("로그아웃했어요","Logged out"))}
+function afterAuth(){if(cur==="welcome")go("home")}
+
+/* ================= PURCHASE ================= */
+function passSheet(p){
+ open(`${p.name} · ${p.days}${t("days")==="days"?" days":t("days")}`,`
+ <p style="color:var(--sub);margin-bottom:10px">${L(p.desc)}</p>
+ <div class="kv" style="margin-bottom:16px"><dt>${K("정가","List price")}</dt><dd><s>${won(p.list)}</s></dd><dt>${K("판매가","Price")}</dt><dd style="font-size:22px">${won(p.price)}</dd></div>
+ <h4 style="margin-bottom:8px">${K("포함 혜택","Included")}</h4>
+ <ul style="margin:0 0 16px;padding-left:20px;display:grid;gap:6px">${incl(p).map(i=>`<li>${i}</li>`).join("")}</ul>
+ <h4 style="margin-bottom:8px">${K("주요 제휴처","Key partners")}</h4>
+ <p style="color:var(--sub);margin-bottom:16px">${PLACES.filter(x=>x.ll).map(pname).join(" · ")}</p>
+ <div class="legaltxt" style="margin-bottom:18px"><p>${K(`· 결제 시점부터 ${p.days}일(${p.days*24}시간) 동안 쓸 수 있어요.<br>· 워크스페이스·헬스장 바우처는 기간 안에만 쓸 수 있고 이월되지 않아요.<br>· 20% 할인은 제휴처 현장 결제 금액에 적용되며 다른 할인과 중복되지 않을 수 있어요.`,`· Valid for ${p.days} days (${p.days*24} hours) from payment.<br>· Workspace and gym vouchers expire with the pass.<br>· The 20% discount applies to on-site payments and may not combine with other offers.`)}</p></div>
+ <button class="btn coral full" id="bnow">${won(p.price)} · ${t("buy")}</button>`);
+ $("bnow").onclick=()=>startBuy(p);
+}
+function startBuy(p){
+ if(!S.user){authSheet("login",()=>startBuy(p));return}
+ if(isActive()){open(K("이미 이용 중인 패스가 있어요","You already have an active pass"),`<p style="color:var(--sub);margin-bottom:16px">${K(`${S.pass.name} 패스가 ${fmtD(S.pass.exp)}까지 유효해요. 만료 후 새 패스를 구매할 수 있어요.`,`${S.pass.name} is valid until ${fmtD(S.pass.exp)}.`)}</p><button class="btn full" data-go="pass">${t("dpT")}</button>`);return}
+ const M=[["kakao",K("카카오페이","KakaoPay")],["naver",K("네이버페이","Naver Pay")],["card",K("신용/체크카드","Credit/debit card")],["phone",K("휴대폰결제","Mobile billing")]];
+ open(t("pay_t"),`
+ <div class="kv"><dt>${K("상품","Item")}</dt><dd>${p.name} (${p.days})</dd><dt>${K("정가","List price")}</dt><dd><s>${won(p.list)}</s></dd><dt>${K("할인","Discount")}</dt><dd style="color:var(--coral)">−${won(p.list-p.price)}</dd><dt>${K("결제 금액","Total")}</dt><dd style="font-size:22px">${won(p.price)}</dd></div>
+ <div class="paym" id="pm">${M.map((m,i)=>`<button type="button" data-m="${m[0]}" class="${i?"":"on"}">${m[1]}</button>`).join("")}</div>
+ <label class="check"><input type="checkbox" id="pag"><span>${K("주문 내용과 환불 정책을 확인했어요 (필수)","I confirm the order and refund policy (required)")}</span></label>
+ <button class="btn coral full" id="pgo" disabled style="margin-top:8px">${won(p.price)} · ${t("pay_go")}</button>
+ <p class="note" style="margin-top:10px;text-align:center">${K("시연 결제예요. 실제로 결제되지 않아요.","Demo payment. No real charge.")}</p>`);
+ let m="kakao";
+ $("pm").onclick=e=>{const b=e.target.closest("button");if(!b)return;m=b.dataset.m;$("pm").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b))};
+ $("pag").onchange=e=>{$("pgo").disabled=!e.target.checked};
+ $("pgo").onclick=()=>{const mn=M.find(x=>x[0]===m)[1];sheet.innerHTML=`<div class="spinner"></div><p style="text-align:center;font-weight:700">${t("paying")}</p><p class="note" style="text-align:center;margin-top:6px">${mn}</p>`;setTimeout(()=>finishBuy(p,mn),1400)};
+}
+function finishBuy(p,method){
+ const now=Date.now();
+ S.pass={type:p.id,name:p.name,start:now,exp:now+p.days*86400000,id:"BPL-"+rid(4)+"-"+rid(4),price:p.price,list:p.list};
+ S.vouchers={work:{total:p.v.work,used:0},gym:{total:p.v.gym,used:0},taxi:{pin:rid(4)+"-"+rid(4),reg:false},fb:{count:0,saved:0}};
+ S.orders.unshift({id:"ORD-"+rid(8),ts:now,item:`${p.name} (${p.days})`,amount:p.price,method});
+ S.hist.unshift({ts:now,txt:K("패스 구매 · ","Pass purchase · ")+p.name,amt:-p.price});
+ save();renderAll();
+ open("✓ "+K("결제 완료","Payment complete"),`<p style="margin-bottom:16px">${K("패스가 활성화됐어요. 제휴처에서 디지털 패스를 보여 주세요.","Your pass is active. Show the digital pass at partners.")}</p><div class="kv" style="margin-bottom:18px"><dt>PASS ID</dt><dd>${S.pass.id}</dd><dt>${t("expires")}</dt><dd>${fmtD(S.pass.exp)}</dd></div><button class="btn full" data-go="pass">${K("디지털 패스 보기","View digital pass")}</button>`);
 }
 
+/* ================= PLACES ================= */
+function placeRow(p,dist){return `<button class="place" data-place="${p.id}"><span class="ico">${svg(p.cat)}</span><span><b>${pname(p)}</b><span>${t(p.cat)} · ${parea(p)}${dist!=null?` · ${dist<1?Math.round(dist*1000)+"m":dist.toFixed(1)+"km"}`:""}</span></span><span class="bn">${L(p.bn)}</span></button>`}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-place]");if(b){e.preventDefault();placeSheet(P(b.dataset.place))}});
+function placeSheet(p){
+ const a=isActive();let act="";
+ if(p.v==="work"||p.v==="gym"){const V=a&&S.vouchers[p.v],left=V?V.total-V.used:0;act=a?`<p class="note" style="margin-bottom:8px">${K("남은 매수","Remaining")}: <b>${left}</b></p><button class="btn full" id="useV" ${left?"":"disabled"}>${left?K("직원 확인 후 사용하기","Use (staff confirms)"):K("모두 사용했어요","All used")}</button>`:""}
+ else if(p.v==="fb")act=a?`<button class="btn full" id="useF">${K("20% 할인 적용 기록하기","Record 20% discount")}</button>`:"";
+ else if(p.v==="taxi")act=a?`<button class="btn full" id="toPin">${K("핀번호 보기","Show PIN")}</button>`:"";
+ if(!a&&p.v)act=`<p class="note" style="margin-bottom:10px">${K("패스를 구매하면 혜택을 쓸 수 있어요","Buy a pass to use this benefit")}</p><button class="btn coral full" data-go="pass">${t("cta_pass")}</button>`;
+ open(pname(p),`<p style="color:var(--sub);margin-bottom:14px">${L(p.d)}</p>
+ <dl class="kv" style="margin-bottom:16px"><dt>${K("지역","Area")}</dt><dd>${parea(p)}</dd><dt>${K("분류","Type")}</dt><dd>${t(p.cat)}</dd><dt>${K("혜택","Benefit")}</dt><dd style="color:var(--coral)">${L(p.bn)}</dd></dl>
+ <p class="note" style="margin-bottom:16px">${K("운영 시간과 제휴 조건은 방문 전 제휴처에 확인해 주세요.","Check hours and terms with the partner before visiting.")}</p>${act}`);
+ if($("useV"))$("useV").onclick=()=>{S.vouchers[p.v].used++;S.hist.unshift({ts:Date.now(),txt:pname(p)+" · "+(p.v==="work"?t("i_work"):t("i_gym")),amt:0});save();renderAll();close();toast(K("바우처를 사용했어요","Voucher used"))};
+ if($("useF"))$("useF").onclick=()=>fbSheet(p);
+ if($("toPin"))$("toPin").onclick=()=>{close();myTab="voucher";go("my");renderMy()};
+}
+function fbSheet(p){
+ open(pname(p)+" · 20%",`<div class="field"><label for="fa">${K("결제 금액 (할인 전)","Bill before discount")}</label><input id="fa" type="number" inputmode="numeric" min="1000" step="100" placeholder="30000"></div><p class="note" id="fr" style="margin-bottom:14px">&nbsp;</p><button class="btn full" id="fs" disabled>${K("기록하기","Save")}</button>`);
+ const i=$("fa");i.oninput=()=>{const v=Math.floor(+i.value||0),s=Math.round(v*.2);$("fs").disabled=v<1000;$("fr").textContent=v>=1000?K(`할인 ${won(s)} · 결제 ${won(v-s)}`,`Saved ${won(s)} · Pay ${won(v-s)}`):" "};
+ $("fs").onclick=()=>{const v=Math.floor(+i.value),s=Math.round(v*.2);S.vouchers.fb.count++;S.vouchers.fb.saved=(S.vouchers.fb.saved||0)+s;S.hist.unshift({ts:Date.now(),txt:pname(p)+" · 20%",amt:-(v-s),save:s});save();renderAll();close();toast(K(`${won(s)} 할인을 기록했어요`,`Saved ${won(s)}`))};
+}
 
-    function switchMy(idx) {
-      document.querySelectorAll('.mt-item').forEach((e, i) => e.classList.toggle('active', i===idx));
-      document.querySelectorAll('.my-sec').forEach((e, i) => e.style.display = i===idx ? 'block' : 'none');
-    }
+/* ================= MAP ================= */
+const F={mode:"cat",cat:"all",q:"",stay:"shilla",sel:null};
+let map=null,markers={},baseLayer=null,fallback=false,tileErr=0,nearLayer=null;
+const hav=(a,b)=>{const R=6371,r=x=>x*Math.PI/180,dl=r(b[0]-a[0]),dn=r(b[1]-a[1]);const h=Math.sin(dl/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+function initMap(){
+ if(map){map.invalidateSize();return}
+ if(typeof window.L==="undefined"){$("map").innerHTML=`<div class="empty" style="padding-top:120px">${K("지도 라이브러리를 불러오지 못했어요. 아래 목록으로 찾아 주세요.","Couldn't load the map library. Use the list instead.")}</div>`;return}
+ map=window.L.map("map",{zoomControl:true,scrollWheelZoom:false,attributionControl:true}).setView([35.135,129.095],12);
+ baseLayer=window.L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{maxZoom:19,subdomains:"abcd",attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+ baseLayer.on("tileerror",()=>{tileErr++;if(tileErr>=3&&!fallback)useFallback()});
+ baseLayer.on("tileload",()=>{tileErr=-999});
+ map.on("click",()=>{F.sel=null;paintMarkers()});
+ PLACES.filter(p=>p.ll).forEach(p=>{
+  const m=window.L.marker(p.ll,{icon:icon(p),keyboard:true,title:pname(p)}).addTo(map);
+  m.bindTooltip(pname(p),{direction:"top",offset:[0,-34]});
+  m.on("click",()=>{F.sel=p.id;paintMarkers();renderList();placeSheet(p)});
+  markers[p.id]=m;
+ });
+ setTimeout(()=>{if(tileErr>0&&tileErr<999&&!fallback)useFallback()},4000);
+ renderMap(true);
+}
+function icon(p,dim,sel){return window.L.divIcon({className:"",html:`<span class="mk ${p.cat==="stay"?"stay":""} ${dim?"dim":""} ${sel?"sel":""}">${svg(p.cat)}</span>`,iconSize:[38,38],iconAnchor:[19,38]})}
+function useFallback(){
+ fallback=true;if(baseLayer)map.removeLayer(baseLayer);
+ $("map").style.background="#f2ede3";
+ const sea=[[35.30,129.26],[35.25,129.25],[35.20,129.23],[35.185,129.212],[35.168,129.19],[35.160,129.176],[35.157,129.162],[35.1555,129.147],[35.162,129.135],[35.163,129.128],[35.155,129.12],[35.149,129.117],[35.135,129.115],[35.122,129.103],[35.128,129.085],[35.118,129.065],[35.112,129.048],[35.104,129.040],[35.097,129.033],[35.093,129.023],[35.080,129.012],[35.068,128.995],[35.055,128.965],[35.060,128.94],[34.95,128.90],[34.95,129.40],[35.30,129.40]];
+ const yd=[[35.098,129.036],[35.093,129.060],[35.080,129.078],[35.060,129.086],[35.050,129.070],[35.058,129.048],[35.075,129.038]];
+ window.L.polygon(sea,{stroke:false,fillColor:"#bfdde6",fillOpacity:1,interactive:false}).addTo(map);
+ window.L.polygon(yd,{color:"#e4dccb",weight:1,fillColor:"#f2ede3",fillOpacity:1,interactive:false}).addTo(map);
+ window.L.polyline([[35.152,129.118],[35.144,129.108],[35.137,129.100]],{color:"#9fb7c2",weight:3,dashArray:"6 5",interactive:false}).addTo(map);
+ AREAS.forEach(a=>window.L.marker([a[2],a[3]],{interactive:false,icon:window.L.divIcon({className:"",html:`<span class="mklabel">${ko()?a[0]:a[1]}</span>`,iconSize:[80,16],iconAnchor:[40,8]})}).addTo(map));
+ Object.values(markers).forEach(m=>{m.remove();m.addTo(map)});
+ mapNote();
+}
+function mapNote(){$("mapNote").innerHTML=fallback?K("이 미리보기 환경에서는 지도 타일을 불러올 수 없어 간이 지도로 보여요. 배포한 사이트에서는 실제 지도(OpenStreetMap)가 표시돼요. 핀 위치는 지역 기준 대략값이에요.","Map tiles can't load in this preview, so a simplified map is shown. The deployed site shows the real map (OpenStreetMap). Pin positions are approximate."):K("마커를 누르면 상세 정보가 열려요. 핀 위치는 지역 기준 대략값이에요.","Tap a marker for details. Pin positions are approximate.")}
+function filtered(){
+ let list=PLACES.filter(p=>p.ll&&(F.cat==="all"||p.cat===F.cat));
+ if(F.q){const q=F.q.toLowerCase();list=list.filter(p=>(p.name+p.en+p.area+p.aen).toLowerCase().includes(q))}
+ const base=STAYS.find(s=>s.id===F.stay)||STAYS[0];
+ if(F.mode==="near"){list=list.filter(p=>p.id!==base.id).map(p=>Object.assign({},p,{dist:hav(base.ll,p.ll)})).sort((a,b)=>a.dist-b.dist)}
+ return {list,base};
+}
+function paintMarkers(){
+ if(!map)return;const ids=new Set(filtered().list.map(p=>p.id));
+ PLACES.filter(p=>p.ll).forEach(p=>{const m=markers[p.id];if(m)m.setIcon(icon(p,!ids.has(p.id)&&!(F.mode==="near"&&p.id===F.stay),F.sel===p.id))});
+}
+function renderList(){
+ const {list}=filtered();
+ $("placeList").innerHTML=list.length?list.map(p=>placeRow(p,p.dist)).join("").replace(`data-place="${F.sel}"`,`data-place="${F.sel}" aria-current="true"`):`<div class="empty card">${K("조건에 맞는 장소가 없어요. 필터나 검색어를 바꿔 보세요.","No places match. Try another filter or search.")}</div>`;
+ if(F.sel){const el=$("placeList").querySelector(`[data-place="${F.sel}"]`);if(el)el.classList.add("sel")}
+}
+function renderMap(fit){
+ $("mapMode").querySelectorAll("button").forEach(b=>{b.classList.toggle("on",b.dataset.m===F.mode);b.textContent=b.dataset.m==="cat"?t("by_cat"):t("near")});
+ $("nearPick").hidden=F.mode!=="near";$("stayL").textContent=K("기준 숙소","Your stay");
+ $("stayPick").innerHTML=STAYS.map(s=>`<option value="${s.id}" ${s.id===F.stay?"selected":""}>${ko()?s.name:s.en}</option>`).join("");
+ $("filters").innerHTML=["all","stay","food","cafe","gym","work"].map(c=>`<button class="${F.cat===c?"on":""}" data-f="${c}">${t(c)}</button>`).join("");
+ $("q").placeholder=K("장소, 지역 검색 (예: 센텀, 시장)","Search place or area (e.g. Centum)");$("qBtn").textContent=t("search");
+ renderList();mapNote();
+ if(!map)return;
+ paintMarkers();
+ const {list,base}=filtered();
+ if(nearLayer){map.removeLayer(nearLayer);nearLayer=null}
+ if(F.mode==="near"){nearLayer=window.L.layerGroup([window.L.circle(base.ll,{radius:2000,color:"#FF6B4A",weight:1.5,fillColor:"#FF6B4A",fillOpacity:.07,interactive:false}),window.L.circleMarker(base.ll,{radius:9,color:"#fff",weight:3,fillColor:"#FF6B4A",fillOpacity:1}).bindTooltip(ko()?base.name:base.en,{permanent:false})]).addTo(map)}
+ if(fit){const pts=(F.mode==="near"?[base.ll].concat(list.slice(0,4).map(p=>p.ll)):list.map(p=>p.ll));if(pts.length>1)map.fitBounds(pts,{padding:[40,40],maxZoom:15});else if(pts.length)map.setView(pts[0],15)}
+}
+$("mapMode").onclick=e=>{const b=e.target.closest("button");if(b){F.mode=b.dataset.m;renderMap(true)}};
+$("filters").onclick=e=>{const b=e.target.closest("[data-f]");if(b){F.cat=b.dataset.f;renderMap(true)}};
+$("stayPick").onchange=e=>{F.stay=e.target.value;renderMap(true)};
+const doQ=()=>{F.q=$("q").value.trim();renderMap(true)};
+$("qBtn").onclick=doQ;$("q").addEventListener("keydown",e=>{if(e.key==="Enter")doQ()});$("q").addEventListener("input",e=>{if(!e.target.value){F.q="";renderMap(true)}});
+$("placeList").addEventListener("mouseover",e=>{const b=e.target.closest("[data-place]");if(b&&map&&markers[b.dataset.place]&&F.sel!==b.dataset.place){F.sel=b.dataset.place;paintMarkers()}});
 
-    /* 약관/문의 */
-    function openTerms(type) {
-      const titles = { terms:"이용약관", privacy:"개인정보처리방침", refund:"환불/취소", contact:"문의하기" };
-      document.getElementById('mt-title').innerText = titles[type];
+/* ================= RENDER: HOME ================= */
+function passCard(p){
+ const wave=`<span class="num" aria-hidden="true">${p.days}<small>DAYS</small></span>`;
+ return `<div class="pc ${p.id}">${wave}<span class="tg">${L(p.tag)} · ${p.days} ${t("days")}</span><h3>${p.name}</h3><p class="ds">${L(p.desc)}</p><div class="pr"><s>${won(p.list)}</s><b>${won(p.price)}</b><em>${Math.round((1-p.price/p.list)*100)}% OFF</em></div><div class="tear"></div><ul>${incl(p).map(i=>`<li>${i}</li>`).join("")}</ul><div class="acts"><button class="btn line" data-pd="${p.id}">${t("detail")}</button><button class="btn buy" data-pb="${p.id}">${t("buy")}</button></div></div>`;
+}
+document.addEventListener("click",e=>{const d=e.target.closest("[data-pd]"),b=e.target.closest("[data-pb]");if(d)passSheet(PASSES.find(p=>p.id===d.dataset.pd));if(b)startBuy(PASSES.find(p=>p.id===b.dataset.pb))});
+function routeCard(r,compact){
+ const p=r.p&&PASSES.find(x=>x.id===r.p);
+ return `<article class="card route"><div class="ph"><img src="${r.img}" alt="" loading="lazy">${p?`<span class="badge">${p.name} · ${won(p.price)}</span>`:""}</div><div class="bd"><h3>${L(r.t)}</h3><p>${L(r.d)}</p>${compact?`<p class="stops">${r.s.map(s=>pname(P(s[1]))).join(" → ")}</p><button class="btn soft sm" data-go="picks" style="align-self:flex-start;margin-top:auto">${K("코스 자세히 보기","View route")}</button>`:`<ol class="tl">${r.s.map(s=>{const pl=P(s[1]);return `<li><span class="t">${L(s[0])}</span><button data-place="${pl.id}"><b>${pname(pl)}</b><span>${L(s[2])}</span><span class="bn">${L(pl.bn)}</span></button></li>`}).join("")}</ol>`}</div></article>`;
+}
+function renderHome(){
+ renderHeroText();
+ $("gLogin").textContent=t("login");$("gSignup").textContent=t("signup");$("gGuest").textContent=K("로그인 없이 둘러보기 →","Browse without signing in →");
+ $("langBtn2").querySelector(".lname2").textContent=LANGS[LI[lang]][1];
+ $("hiT").textContent=S.user?K(`${uname()}님, 반가워요`,`Hi, ${uname()}`):K("반가워요","Welcome");
+ $("hiH").textContent=isActive()?K("오늘도 부산에서 일하고, 머물러요","Work and stay in Busan today"):K("부산에 머무는 동안, 패스 하나로","One pass for your stay in Busan");
+ $("quick").innerHTML=[["pass","M3 5h18v14H3zM3 10h18M7 15h4",t("dpT")],["map","M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5",t("map")],["picks","M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",t("picks")],["my","M4 5h16v14H4zM8 9h8M8 13h5",t("t_v")]].map(q=>`<button data-go="${q[0]}"${q[0]==="my"?' data-mytab="voucher"':''}><svg viewBox="0 0 24 24"><path d="${q[1]}"/></svg>${q[2]}</button>`).join("");
+ const a=isActive(),st=$("homeStatus");st.classList.toggle("active",a);
+ if(!S.user){$("hsTitle").textContent=K("내 패스 상태","My pass");$("hsSub").textContent=K("로그인하거나 데모 계정으로 바로 체험해 보세요","Log in, or try the demo account");$("hsBtn").textContent=t("login");$("hsBtn").onclick=()=>authSheet("login")}
+ else if(a){const d=Math.ceil((S.pass.exp-Date.now())/86400000);$("hsTitle").textContent=S.pass.name+" · ACTIVE";$("hsSub").textContent=K(`${d}일 남음 · ${fmtD(S.pass.exp)} 만료`,`${d} days left · expires ${fmtD(S.pass.exp)}`);$("hsBtn").textContent=K("패스 열기","Open pass");$("hsBtn").onclick=()=>go("pass")}
+ else{$("hsTitle").textContent=K(`${uname()}님의 패스`,`${uname()}'s pass`);$("hsSub").textContent=S.pass?K("이용 기간이 끝났어요","Your pass has expired"):K("아직 구매한 패스가 없어요","No pass yet");$("hsBtn").textContent=t("buy");$("hsBtn").onclick=()=>go("pass")}
+ $("featT").textContent=t("featT");$("featP").textContent=K("택시, 업무 공간, 운동, 카페와 맛집까지. 부산에 머무는 동안 매일 필요한 것을 한 장의 패스로 이었어요.","Taxi, workspace, workouts, cafés and food — everything you need daily in Busan, on one pass.");
+ $("feats").innerHTML=FEATS.map(f=>`<div class="card feat"><span class="ico">${svg(f.c)}</span><h3>${t(f.c)}</h3><p>${L(f.d)}</p><span class="badge coral">${t(f.b)}</span></div>`).join("");
+ $("howT").textContent=t("howT");$("howP").textContent=K("구매부터 제휴처 이용, 영수증까지 모두 웹에서 끝나요.","From purchase to partner use and receipts, all on the web.");
+ $("steps").innerHTML=STEPS.map(s=>`<div class="step"><h3>${t(s[0])}</h3><p>${L(s[1])}</p></div>`).join("");
+ $("priceT").textContent=t("priceT");$("priceP").textContent=K("짧은 출장엔 Living Day, 일주일 워케이션엔 Living Week.","Living Day for short trips, Living Week for a week-long workation.");
+ $("homePasses").innerHTML=PASSES.map(passCard).join("");
+ $("priceNote").textContent=K("패스 기간은 결제한 시점부터 계산돼요. 미사용 패스는 결제 후 7일 이내 전액 환불돼요.","The pass period starts at payment. Unused passes are fully refundable within 7 days.");
+ $("routeT").textContent=t("picks");$("routeP").textContent=K("패스 혜택을 출장·워케이션 동선에 맞춰 엮었어요.","Pass benefits arranged along real trip routes.");
+ $("homeRoutes").innerHTML=ROUTES.map(r=>routeCard(r,true)).join("");
+ $("ptT").textContent=t("ptT");$("ptP").textContent=K("센텀·해운대·문현·남포까지, 출장 동선에 맞춰 모았어요.","Centum, Haeundae, Munhyeon and Nampo — along business routes.");
+ $("homePlaces").innerHTML=PLACES.filter(p=>p.ll).slice(0,6).map(p=>placeRow(p)).join("");
+ $("ptMore").textContent=K("지도에서 전체 보기 →","See all on the map →");
+ $("cmpT").textContent=t("cmpT");$("cmpP").textContent=K("기존 도시 관광 패스는 교통과 관광지 입장 중심이에요. B·PASS Living은 머무는 동안의 생활을 연결해요.","Tourist passes focus on transit and attractions. B·PASS Living connects daily life while you stay.");
+ $("cmpH0").textContent=K("항목","Item");$("cmpH1").textContent=K("일반 관광 패스","Typical tourist pass");
+ $("cmpBody").innerHTML=CMP.map(r=>`<tr><td>${typeof r[0]==="string"?t(r[0]):L(r[0])}</td><td class="c ${r[1]?"yes":"no"}">${r[1]?"✓":"—"}</td><td class="c yes">✓</td></tr>`).join("");
+ $("faqT").textContent=t("faqT");
+ $("faqList").innerHTML=FAQ.map(f=>`<details class="faq"><summary>${L(f[0])}</summary><p>${L(f[1])}</p></details>`).join("");
+ if(S.user){$("ctaT").textContent=K("다음 부산 일정도 패스 하나로","Your next Busan stay, on one pass");$("ctaP").textContent=K("일정에 맞는 코스를 고르고 제휴처를 미리 찾아 두세요.","Pick a route and find partners before you go.");$("ctaB2").textContent=t("picks")}
+ else{$("ctaT").textContent=K("가입 없이 데모로 먼저 써 보세요","Try it first with the demo");$("ctaP").textContent=K("패스, 바우처, 지도, 정산까지 모든 기능을 바로 확인할 수 있어요.","See passes, vouchers, the map and settlement right away.");$("ctaB2").textContent=t("demo")}
+ $("ctaB1").textContent=t("cta_pass");
+}
+$("gLogin").onclick=()=>authSheet("login");$("gSignup").onclick=()=>authSheet("signup");$("gGuest").onclick=()=>{try{sessionStorage.setItem(KEY+"-guest","1")}catch(e){}go("home")};$("langBtn2").onclick=()=>langSheet();
+document.addEventListener("click",e=>{const q=e.target.closest("[data-mytab]");if(q){myTab=q.dataset.mytab;renderMy()}});
+$("ctaB2").onclick=()=>{if(S.user)go("picks");else{demoLogin();go("pass")}};
 
-      const bodies = {
-        terms:
-`제1조(목적)
-본 약관은 B·PASS Living(이하 “서비스”)의 이용과 관련하여 서비스 제공자와 이용자 간의 권리·의무 및 책임사항을 규정합니다.
+/* ================= RENDER: PASS ================= */
+function drawQR(cv,seed){
+ const n=25,c=cv.getContext("2d");cv.width=n;cv.height=n;c.fillStyle="#fff";c.fillRect(0,0,n,n);c.fillStyle="#0b2d33";
+ let h=0;for(const ch of seed)h=(h*31+ch.charCodeAt(0))>>>0;const rnd=()=>{h^=h<<13;h>>>=0;h^=h>>17;h^=h<<5;h>>>=0;return h/4294967296};
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){const f=(x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9);if(!f&&rnd()>.52)c.fillRect(x,y,1,1)}
+ [[0,0],[n-7,0],[0,n-7]].forEach(([x,y])=>{c.fillStyle="#0b2d33";c.fillRect(x,y,7,7);c.fillStyle="#fff";c.fillRect(x+1,y+1,5,5);c.fillStyle="#0b2d33";c.fillRect(x+2,y+2,3,3)});
+}
+function remainTxt(){const ms=S.pass.exp-Date.now(),d=Math.floor(ms/86400000),h=Math.floor(ms%86400000/3600000);return K(`${d}일 ${h}시간`,`${d}d ${h}h`)}
+function renderPass(){
+ $("passH").textContent=t("pass");$("passHP").textContent=K("디지털 패스를 확인하고, 일정에 맞는 패스를 구매하세요.","Check your digital pass and buy the one that fits your stay.");
+ $("dpT").textContent=t("dpT");$("buyT").textContent=t("priceT");
+ const a=isActive(),p=S.pass;
+ const name=S.user?esc(uname()):"GUEST";
+ $("dpass").innerHTML=`<div class="dp ${a?p.type:"off"}">
+  <div class="r"><div><div class="lb">B·PASS Living</div><div class="nm">${a?p.name:K("패스 없음","No pass")}</div></div><span class="st ${a?"on":""}">${a?"ACTIVE":"INACTIVE"}</span></div>
+  <div class="tear"></div>
+  <div class="body"><div class="kvs">
+   <div><div class="lb">${t("holder")}</div><div class="vl">${name}</div></div>
+   <div><div class="lb">PASS ID</div><div class="vl">${a?p.id:"-"}</div></div>
+   <div><div class="lb">${t("expires")}</div><div class="vl">${a?fmtD(p.exp):"-"}</div></div>
+   <div><div class="lb">${t("remaining")}</div><div class="vl" id="remain">${a?remainTxt():"-"}</div></div>
+  </div>${a?`<div class="qrbox"><canvas id="qr" aria-label="QR"></canvas></div>`:""}</div>
+  <p style="font-size:14px;opacity:.8;margin-top:16px">${a?t("show_staff")+" · "+K("시연용 코드","Demo code"):K("로그인하고 패스를 구매하면 여기에 활성화돼요.","Log in and buy a pass to activate it here.")}</p>
+  ${!S.user?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="btn sm" id="dpLogin">${t("login")}</button><button class="btn coral sm" id="dpDemo">${t("demo")}</button></div>`:""}
+ </div>`;
+ if(a)drawQR($("qr"),p.id);
+ if($("dpLogin"))$("dpLogin").onclick=()=>authSheet("login");
+ if($("dpDemo"))$("dpDemo").onclick=demoLogin;
+ $("dpVouchers").innerHTML=a?`<div class="card" style="display:grid;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center"><b>${t("t_v")}</b><button class="btn soft sm" id="toV">${K("바우처 관리","Manage")} →</button></div>
+  <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;text-align:center">
+   <div><div class="cnt">${S.vouchers.work.total-S.vouchers.work.used}</div><div class="note">${t("work")}</div></div>
+   <div><div class="cnt">${S.vouchers.gym.total-S.vouchers.gym.used}</div><div class="note">${t("gym")}</div></div>
+   <div><div class="cnt" style="color:var(--coral);font-size:22px;line-height:1.6">${won(S.vouchers.fb.saved||0)}</div><div class="note">${K("할인받은 금액","Saved")}</div></div>
+  </div></div>`:"";
+ if($("toV"))$("toV").onclick=()=>{myTab="voucher";go("my");renderMy()};
+ $("passList").innerHTML=PASSES.map(passCard).join("");
+ $("buyNote").textContent=K("패스 기간은 결제한 시점부터 계산돼요. 미사용 패스는 결제 후 7일 이내 전액 환불돼요.","The pass period starts at payment. Unused passes are fully refundable within 7 days.");
+}
+setInterval(()=>{const r=$("remain");if(S.pass&&!isActive()&&r&&r.textContent!=="-")renderAll();else if(r&&isActive())r.textContent=remainTxt()},60000);
 
-제2조(서비스 제공)
-서비스는 디지털 패스 확인, 제휴처 정보 안내, 추천 리스트 제공 등 편의 기능을 제공합니다.
-서비스 화면·구성·제공 범위는 운영 정책에 따라 변경될 수 있습니다.
+/* ================= RENDER: PICKS ================= */
+function renderPicks(){$("pkH").textContent=t("picks");$("pkHP").textContent=K("패스 혜택을 동선에 맞춰 엮었어요. 장소를 누르면 상세 정보가 열려요.","Routes built around pass benefits. Tap a place for details.");$("routes").innerHTML=ROUTES.map(r=>routeCard(r)).join("");$("pkNote").textContent=K("코스와 시간은 예시예요. 장소 사이 이동은 카카오T 핀번호로 해결할 수 있어요.","Routes and times are examples. Use your Kakao T PIN to get around.")}
 
-제3조(이용자의 의무)
-이용자는 타인의 정보를 도용하거나 서비스 운영을 방해하는 행위를 해서는 안 됩니다.
-부정 이용이 확인될 경우 서비스 이용이 제한될 수 있습니다.
+/* ================= RENDER: MY ================= */
+let myTab="pass";
+$("myTabs").onclick=e=>{const b=e.target.closest("[data-t]");if(b){myTab=b.dataset.t;renderMy()}};
+function renderMy(){
+ $("myTabs").innerHTML=[["pass","t_pass"],["voucher","t_v"],["hist","t_h"],["settle","t_s"],["info","t_i"]].map(x=>`<button data-t="${x[0]}" class="${myTab===x[0]?"on":""}">${t(x[1])}</button>`).join("");
+ $("myProfile").innerHTML=S.user?`<div class="profile"><span class="avatar big">${esc(uname().slice(0,1))}</span><div class="pinfo"><b>${esc(uname())}${S.user.demo?' <span class="badge coral">DEMO</span>':""}</b><span>${esc(S.user.email)}${S.user.co?" · "+esc(S.user.co):""}</span></div><div class="pstat"><div><small>${t("pass")}</small><b>${isActive()?S.pass.name:K("없음","None")}</b></div><div><small>${t("remaining")}</small><b>${isActive()?remainTxt():"-"}</b></div><div><small>${K("할인받은 금액","Saved")}</small><b>${won((S.vouchers&&S.vouchers.fb.saved)||0)}</b></div></div><button class="btn line sm" id="pOut">${t("logout")}</button></div>`:"";
+ if($("pOut"))$("pOut").onclick=logout;
+ $("myHello").textContent=S.user?K(`${uname()}님, 부산에서의 일정을 관리하세요.`,`${uname()}, manage your Busan stay.`):K("로그인하고 패스와 바우처를 관리하세요.","Log in to manage your pass and vouchers.");
+ const b=$("myBody"),a=isActive();
+ const needLogin=`<div class="card empty"><p style="margin-bottom:16px">${K("로그인 후 이용할 수 있어요","Log in to continue")}</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" data-auth="login">${t("login")}</button><button class="btn coral" data-demo>${t("demo")}</button></div></div>`;
+ const needPass=`<div class="card empty"><p style="margin-bottom:16px">${K("패스 구매 후 이용할 수 있어요","Available after you buy a pass")}</p><button class="btn coral" data-go="pass">${t("cta_pass")}</button></div>`;
+ if(!S.user&&myTab!=="info"){b.innerHTML=needLogin;return}
+ if(myTab==="pass"){
+  b.innerHTML=`<div class="mygrid">${S.pass?`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px"><h3 style="font-size:20px">${S.pass.name}</h3><span class="badge ${a?"":"mute"}">${a?"ACTIVE":"EXPIRED"}</span></div><dl class="kv" style="margin-bottom:18px"><dt>PASS ID</dt><dd>${S.pass.id}</dd><dt>${K("시작","Start")}</dt><dd>${fmtD(S.pass.start)}</dd><dt>${t("expires")}</dt><dd>${fmtD(S.pass.exp)}</dd><dt>${K("결제 금액","Paid")}</dt><dd>${won(S.pass.price)}</dd></dl><button class="btn full" data-go="pass">${K("디지털 패스 열기","Open digital pass")}</button></div>`:needPass}
+  ${S.orders.length?`<div class="card"><h3 style="font-size:18px;margin-bottom:4px">${K("구매 내역","Orders")}</h3>${S.orders.map(o=>`<div class="hist"><div>${esc(o.item)}<span>${fmtD(o.ts)} · ${esc(o.method)} · ${o.id}</span></div><div class="amt">${won(o.amount)}</div></div>`).join("")}</div>`:""}</div>`;
+ }else if(myTab==="voucher"){
+  if(!a){b.innerHTML=needPass;return}
+  const V=S.vouchers;
+  const vc=(k,lab,pid)=>{const left=V[k].total-V[k].used;return `<div class="card vch"><div><h3>${lab}</h3><div class="sub">${K(`${V[k].total}매 중 ${V[k].used}매 사용`,`${V[k].used} of ${V[k].total} used`)}</div></div><span class="cnt">${left}</span><div class="meter"><i style="width:${V[k].total?V[k].used/V[k].total*100:0}%"></i></div><button class="btn soft" style="grid-column:1/-1" data-place="${pid}">${K("제휴처에서 사용하기","Use at partner")}</button></div>`};
+  b.innerHTML=`<div class="mygrid">
+   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 style="font-size:18px">${t("i_taxi")}</h3><span class="badge ${V.taxi.reg?"mute":"coral"}">${V.taxi.reg?K("등록 완료","Registered"):K("미등록","Not registered")}</span></div>
+    <div class="pinbox">${V.taxi.pin}</div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px"><button class="btn line" id="pinCopy">${t("copy")}</button><button class="btn" id="pinReg" ${V.taxi.reg?"disabled":""}>${K("등록했어요","I registered it")}</button></div>
+    <p class="note" style="margin-top:10px">${K("카카오T 앱 › 결제수단 › 쿠폰/핀 등록에 입력해요.","Enter it in Kakao T under payment › coupon/PIN.")}</p></div>
+   ${vc("work",t("i_work"),"wework")}${vc("gym",t("i_gym"),"gymbox")}
+   <div class="card vch"><div><h3>${t("i_fb")}</h3><div class="sub">${K(`기간 내 무제한 · ${V.fb.count}회 사용`,`Unlimited · used ${V.fb.count}×`)}</div></div><span class="cnt" style="color:var(--coral);font-size:24px">${won(V.fb.saved||0)}</span><button class="btn soft" style="grid-column:1/-1;margin-top:10px" data-go="map">${K("제휴 카페·맛집 찾기","Find cafés & food")}</button></div>
+  </div>`;
+  $("pinCopy").onclick=()=>copy(V.taxi.pin);
+  $("pinReg").onclick=()=>{V.taxi.reg=true;S.hist.unshift({ts:Date.now(),txt:K("카카오T 핀번호 등록","Kakao T PIN registered"),amt:0});save();renderMy();toast(K("등록 완료로 표시했어요","Marked as registered"))};
+ }else if(myTab==="hist"){
+  b.innerHTML=S.hist.length?`<div class="card" style="max-width:760px">${S.hist.map(h=>`<div class="hist"><div>${esc(h.txt)}<span>${fmtD(h.ts)}${h.save?` · ${K("할인","saved")} ${won(h.save)}`:""}</span></div><div class="amt">${h.amt?won(-h.amt):"—"}</div></div>`).join("")}</div>`:`<div class="card empty">${K("아직 내역이 없어요","No history yet")}</div>`;
+ }else if(myTab==="settle"){
+  if(!S.pass){b.innerHTML=needPass;return}
+  const V=S.vouchers,spend=S.hist.filter(h=>h.save).reduce((s,h)=>s-h.amt,0),paid=S.orders.reduce((s,o)=>s+o.amount,0);
+  b.innerHTML=`<div class="mygrid"><div class="card"><h3 style="font-size:20px;margin-bottom:16px">${K("이번 체류 정산 요약","Stay summary")}</h3>
+   <dl class="kv"><dt>${K("패스 결제","Pass payments")}</dt><dd>${won(paid)}</dd><dt>${K("정가 대비 할인","Discount vs list")}</dt><dd style="color:var(--coral)">${won(S.pass.list-S.pass.price)}</dd><dt>${K("제휴처 현장 결제","Partner payments")}</dt><dd>${won(spend)}</dd><dt>${K("현장 20% 할인 합계","On-site savings")}</dt><dd style="color:var(--coral)">${won(V.fb.saved||0)}</dd><dt>${t("work")}</dt><dd>${V.work.used}/${V.work.total}</dd><dt>${t("gym")}</dt><dd>${V.gym.used}/${V.gym.total}</dd></dl>
+   <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:20px"><button class="btn line" id="stMail">${K("내역서 보내기","Send statement")}</button><button class="btn" id="stRc">${K("통합 영수증","Combined receipt")}</button></div></div>
+   <p class="note">${K("제휴처 현장 결제는 직접 기록한 금액 기준이에요.","Partner payments are based on amounts you recorded.")}</p></div>`;
+  $("stRc").onclick=receipt;$("stMail").onclick=mailSheet;
+ }else{
+  b.innerHTML=`<div class="mygrid">${S.user?`<div class="card"><div style="display:flex;align-items:center;gap:14px;margin-bottom:16px"><span class="avatar" style="width:52px;height:52px;font-size:20px">${esc(uname().slice(0,1))}</span><div><b style="font-size:18px">${esc(uname())}</b>${S.user.demo?` <span class="badge coral">DEMO</span>`:""}<div class="note">${esc(S.user.email)}</div></div></div><dl class="kv"><dt>${K("소속","Company")}</dt><dd>${esc(S.user.co||"-")}</dd><dt>${K("국적","Nationality")}</dt><dd>${L((NAT.find(n=>n[0]===S.user.nat)||[0,{ko:"-",en:"-"}])[1])}</dd><dt>${K("방문 목적","Purpose")}</dt><dd>${L((PURP.find(n=>n[0]===S.user.purpose)||[0,{ko:"-",en:"-"}])[1])}</dd></dl></div>`:""}
+  <div class="card menu" style="padding:8px 22px">
+   <button id="mRc">${K("통합 영수증 발급","Issue combined receipt")}</button>
+   <button id="mMail">${K("내역서 이메일 전송","Email statement")}</button>
+   <button id="mLang">${t("lang")} · ${LANGS[LI[lang]][1]}</button>
+   <button id="mHelp">${K("고객센터 / 문의","Help / contact")}</button>
+   <button data-legal="terms">${t("terms")}</button><button data-legal="privacy">${t("privacy")}</button><button data-legal="refund">${t("refund")}</button>
+   ${S.user?`<button id="mOut">${t("logout")}</button>`:`<button data-auth="login">${t("login")}</button>`}
+   <button id="mReset" style="color:var(--coral)">${K("시연 데이터 초기화","Reset demo data")}</button>
+  </div></div>`;
+  $("mRc").onclick=receipt;$("mMail").onclick=mailSheet;$("mLang").onclick=langSheet;$("mHelp").onclick=helpSheet;
+  if($("mOut"))$("mOut").onclick=logout;
+  $("mReset").onclick=()=>{open(K("시연 데이터를 초기화할까요?","Reset demo data?"),`<p style="color:var(--sub);margin-bottom:16px">${K("가입한 계정, 패스, 바우처, 이용 내역이 이 브라우저에서 모두 지워져요.","Accounts, pass, vouchers and history will be cleared from this browser.")}</p><div class="grid" style="grid-template-columns:1fr 1fr;gap:10px"><button class="btn line" data-close>${K("취소","Cancel")}</button><button class="btn coral" id="rsY">${K("초기화","Reset")}</button></div>`);$("rsY").onclick=()=>{S=blank();save();close();myTab="pass";renderAll();toast(K("초기화했어요","Reset done"))}};
+ }
+}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-auth]");if(a)authSheet(a.dataset.auth);if(e.target.closest("[data-demo]"))demoLogin()});
+function receiptText(){
+ const l=["B·PASS Living "+K("통합 영수증","Combined receipt"),"────────────────",K("이름: ","Name: ")+(S.user?uname():"-"),K("소속: ","Company: ")+((S.user&&S.user.co)||"-"),"PASS ID: "+(S.pass?S.pass.id:"-"),""];
+ S.orders.slice().reverse().forEach(o=>l.push(fmtD(o.ts)+"  "+o.item+"  "+won(o.amount)+"  ("+o.method+")"));
+ S.hist.filter(h=>h.save).slice().reverse().forEach(h=>l.push(fmtD(h.ts)+"  "+h.txt+"  "+won(-h.amt)));
+ const tot=S.orders.reduce((s,o)=>s+o.amount,0)+S.hist.filter(h=>h.save).reduce((s,h)=>s-h.amt,0);
+ l.push("────────────────",K("합계: ","Total: ")+won(tot),"",K("※ 시연용 영수증으로 증빙 효력이 없어요.","※ Demo receipt, not a legal document."));return l.join("\n");
+}
+function receipt(){if(!S.orders.length){toast(K("발급할 결제 내역이 없어요","No payments to include"));return}const x=receiptText();open(K("통합 영수증","Combined receipt"),`<pre style="white-space:pre-wrap;font:14px/1.7 ui-monospace,Menlo,monospace;background:var(--brand-soft);padding:16px;border-radius:14px;margin:0 0 16px">${esc(x)}</pre><button class="btn full" id="rcC">${t("copy")}</button>`);$("rcC").onclick=()=>copy(x)}
+function mailSheet(){if(!S.user){authSheet("login",mailSheet);return}open(K("내역서 이메일 전송","Email statement"),`<div class="field"><label for="me">${K("받는 이메일","Recipient")}</label><input id="me" type="email" value="${esc(S.user.email)}"></div><p class="note" style="margin-bottom:16px">${K("시연 버전에서는 메일이 실제로 발송되지 않아요. 내역서를 복사해 직접 보낼 수 있어요.","The demo can't send email. Copy the statement and send it yourself.")}</p><button class="btn full" id="meC">${K("내역서 복사","Copy statement")}</button>`);$("meC").onclick=()=>copy(receiptText())}
+function helpSheet(){
+ open(K("고객센터 / 문의","Help / contact"),`<div style="margin-bottom:16px">${FAQ.slice(0,3).map(f=>`<details class="faq"><summary>${L(f[0])}</summary><p>${L(f[1])}</p></details>`).join("")}</div>
+ <form id="hf"><div class="field"><label for="hk">${K("문의 유형","Topic")}</label><select id="hk">${[["결제·환불","Payment & refund"],["제휴처 이용","Using partners"],["바우처·핀번호","Vouchers & PIN"],["제휴 신청 (사업자)","Partner application"],["기타","Other"]].map(o=>`<option>${K(o[0],o[1])}</option>`).join("")}</select></div>
+ <div class="field"><label for="hm">${K("내용","Message")}</label><textarea id="hm" rows="4" required></textarea></div><button class="btn full" type="submit">${K("문의 남기기","Submit")}</button></form>
+ ${S.inq.length?`<h4 style="margin:18px 0 4px">${K("남긴 문의","Your messages")}</h4>${S.inq.map(q=>`<div class="hist"><div>${esc(q.k)}<span>${esc(q.m)}</span></div><div class="amt"><span class="badge mute">${K("접수 대기","Pending")}</span></div></div>`).join("")}`:""}
+ <p class="note" style="margin-top:12px">${K("시연 버전에서는 문의가 이 브라우저에만 저장되고 담당자에게 전달되지 않아요.","In the demo, messages stay in this browser and aren't sent.")}</p>`);
+ $("hf").addEventListener("submit",e=>{e.preventDefault();if(!$("hm").value.trim())return;S.inq.unshift({k:$("hk").value,m:$("hm").value.trim(),ts:Date.now()});save();helpSheet();toast(K("문의를 저장했어요","Saved"))});
+}
+function langSheet(){
+ open(t("lang"),`<div class="langs">${LANGS.map(l=>`<button data-lang="${l[0]}" class="${l[0]===lang?"on":""}" lang="${HTMLLANG[l[0]]||l[0]}"><b>${l[1]}</b><span>${l[2]}</span></button>`).join("")}</div><p class="note" style="margin-top:14px">${K("메뉴·버튼·주요 안내는 16개 언어로 번역돼 있어요. 한국어 외 언어에서는 긴 설명 문구가 영어로 보여요.","Menus, buttons and key text are translated into 16 languages. Longer descriptions appear in English outside Korean.")}</p>`,true);
+ sheet.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem(KEY+"-lang",lang)}catch(e){}close();applyLang()});
+}
+$("langBtn").onclick=langSheet;
+const LEGAL={
+ terms:{t:{ko:"이용약관",en:"Terms of Service"},b:{ko:[["제1조 목적","이 약관은 B·PASS Living(이하 '서비스')이 제공하는 부산 생활 패스와 제휴 혜택의 이용 조건을 정해요."],["제2조 패스","패스는 결제 시점부터 상품별 기간 동안 유효해요. 구매자 본인만 쓸 수 있고 양도할 수 없어요."],["제3조 제휴 혜택","혜택 내용과 제휴처는 제휴처 사정에 따라 바뀔 수 있으며, 바뀌는 경우 미리 알려 드려요."],["제4조 이용 제한","부정 사용(캡처 화면 공유, 타인 사용 등)이 확인되면 패스 이용을 제한할 수 있어요."]],en:[["1. Purpose","These terms set the conditions for using the B·PASS Living pass and partner benefits."],["2. Pass","A pass is valid for its period from payment, for the buyer only, and is not transferable."],["3. Partner benefits","Benefits and partners may change; changes are announced in advance."],["4. Restrictions","Misuse such as sharing screenshots may lead to suspension."]]}},
+ privacy:{t:{ko:"개인정보처리방침",en:"Privacy Policy"},b:{ko:[["수집 항목","이름, 이메일, 비밀번호(암호화), 국적, 방문 목적, 소속(선택), 결제·이용 내역"],["이용 목적","패스 발급, 제휴처 혜택 확인, 영수증·내역서 발급, 고객 문의 응대"],["보관 기간","회원 탈퇴 시까지. 단, 관계 법령에 따라 결제 기록은 5년간 보관해요."],["제3자 제공","혜택 확인을 위해 제휴처에 PASS ID와 이용 시각만 제공해요."]],en:[["Collected","Name, email, password (hashed), nationality, purpose, company (optional), payment and usage history"],["Purpose","Issuing passes, verifying benefits, receipts, support"],["Retention","Until account deletion; payment records kept 5 years as required by law."],["Sharing","Only PASS ID and usage time are shared with partners."]]}},
+ refund:{t:{ko:"유의사항 · 환불 정책",en:"Notes & refunds"},b:{ko:[["전액 환불","결제 후 7일 이내, 바우처와 할인 혜택을 한 번도 쓰지 않은 경우 전액 환불돼요."],["부분 환불","일부 사용한 경우 남은 워크스페이스·헬스장 바우처와 남은 기간을 기준으로 환불액을 안내해요."],["환불 제외","카카오T 핀번호를 등록한 뒤에는 핀번호 금액만큼 환불에서 빠져요."],["유의사항","제휴처 운영 시간과 좌석·기구 사정에 따라 이용이 제한될 수 있어요."]],en:[["Full refund","Within 7 days of payment if no voucher or discount was used."],["Partial refund","Calculated from remaining vouchers and days."],["Excluded","The Kakao T PIN value is excluded once registered."],["Notes","Partner hours and capacity may limit use."]]}}
+};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-legal]");if(!b)return;e.preventDefault();const g=LEGAL[b.dataset.legal];const back=modal.classList.contains("on")&&sheet.querySelector("#sf");const keep=back?sheet.innerHTML:null;
+ open(L(g.t),`<div class="legaltxt">${L(g.b).map(s=>`<h4>${s[0]}</h4><p>${s[1]}</p>`).join("")}<p class="note">${K("시연용 초안이에요. 실제 서비스 전 법률 검토가 필요해요.","Draft for demo; legal review needed before launch.")}</p></div><button class="btn full" style="margin-top:16px" id="lgBack">${back?K("가입 화면으로","Back to sign up"):t("close")}</button>`);
+ $("lgBack").onclick=()=>{if(back)authSheet("signup");else close()}});
 
-제4조(면책)
-제휴처 운영시간, 제공 혜택, 현장 정책 등은 제휴사 사정에 따라 달라질 수 있으며, 서비스는 현장 변경사항에 대해 책임을 지지 않습니다.`,
-        privacy:
-`1) 수집 항목
-서비스 이용 과정에서 언어 설정, 기기 정보(브라우저/OS 등), 이용 기록(탭 이동/버튼 클릭 등)이 수집될 수 있습니다.
+/* ================= CHROME ================= */
+function renderChrome(){
+ $("topnav").innerHTML=NAVV.map(v=>`<button data-go="${v}" data-nav="${v}">${v==="my"?"My Lounge":t(v)}</button>`).join("");
+ $("bnav").innerHTML=NAVV.map(v=>`<button data-go="${v}" data-nav="${v}"><svg viewBox="0 0 24 24"><path d="${NAVIC[v]}"/></svg>${t(v)}</button>`).join("");
+ $("langBtn").querySelector(".lname").textContent=LANGS[LI[lang]][1];
+ $("authBox").innerHTML=S.user?`<button class="pill" id="meBtn" title="My Lounge"><span class="avatar">${esc(uname().slice(0,1))}</span><span class="lname">${esc(uname().length>8?uname().slice(0,8)+"…":uname())}</span></button><button class="pill" id="outBtn">${t("logout")}</button>`:`<button class="pill" id="inBtn">${t("login")}</button><button class="btn coral sm" id="upBtn">${t("signup")}</button>`;
+ if(S.user){$("meBtn").onclick=()=>{myTab="pass";go("my");renderMy()};$("outBtn").onclick=logout}else{$("inBtn").onclick=()=>authSheet("login");$("upBtn").onclick=()=>authSheet("signup")}
+ $("ftAbout").textContent=K("부산에 머무는 출장자와 워케이션족을 위한 정주형 생활 패스예요.","A stay-and-live pass for business travelers and workationers in Busan.");
+ $("ftH1").textContent=K("서비스","Service");$("ftH2").textContent=K("고객지원","Support");
+ $("ftSvc").innerHTML=["pass","map","picks","my"].map(v=>`<button data-go="${v}">${v==="my"?"My Lounge":t(v)}</button>`).join("");
+ $("ftSup").innerHTML=`<button id="ftHelp">${t("help")}</button><button data-legal="terms">${t("terms")}</button><button data-legal="privacy">${t("privacy")}</button><button data-legal="refund">${t("refund")}</button>`;
+ $("ftHelp").onclick=helpSheet;
+ $("ftProto").textContent=K("시연용 프로토타입이에요. 결제는 실제로 이뤄지지 않으며, 제휴 및 운영 정보는 바뀔 수 있어요. 사진은 분위기 연출용이에요.","Demo prototype. No real payments are made; partner details may change. Photos are for illustration.");
+ document.querySelectorAll("[data-nav]").forEach(b=>b.classList.toggle("on",b.dataset.nav===cur));
+}
+function applyLang(){
+ document.documentElement.lang=HTMLLANG[lang]||lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ renderAll();show(si);
+ if(markers&&map){PLACES.filter(p=>p.ll).forEach(p=>{const m=markers[p.id];if(m){m.unbindTooltip();m.bindTooltip(pname(p),{direction:"top",offset:[0,-34]})}})}
+}
+function renderAll(){renderChrome();renderHome();renderPass();renderPicks();renderMy();renderMap(false)}
 
-2) 이용 목적
-서비스 품질 개선, 오류 분석, 사용자 경험(UX) 개선을 위해 활용됩니다.
-
-3) 보관 및 파기
-목적 달성 후 지체 없이 파기하며, 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관합니다.
-
-4) 제3자 제공
-원칙적으로 이용자의 개인정보를 외부에 제공하지 않습니다. 다만, 법령에 근거한 요청이 있는 경우 예외로 합니다.
-
-5) 문의
-개인정보 관련 문의는 ‘문의하기’ 메뉴를 통해 접수해 주세요.`,
-        refund:
-`유의사항
-- 제휴 혜택은 제휴처 현장 정책(운영시간/재고/예약 상황)에 따라 제공이 제한될 수 있습니다.
-- 이용자는 방문 전 제휴처의 운영 정보를 확인하는 것을 권장합니다.
-
-환불/취소(안내)
-- 결제 후 미사용 상태에서 취소를 요청한 경우, 내부 확인 절차 후 환불이 진행될 수 있습니다.
-- 일부 혜택(바우처 사용 등)이 사용 처리된 경우 환불이 제한될 수 있습니다.
-- 환불 소요 기간은 결제수단 및 카드사 정책에 따라 달라질 수 있습니다.`,
-        contact:
-`문의 채널
-- 앱/웹 내 ‘문의하기’ 메뉴로 접수
-- 운영시간: 평일 10:00 ~ 18:00 (공휴일 제외)
-
-빠른 안내를 위해 아래 정보를 함께 남겨주세요.
-1) 문의 유형(결제/패스/제휴처/오류)
-2) 발생 화면(예: 추천 탭 > 지도 버튼)
-3) 사용 기기/브라우저
-4) 문제 상황(가능하면 캡처 포함)
-
-접수된 문의는 순차적으로 확인 후 안내드립니다.`
-      };
-
-      document.getElementById('mt-body').innerText = bodies[type] || bodies.terms;
-      openModal('modal-terms');
-    }
-
-    /* 언어 */
-    function setLang(lang) {
-      curLang = lang;
-      document.getElementById('curLang').innerText = lang;
-      closeModal(document.getElementById('modal-lang'));
-      updateHomeUI();
-      
-      const txt = i18n[lang];
-      document.querySelector('.brand').innerText = txt.brand;
-      document.querySelector('.h-sub').innerText = txt.sub;
-
-      const alias = { slogan: "sub", pass_title: "buy_title", btn_look: "look", btn_buy: "buy" };
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        const realKey = alias[key] || key;
-        if (txt[realKey] !== undefined) el.innerText = txt[realKey];
-      });
-
-      feather.replace();
-    }
-
-    /* 모달 */
-    function openModal(id) {
-      const el = typeof id === 'string' ? document.getElementById(id) : id;
-      if (!el) return;
-      el.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(target) {
-      const el = (target instanceof HTMLElement)
-        ? target
-        : (typeof target === 'string' ? document.getElementById(target) : null);
-      if (!el) return;
-      el.style.display = 'none';
-      document.body.style.overflow = 'hidden';
-    }
-
-    /* 로그아웃 */
-    function handleLogout() {
-      if(!confirm("로그아웃 하시겠습니까?")) return;
-      user = { loggedIn: false, hasPass: false, passDays: 0 };
-
-      document.getElementById('certName').innerText = "GUEST";
-      document.getElementById('certStatus').innerText = "INACTIVE";
-      document.getElementById('certId').innerText = "-";
-      document.getElementById('certDate').innerText = "-";
-      document.getElementById('certMsg').innerHTML = "로그인 및 구매 후 활성화됩니다.<br>제휴처에서 이 화면을 보여주세요.";
-
-      document.getElementById('mp-title').innerText = "구매 내역 없음";
-      document.getElementById('mp-status').innerText = "INACTIVE";
-      document.getElementById('mp-time').innerText = "패스 구매 후 이용 가능합니다.";
-
-      document.getElementById('voucherList').innerHTML =
-        `<div style="text-align:center; padding:40px; color:#aaa; font-size:14px;">구매한 패스가 없습니다.</div>`;
-
-      updateHomeUI();
-      goView('home', document.querySelectorAll('.nav-item')[0]);
-    }
-
-  </script>
+applyLang();
+let guest=false;try{guest=sessionStorage.getItem(KEY+"-guest")==="1"}catch(e){}
+const h0=location.hash.slice(1);go(!S.user&&!guest?"welcome":(VIEWS.includes(h0)&&h0!=="welcome"?h0:"home"));
+if(!rm)show(0);else{spaused=true;show(0)}
+}
+</script>
 </body>
 </html>
