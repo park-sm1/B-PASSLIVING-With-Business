@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>B·PASS Living</title>
-<meta name="theme-color" content="#FFFFFF">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%230B2E4F%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2229%22%20r%3D%227%22%20fill%3D%22%23FF6B2C%22/%3E%3Cpath%20d%3D%22M6%2041c9%200%2013-17%2016-21%203%209%2017%209%2020%200%203%204%207%2021%2016%2021%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M22%2018v23M42%2018v23%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M5%2041h54%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M12%2050c3-2.4%206-2.4%209%200s6%202.4%209%200%206-2.4%209%200%206%202.4%209%200%22%20stroke%3D%22%237DB7E8%22%20stroke-width%3D%222.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F5F9FB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%230B2E4F%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2229%22%20r%3D%227%22%20fill%3D%22%234FD1E3%22/%3E%3Cpath%20d%3D%22M6%2041c9%200%2013-17%2016-21%203%209%2017%209%2020%200%203%204%207%2021%2016%2021%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M22%2018v23M42%2018v23%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M5%2041h54%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M12%2050c3-2.4%206-2.4%209%200s6%202.4%209%200%206-2.4%209%200%206%202.4%209%200%22%20stroke%3D%22%237DB7E8%22%20stroke-width%3D%222.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -496,7 +496,7 @@ footer .legal{color:#9fb0c3}
 
 /* ===== v6: 따뜻한 바탕 + 오렌지 강조 (네이비 주색, 오렌지는 중요한 곳에만) ===== */
 :root{--bg:light-dark(#fbf9f6,#0e1116);--bg2:light-dark(#f0f5fa,#131a24);--panel:light-dark(#ffffff,#171c24);
---line:light-dark(#e7e2da,#262d38);--accent:#FF6B2C;--accent-d:#E85A1C;--accent-soft:light-dark(#fff1e8,#3a2318);--sky:light-dark(#e6f0fa,#18263a)}
+--line:light-dark(#e7e2da,#262d38);--accent:#4FD1E3;--accent-d:#E85A1C;--accent-soft:light-dark(#fff1e8,#3a2318);--sky:light-dark(#e6f0fa,#18263a)}
 .wm b span{color:var(--accent)}
 .wm b em{color:var(--brand-ink)}
 /* 전환 버튼만 오렌지 */
@@ -547,6 +547,14 @@ nav.bottom button.on{color:var(--accent-d)}
 footer{background:#0B2E4F}
 footer .wm b span{color:var(--accent)}
 #feats .feat .badge{background:transparent;padding:0;border-radius:0}
+
+/* ===== v7: 청량한 바다색 강조 (오렌지 제거) ===== */
+:root{--bg:light-dark(#f5f9fb,#0c1419);--bg2:light-dark(#eaf4f8,#11202a);--line:light-dark(#dde8ee,#243440);
+--accent:#0AA5C0;--accent-d:#07879E;--accent-soft:light-dark(#e2f6f9,#103038);--sky:light-dark(#e1f2f8,#15293a)}
+.btn.coral,.pc .btn.buy,#heroPass,#upBtn,#demoGo,#pgo,#bnow,.cta .btn.white,.gate-cta #gSignup,.pc.week .btn.buy{background:var(--accent);color:#fff}
+.btn.coral:hover,.pc .btn.buy:hover,#upBtn:hover,#demoGo:hover,#pgo:hover,#bnow:hover,.gate-cta #gSignup:hover{background:var(--accent-d)}
+.pc.week{background:linear-gradient(160deg,#0B2E4F 0%,#0E4D74 100%)}
+.dp.week{background:linear-gradient(160deg,#0B2E4F,#0E4D74)}
 </style>
 </head>
 <body>
@@ -554,7 +562,7 @@ footer .wm b span{color:var(--accent)}
 <header class="top">
  <div class="wrap">
   <a class="logo" href="#home" data-go="home" aria-label="B·PASS Living">
-   <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#FF6B2C"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+   <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#4FD1E3"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
    <span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span>
   </a>
   <nav class="topnav" id="topnav"></nav>
@@ -572,7 +580,7 @@ footer .wm b span{color:var(--accent)}
   <div class="slide" data-s="1"><img src="img/gwangan.jpg" alt="광안대교와 부산 야경"></div>
   <div class="slide" data-s="2"><img src="img/desk.jpg" alt="노트북으로 함께 일하는 사람들"></div>
   <div class="slide bw" data-s="3"><img src="img/meeting.jpg" alt="회의실에서 노트북으로 미팅하는 사람들"></div>
-  <div class="gtop"><div class="wrap"><span class="logo light"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#FF6B2C"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></span><span class="sp"></span><button class="pill glassp" id="langBtn2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span class="lname2">한국어</span></button></div></div>
+  <div class="gtop"><div class="wrap"><span class="logo light"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#4FD1E3"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></span><span class="sp"></span><button class="pill glassp" id="langBtn2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span class="lname2">한국어</span></button></div></div>
   <div class="wrap hero-in">
    <div id="caps"></div>
    <div class="gate-cta">
@@ -716,7 +724,7 @@ footer .wm b span{color:var(--accent)}
  <div class="wrap">
   <div class="grid">
    <div>
-    <div class="logo" style="margin-bottom:14px"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#FF6B2C"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></div>
+    <div class="logo" style="margin-bottom:14px"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#4FD1E3"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span class="wm"><b>B<span>·</span>PASS<em>Living</em></b><small>WORK SMART, STAY BUSAN</small></span></div>
     <p id="ftAbout" style="max-width:32ch"></p>
    </div>
    <div><h4 id="ftH1"></h4><div id="ftSvc"></div></div>
@@ -937,7 +945,7 @@ function authSheet(mode,next){
  const natOpts=NAT.map(n=>`<option value="${n[0]}">${L(n[1])}</option>`).join("");
  const purOpts=PURP.map(n=>`<option value="${n[0]}">${L(n[1])}</option>`).join("");
  const pwField=(id,lab,ac)=>`<div class="field"><label for="${id}">${lab}</label><div class="pw"><input id="${id}" type="password" autocomplete="${ac}" required><button type="button" data-eye="${id}">${K("보기","Show")}</button></div><span class="err" id="${id}E"></span></div>`;
- open(`<span style="display:flex;align-items:center;gap:10px"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#FF6B2C"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>B·PASS Living</span>`,`
+ open(`<span style="display:flex;align-items:center;gap:10px"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B2E4F"/><circle cx="32" cy="29" r="7" fill="#4FD1E3"/><path d="M6 41c9 0 13-17 16-21 3 9 17 9 20 0 3 4 7 21 16 21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 18v23M42 18v23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 41h54" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M12 50c3-2.4 6-2.4 9 0s6 2.4 9 0 6-2.4 9 0 6 2.4 9 0" stroke="#7DB7E8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>B·PASS Living</span>`,`
  <div class="atabs"><button data-am="login" class="${mode==="login"?"on":""}">${t("login")}</button><button data-am="signup" class="${mode==="signup"?"on":""}">${t("signup")}</button></div>
  <div class="demo"><b>${K("가입 없이 바로 둘러보기","Look around without signing up")}</b><span>${K("이용 중인 Living Week 패스와 바우처, 이용 내역이 채워진 데모 계정으로 들어가요.","Enter a demo account with an active Living Week pass, vouchers and history.")}</span><button class="btn coral full" type="button" id="demoGo">${t("demo")}</button></div>
  ${mode==="login"?`
